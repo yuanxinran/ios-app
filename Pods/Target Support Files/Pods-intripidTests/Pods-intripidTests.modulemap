@@ -1,0 +1,6 @@
+framework module Pods_intripidTests {
+  umbrella header "Pods-intripidTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
