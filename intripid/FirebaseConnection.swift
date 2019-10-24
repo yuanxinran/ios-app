@@ -21,34 +21,35 @@ class FirbaseConnection {
     db = Firestore.firestore()
   }
   
-  func createPartner(lastName: String, firstName: String, profilePicture: String?) -> String? {
+  func createPartner(lastName: String, firstName: String, profilePicture: String?, completion: @escaping (_ result:String?) -> Void) {
     var ref: DocumentReference? = nil
     var docID: String? = nil
     ref = db.collection("people").addDocument(data: [
       "lastName": lastName,
       "firstName": firstName,
-      "profilePicture": profilePicture ?? ""
+      "profilePicture": profilePicture ?? NSNull()
     ]) { err in
       if let err = err {
         print("Error adding document: \(err)")
       } else {
         print("Document added with ID: \(ref!.documentID)")
+        docID = ref?.documentID
+        completion(docID)
+        
       }
     }
-    if let ref = ref {
-      docID = ref.documentID
-    }
-    return docID
   }
   
   
-  func createTrip(title: String, travelPartners: [String], photos: [Photo]) -> String? {
+  func createTrip(title: String, travelPartners: [String], photos: [Photo],startDate: NSDate, endDate: NSDate, completion: @escaping (_ result:String?) -> Void){
     var ref: DocumentReference? = nil
     var docID: String? = nil
     //TODO: ADD PHOTOS TO THE CLOUD STORAGE
     ref = db.collection("trips").addDocument(data: [
       "title": title,
-      "travelPartners": travelPartners
+      "travelPartners": travelPartners,
+      "startDate": startDate,
+      "endDate": endDate
     ]) { err in
       if let err = err {
         print("Error adding document: \(err)")
@@ -57,12 +58,11 @@ class FirbaseConnection {
         if photos.count > 0{
           self.addPhotosToTrip(ref!.documentID, photos)
         }
+        docID = ref?.documentID
+        completion(docID)
       }
     }
-    if let ref = ref {
-      docID = ref.documentID
-    }
-    return docID
+
   }
   
   func addPhotosToTrip(_ tripID: String, _ photos: [Photo]) -> Void{
@@ -105,6 +105,44 @@ class FirbaseConnection {
       } else {
         print("Document successfully written!")
       }
+    }
+  }
+  
+  func getAllTrips(completion: @escaping (_ result:[Trip]) -> Void) {
+    var trips = [Trip]()
+    
+    db.collection("trips").getDocuments() { (querySnapshot, err) in
+      if let err = err {
+        print("Error getting documents: \(err)")
+      } else {
+        for document in querySnapshot!.documents {
+          
+          let data = document.data()
+          if let trip = self.parseTripData(data: data as JSONDictionary) {
+            trips.append(trip)
+          } else{
+            print("Error encountered parsing document \(document.documentID)")
+          }
+          
+        }
+      }
+      completion(trips);
+    }
+  }
+  
+  
+  func getTripByID(tripID: String, completion: @escaping (_ result: Trip?) -> Void) {
+    var result : Trip?
+    let tripRef = db.collection("trips").document(tripID)
+    tripRef.getDocument { (document, error) in
+      if let document = document, document.exists {
+        if let data = document.data(), let trip = self.parseTripData(data: data){
+          result = trip
+        }
+      } else {
+        print("Document does not exist")
+      }
+      completion(result)
     }
   }
   
@@ -185,6 +223,27 @@ class FirbaseConnection {
   }
   
   
+  func getPartnerByID(partnerID: String, completion: @escaping (_ result: Person?) -> Void) {
+    var partner : Person?
+    let partnerRef = db.collection("people").document(partnerID)
+    partnerRef.getDocument { (document, error) in
+      if let document = document, document.exists {
+        let data = document.data()
+        if let data = data, let lastName = data["lastName"] as? String, let firstName=data["firstName"] as? String {
+          partner = Person(lastName: lastName, firstName: firstName, profilePicture: data["profilePicture"] as? String)
+        }
+      } else {
+        print("Document does not exist")
+      }
+       completion(partner)
+    }
+    
+    
+    
+  }
+  
+  
+  
   func parsePhotoData(data: JSONDictionary) -> Photo? {
     if let locationData = data["photoLocation"] as? [String:AnyObject], let geopoint = locationData["geocoding"] as? GeoPoint, let dateTime = data["dateTime"] as? Timestamp, let imagePath = data["imagePath"] as? String {
       
@@ -206,6 +265,14 @@ class FirbaseConnection {
     return nil
   }
   
+  
+  func parseTripData(data: JSONDictionary) -> Trip? {
+    if let startDate = data["startDate"] as? Timestamp,let endDate = data["endDate"] as? Timestamp, let title = data["title"] as? String {
+      let trip =  Trip(title: title, travelPartners: nil, journals: nil, photos: nil, startDate: startDate.dateValue() as NSDate, endDate: endDate.dateValue() as NSDate)
+      return trip
+    }
+    return nil
+  }
   
 
 }
