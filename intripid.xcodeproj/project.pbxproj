@@ -17,6 +17,11 @@
 		1C93425D235D2AB100DEE60B /* intripidUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C93425C235D2AB100DEE60B /* intripidUITests.swift */; };
 		1C93426B235D316800DEE60B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1C93426A235D316700DEE60B /* GoogleService-Info.plist */; };
 		1E806365F25C5F91149AFD56 /* Pods_intripid.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D75F0567D1579100BA132962 /* Pods_intripid.framework */; };
+		54B95B7B235EA3E8007A2560 /* FirebaseConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B95B7A235EA3E8007A2560 /* FirebaseConnection.swift */; };
+		54C6D950235F71270016F573 /* Trip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54C6D94F235F71270016F573 /* Trip.swift */; };
+		54C6D955235F913A0016F573 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54C6D954235F913A0016F573 /* Person.swift */; };
+		54C6D957235FE8FD0016F573 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54C6D956235FE8FD0016F573 /* Photo.swift */; };
+		54C6D95923608C270016F573 /* Journal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54C6D95823608C270016F573 /* Journal.swift */; };
 		90F8991D825C18986575CE8C /* Pods_intripidUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45643AE25770B2922C7EB303 /* Pods_intripidUITests.framework */; };
 		FD03A6C3984F8E32417729BB /* Pods_intripidTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAB5C2DB31FB4D66FE4452B9 /* Pods_intripidTests.framework */; };
 /* End PBXBuildFile section */
@@ -57,6 +62,11 @@
 		1C93426A235D316700DEE60B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		45643AE25770B2922C7EB303 /* Pods_intripidUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_intripidUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		53AB05C1F402D720810DD911 /* Pods-intripidUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-intripidUITests.debug.xcconfig"; path = "Target Support Files/Pods-intripidUITests/Pods-intripidUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		54B95B7A235EA3E8007A2560 /* FirebaseConnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseConnection.swift; sourceTree = "<group>"; };
+		54C6D94F235F71270016F573 /* Trip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trip.swift; sourceTree = "<group>"; };
+		54C6D954235F913A0016F573 /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
+		54C6D956235FE8FD0016F573 /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
+		54C6D95823608C270016F573 /* Journal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Journal.swift; sourceTree = "<group>"; };
 		7557B19AB89898139C258872 /* Pods-intripid.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-intripid.debug.xcconfig"; path = "Target Support Files/Pods-intripid/Pods-intripid.debug.xcconfig"; sourceTree = "<group>"; };
 		A7A130C8DADB54E03AF308E7 /* Pods-intripidUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-intripidUITests.release.xcconfig"; path = "Target Support Files/Pods-intripidUITests/Pods-intripidUITests.release.xcconfig"; sourceTree = "<group>"; };
 		D75F0567D1579100BA132962 /* Pods_intripid.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_intripid.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -118,6 +128,8 @@
 		1C934238235D2AAF00DEE60B /* intripid */ = {
 			isa = PBXGroup;
 			children = (
+				54C6D94E235F71100016F573 /* Model */,
+				54C6D94D235F71040016F573 /* Trips */,
 				1C934239235D2AAF00DEE60B /* AppDelegate.swift */,
 				1C93423B235D2AAF00DEE60B /* ViewController.swift */,
 				1C93423D235D2AAF00DEE60B /* Main.storyboard */,
@@ -126,6 +138,7 @@
 				1C93426A235D316700DEE60B /* GoogleService-Info.plist */,
 				1C934248235D2AB100DEE60B /* Info.plist */,
 				1C934240235D2AAF00DEE60B /* intripid.xcdatamodeld */,
+				54B95B7A235EA3E8007A2560 /* FirebaseConnection.swift */,
 			);
 			path = intripid;
 			sourceTree = "<group>";
@@ -156,6 +169,24 @@
 				45643AE25770B2922C7EB303 /* Pods_intripidUITests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		54C6D94D235F71040016F573 /* Trips */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Trips;
+			sourceTree = "<group>";
+		};
+		54C6D94E235F71100016F573 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				54C6D94F235F71270016F573 /* Trip.swift */,
+				54C6D954235F913A0016F573 /* Person.swift */,
+				54C6D956235FE8FD0016F573 /* Photo.swift */,
+				54C6D95823608C270016F573 /* Journal.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		A2042FA2FC1F440573F19618 /* Pods */ = {
@@ -393,6 +424,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				54C6D957235FE8FD0016F573 /* Photo.swift in Sources */,
+				54C6D955235F913A0016F573 /* Person.swift in Sources */,
+				54C6D950235F71270016F573 /* Trip.swift in Sources */,
+				54C6D95923608C270016F573 /* Journal.swift in Sources */,
+				54B95B7B235EA3E8007A2560 /* FirebaseConnection.swift in Sources */,
 				1C934242235D2AAF00DEE60B /* intripid.xcdatamodeld in Sources */,
 				1C93423C235D2AAF00DEE60B /* ViewController.swift in Sources */,
 				1C93423A235D2AAF00DEE60B /* AppDelegate.swift in Sources */,
