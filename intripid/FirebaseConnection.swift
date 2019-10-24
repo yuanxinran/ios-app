@@ -21,6 +21,7 @@ class FirbaseConnection {
     db = Firestore.firestore()
   }
   
+  //CREATE Creating a travel partner
   func createPartner(lastName: String, firstName: String, profilePicture: String?, completion: @escaping (_ result:String?) -> Void) {
     var ref: DocumentReference? = nil
     var docID: String? = nil
@@ -40,7 +41,25 @@ class FirbaseConnection {
     }
   }
   
+  //UPDATE Update information for a travel partner
+  func updateTrip(personID: String, lastName: String, firstName: String, profilePicture: String?, completion: @escaping (_ result:String?) -> Void){
+    let tripRef = db.collection("people").document("personID")
+    tripRef.updateData([
+      "lastName": lastName,
+      "firstName": firstName,
+      "profilePicture": profilePicture ?? NSNull()
+    ]) { err in
+      if let err = err {
+        print("Error encountered when updating the trip information \(err)")
+      } else {
+        print("Successfully updated the trip information")
+        completion(personID)
+      }
+    }
+    
+  }
   
+  //CREATE Creating a trip
   func createTrip(title: String, travelPartners: [String], photos: [Photo],startDate: NSDate, endDate: NSDate, completion: @escaping (_ result:String?) -> Void){
     var ref: DocumentReference? = nil
     var docID: String? = nil
@@ -65,6 +84,26 @@ class FirbaseConnection {
 
   }
   
+  //UPDATE Update basic information for a trip
+  func updateTrip(tripID: String, title: String, travelPartners: [String],completion: @escaping (_ result:String?) -> Void){
+    let tripRef = db.collection("trips").document("tripID")
+    tripRef.updateData([
+      "title": title,
+      "travelPartners": travelPartners,
+    ]) { err in
+      if let err = err {
+        print("Error encountered when updating the trip information \(err)")
+      } else {
+        print("Successfully updated the trip information")
+        completion(tripID)
+      }
+    }
+    
+  }
+  
+  
+  //UPDATE Adding photos to the trip
+  //TODO: Update the startDate and endDate based on the photo startDate and endDate
   func addPhotosToTrip(_ tripID: String, _ photos: [Photo]) -> Void{
     let tripRef = db.collection("trips").document(tripID)
     
@@ -91,6 +130,8 @@ class FirbaseConnection {
   }
   
   
+  
+  //UPDATE Adding a journal to the trip
   func addJournalToTrip(_ tripID: String, _ journal: Journal) -> Void{
     let tripRef = db.collection("trips").document(tripID)
     
@@ -108,6 +149,8 @@ class FirbaseConnection {
     }
   }
   
+  
+  //READ Get all trips in the app
   func getAllTrips(completion: @escaping (_ result:[Trip]) -> Void) {
     var trips = [Trip]()
     
@@ -130,7 +173,7 @@ class FirbaseConnection {
     }
   }
   
-  
+  //READ Get a trip by tripID
   func getTripByID(tripID: String, completion: @escaping (_ result: Trip?) -> Void) {
     var result : Trip?
     let tripRef = db.collection("trips").document(tripID)
@@ -146,7 +189,7 @@ class FirbaseConnection {
     }
   }
   
-  
+  //READ  Get all photos in a trip
   func getTripPhotos(tripID: String, completion: @escaping (_ result:[Photo]) -> Void) {
     let tripRef = db.collection("trips").document(tripID)
     var photos = [Photo]()
@@ -170,13 +213,11 @@ class FirbaseConnection {
       }
       completion(photos);
     }
-    
-
   }
   
   
   
-  
+  //READ  Get all journals in a trip
   func getTripJournals(tripID: String, completion: @escaping (_ result: [Journal]) -> Void) {
     let tripRef = db.collection("trips").document(tripID)
     var journals = [Journal]()
@@ -203,6 +244,7 @@ class FirbaseConnection {
     
   }
   
+  //READ  Get all travel partners in a trip
   func getTripTravelPartners(tripID: String, completion: @escaping (_ result: [String]) -> Void) {
     let tripRef = db.collection("trips").document(tripID)
     var partnerIDs = [String]()
@@ -222,7 +264,7 @@ class FirbaseConnection {
     
   }
   
-  
+  //READ Get information for a travel partner
   func getPartnerByID(partnerID: String, completion: @escaping (_ result: Person?) -> Void) {
     var partner : Person?
     let partnerRef = db.collection("people").document(partnerID)

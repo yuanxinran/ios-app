@@ -76,23 +76,7 @@ class ViewController: UIViewController {
   
   
    @IBAction func getTripPhotos(){
-    if let tripID = self.tripID{
-      let settings = FirestoreSettings()
-      Firestore.firestore().settings = settings
-      let database = FirbaseConnection()
-      
-      database.getTripPhotos(tripID:tripID) {
-        (result: [Photo]) in
-        self.entryNum.text = "There are \(result.count) photos in the first trip"
-        var txt = ""
-        for photo in result {
-          txt = txt+"Path => \(photo.imagePath), location => \(photo.photoLocation.city) \(photo.photoLocation.country)"+"\n"
-        }
-        print("here is the txt", txt)
-        self.information.text = txt
-      }
-      
-    }
+    self.getDataAndUpdatePhotos()
   }
   
   @IBAction func getTripInformation(){
@@ -116,24 +100,7 @@ class ViewController: UIViewController {
   
   
   @IBAction func getTripJournals(){
-    if let tripID = self.tripID{
-      let settings = FirestoreSettings()
-      Firestore.firestore().settings = settings
-      let database = FirbaseConnection()
-      
-      database.getTripJournals(tripID:tripID) {
-        (result: [Journal]) in
-        
-         self.entryNum.text = "There are \(result.count) journals in the first trip"
-        
-          var txt = ""
-          for journal in result {
-            txt = txt+"Title => \(journal.title ?? "No Title"), Content => \(journal.content)"+"\n"
-          }
-          self.information.text = txt
-      }
-      
-    }
+    self.getDataAndUpdateJournals()
   }
   
   @IBAction func getTripTravelPartners(){
@@ -144,14 +111,13 @@ class ViewController: UIViewController {
       
       database.getTripTravelPartners(tripID:tripID) {
         (result: [String]) in
-        self.entryNum.text = "There are \(result.count) partners in the first trip"
-        self.entryNum.text = "There are \(result.count) travel partners in the first trip"
+        self.entryNum.text = "There are \(result.count) travel partners in the latest trip"
         var txt = ""
         for partnerID in result {
           database.getPartnerByID(partnerID: partnerID) {
             (partner: Person?) in
             if let partner = partner{
-              txt = txt+"\(partner.lastName) \(partner.firstName) \n"
+              txt = txt+"\(partner.firstName) \(partner.lastName) \n"
             }
           
             self.information.text = txt
@@ -159,6 +125,47 @@ class ViewController: UIViewController {
         }
         
         
+      }
+      
+    }
+  }
+  
+  func getDataAndUpdatePhotos(){
+    if let tripID = self.tripID{
+      let settings = FirestoreSettings()
+      Firestore.firestore().settings = settings
+      let database = FirbaseConnection()
+      
+      database.getTripPhotos(tripID:tripID) {
+        (result: [Photo]) in
+        self.entryNum.text = "There are \(result.count) photos in the latest trip"
+        var txt = ""
+        for photo in result {
+          txt = txt+"Path => \(photo.imagePath), location => \(photo.photoLocation.city) \(photo.photoLocation.country), date => \(photo.dateTime)\n"
+        }
+        print("here is the txt", txt)
+        self.information.text = txt
+      }
+      
+    }
+  }
+  
+  func getDataAndUpdateJournals(){
+    if let tripID = self.tripID{
+      let settings = FirestoreSettings()
+      Firestore.firestore().settings = settings
+      let database = FirbaseConnection()
+      
+      database.getTripJournals(tripID:tripID) {
+        (result: [Journal]) in
+        
+        self.entryNum.text = "There are \(result.count) journals in the latest trip"
+        
+        var txt = ""
+        for journal in result {
+          txt = txt+"Title => \(journal.title ?? "No Title"), Content => \(journal.content)"+"\n"
+        }
+        self.information.text = txt
       }
       
     }
