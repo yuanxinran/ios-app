@@ -10,6 +10,13 @@ target 'intripid-dev' do
   # Pods for GoogleMaps
   pod 'GoogleMaps'
   pod 'GooglePlaces'
+  pod 'Firebase/Core'
+  pod 'Firebase/Firestore'
+  pod 'Firebase/Storage'
+  pod "BSImagePicker", "~> 2.8"
+
+  # Optionally, include the Swift extensions if you're using Swift.
+  pod 'FirebaseFirestoreSwift'
 
   target 'intripid-devTests' do
     inherit! :search_paths
