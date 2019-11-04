@@ -12,8 +12,8 @@ struct Trip: Identifiable {
   var id = UUID()
   var title: String
   var cover: String
-  var startDate: Date
-//  var endDate: Date
+  var startDate: NSDate
+  var endDate: NSDate
   var photos: [String] // TODO: fix this
 }
 
