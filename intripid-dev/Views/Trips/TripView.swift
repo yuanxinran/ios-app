@@ -26,7 +26,8 @@ struct TripView: View {
             TripMapView()
           }
           
-        }.navigationBarTitle(Text("All Trips"), displayMode: .automatic)
+          }.navigationBarTitle(Text("All Trips"), displayMode: .automatic).navigationBarItems(trailing:
+          NavigationLink("Create",destination: CreateView()))
     }.edgesIgnoringSafeArea(.all)
   }
 }

@@ -15,7 +15,7 @@ struct TripListView: View {
     //Trips
     List {
       ForEach(trips) { trip in
-        NavigationLink(destination: TripDetailView(trip: trip)) {
+        NavigationLink(destination: TripDetailView()) {
           
           // Cover Photo
           Image(trip.cover)
