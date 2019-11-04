@@ -23,7 +23,7 @@ struct TripView: View {
           if selectedViewMode == 0 {
             TripListView(trips: trips)
           } else {
-            TripMapView()
+            TripMapView(trips: trips)
           }
           
           }.navigationBarTitle(Text("All Trips"), displayMode: .automatic).navigationBarItems(trailing:

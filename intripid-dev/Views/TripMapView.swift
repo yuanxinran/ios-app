@@ -268,7 +268,16 @@ let kMapStyle = """
 """
 
 struct TripMapView: UIViewRepresentable {
-  let marker : GMSMarker = GMSMarker()
+  var trips: [Trip] = tripsData
+  //TODO: change count to the number of trips!
+//  var markers: [GMSMarker] = [GMSMarker(), GMSMarker(), GMSMarker()]
+//  var markers : [GMSMarker] = Array.init(repeating: GMSMarker(), count: 5)
+  var markers: [GMSMarker] = Array(0...3).map({ (ignore) -> GMSMarker in
+      return GMSMarker()
+  })
+  
+  var marker1 = GMSMarker()
+  var marker2 = GMSMarker()
   
   func makeUIView(context: Self.Context) -> GMSMapView {
     let camera = GMSCameraPosition.camera(withLatitude: -33.86, longitude: 151.20, zoom: 10.0)
@@ -285,19 +294,35 @@ struct TripMapView: UIViewRepresentable {
   }
   
   func updateUIView(_ mapView: GMSMapView, context: Self.Context) {
+    print("updating view")
     // Creates a marker in the center of the map.
-    marker.position = CLLocationCoordinate2D(latitude: -33.86, longitude: 151.20)
-    marker.title = "Sydney"
-    marker.snippet = "Population: 8,174,100"
-//    marker.iconView = UIView(frame: CGRect(x: 10, y: 10, width: 100, height: 100))
-    marker.map = mapView
-//    marker.tracksInfoWindowChanges = true
+    marker1.position = CLLocationCoordinate2D(latitude: -33.86, longitude: 151.20)
+    marker1.title = "Sydney"
+    marker1.snippet = "Population: 8,174,100"
+    marker1.map = mapView
+    
+    marker2.position = CLLocationCoordinate2D(latitude: -33.86, longitude: 151.30)
+    marker2.title = "HELLO!"
+    marker2.snippet = "Population: 8,174,100"
+    marker2.map = mapView
+    
+    markers[0].position = CLLocationCoordinate2D(latitude: -33.86, longitude: 151.25)
+    markers[0].title = "Sydney"
+    markers[0].snippet = "Population: 8,174,100"
+    markers[0].map = mapView
+    
+    markers[1].position = CLLocationCoordinate2D(latitude: -33.86, longitude: 151.275)
+    markers[1].title = "WORKS!"
+    markers[1].snippet = "Population: 8,174,100"
+    markers[1].map = mapView
+    
+    print(markers[0], markers[1])
   }
   
 }
 
 struct TripMapView_Previews: PreviewProvider {
   static var previews: some View {
-    TripMapView()
+    TripMapView(trips: tripsData)
   }
 }
