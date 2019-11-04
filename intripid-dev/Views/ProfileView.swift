@@ -15,25 +15,51 @@ struct ProfileView: View {
   
   var body: some View {
     VStack {
-      VStack{
-        List{
-          ForEach(travelPartners.travelPartners){i in
-            HStack{
-              FirebaseImage(id: i.profilePicture)
-              Text(i.firstName+" "+i.lastName)
-            }
-            
+      VStack {
+        ZStack {
+          VStack {
+            Image("trip_1")
+              .resizable()
+              .frame(height: 150)
+            Spacer()
           }
+          
+          VStack {
+            Image("person_1")
+              .resizable()
+              .clipShape(Circle())
+              .scaledToFit()
+              .frame(height: 120)
+            Text("Hello!")
+              .font(.title)
+              .fontWeight(.bold)
+            Text("42 trips total")
+          }
+        }.frame(height: 280)
+      }
+      VStack {
+        NavigationView {
+          List{
+            ForEach(travelPartners.travelPartners){partner in
+              NavigationLink(destination: ProfileView()) {
+                HStack{
+                  FirebaseImage(id: partner.profilePicture)
+                  Text(partner.firstName+" "+partner.lastName)
+                }
+              }
+            }
+          }.navigationBarTitle("")
+          .navigationBarHidden(true)
         }
       }
-    }.edgesIgnoringSafeArea(.all)
+    }
   }
 }
 
 struct ProfileView_Previews: PreviewProvider {
-    static var previews: some View {
-      ProfileView()
-    }
+  static var previews: some View {
+    ProfileView()
+  }
 }
 
 
