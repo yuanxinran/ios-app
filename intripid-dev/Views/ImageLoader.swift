@@ -29,7 +29,7 @@ struct FirebaseImage : View {
       Image(uiImage: imageLoader.data.flatMap(UIImage.init) ?? placeholder  )
           .resizable()
           .scaledToFill()
-          .frame(width: 120, height: 120)
+          .frame(width: 70, height: 70)
           .clipped()
           .cornerRadius(10)
     }
