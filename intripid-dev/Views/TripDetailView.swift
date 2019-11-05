@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct TripDetailView: View {
-//  let trip: Trip
+  let trip: Trip
 //
 //  //ACTION SHEET
 //  //TODO: Refactor
@@ -26,58 +26,59 @@ struct TripDetailView: View {
 //  }
 //
   var body: some View {
-    Text("Map")
-  }
-//    ZStack {
-//      ScrollView {
-//        VStack (alignment: .leading){
-//
-//          TripCoverView(trip: trip)
-//
-//          //TODO: Integrate Map View!
-//          Text("Map")
-//            .padding(.leading)
-//          .font(.headline)
-//          TripMapView()
-//            .frame(height: 150)
-//
-//
-//          Text("Entries")
-//            .padding(.leading)
-//            .font(.headline)
-//          TripPhotosView(photos: trip.photos)
-//          Spacer()
-//        }
-//      }.edgesIgnoringSafeArea(.all)
-//
-//      VStack (alignment: .center) {
-//        Spacer()
-//
-//        //Show Action Sheet
-////        Button(action: {
-////            self.showActionSheet.toggle()
-////        }) {
-////          Text("Display Action Sheet")
-////            .foregroundColor(.white)
-////        }.padding(10)
-////        .background(Color(.sRGB, red: 200/255, green: 200/255, blue: 200/255, opacity: 0.7))
-////        .clipShape(Capsule())
-////        .actionSheet(isPresented: $showActionSheet, content: {
-////            self.actionSheet })
-//
+//    Text("Map")
+//  }
+    ZStack {
+      ScrollView {
+        VStack (alignment: .leading){
+
+          TripCoverView(trip: trip)
+
+          //TODO: Integrate Map View!
+          Text("Map")
+            .padding(.leading)
+          .font(.headline)
+//          TripMapView(viewModel: TripMapViewModel)
+          MapViewControllerWrapper()
+            .frame(height: 150)
+
+
+          Text("Entries")
+            .padding(.leading)
+            .font(.headline)
+          TripPhotosView(photos: trip.photos)
+          Spacer()
+        }
+      }.edgesIgnoringSafeArea(.all)
+
+      VStack (alignment: .center) {
+        Spacer()
+
+        //Show Action Sheet
+//        Button(action: {
+//            self.showActionSheet.toggle()
+//        }) {
+//          Text("Display Action Sheet")
+//            .foregroundColor(.white)
+//        }.padding(10)
+//        .background(Color(.sRGB, red: 200/255, green: 200/255, blue: 200/255, opacity: 0.7))
+//        .clipShape(Capsule())
+//        .actionSheet(isPresented: $showActionSheet, content: {
+//            self.actionSheet })
+
 //        //Show Adding of Entry
 //        NavigationLink(destination: ProfileView(users: usersData)) {
 //            Text("Add Entry")
 //            .padding(10)
 //            .clipShape(Capsule())
 //        }
-//      }
-//    } //ZStack
-//  } //view
+      }
+    } //ZStack
+  } //view
 } //struct
 
-//struct TripDetailView_Previews: PreviewProvider {
-//    static var previews: some View {
-//      TripDetailView(trip: tripsData[0])
-//    }
-//}
+struct TripDetailView_Previews: PreviewProvider {
+    static var previews: some View {
+      TripDetailView(trip: tripsData[0])
+    }
+}
