@@ -10,11 +10,12 @@ import SwiftUI
 
 struct StatisticsView: View {
   var body: some View {
-    VStack(alignment: .leading) {
+    VStack { //(alignment: .leading) {
       Text("My Footsteps")
         .font(.title)
         .fontWeight(.bold)
-      TripMapView()
+//      TripMapView(viewModel: TripMapViewModel(trips: tripsData))
+      MapViewControllerWrapper()
         .frame(height: 300)
       
       HStack {
