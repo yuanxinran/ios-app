@@ -9,6 +9,9 @@
 import Foundation
 import SwiftUI
 
+
+let GreenColor = Color(.sRGB, red: 52.0/255.0, green: 121/255.0, blue: 137.0/255.0, opacity: 1.0)
+
 struct GreenButton : View {
   private let text: String
 

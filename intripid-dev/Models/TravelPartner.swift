@@ -18,9 +18,6 @@ struct TravelPartner: Identifiable {
   var profilePicture : String
 }
 
-func getAllTravelPartners(){
-  
-}
 
 class partnerObserver : ObservableObject {
   @Published var travelPartners = [TravelPartner]()

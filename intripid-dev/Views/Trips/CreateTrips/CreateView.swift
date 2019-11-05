@@ -100,13 +100,14 @@ struct CreateView: View {
         VStack(alignment: .leading){
           HStack(alignment: .top){
             Spacer()
-            NavigationLink(destination: NewTripAddPhotos()){
+            NavigationLink(destination: NewTripAddPhotos(title: self.title, travelPartners: self.selectedPartners)){
               GreenButton("Next")
             }
           }
         }
         Spacer()
-    }.padding(.leading,20).padding(.trailing,20)
+
+    }.padding(.leading, UIScreen.main.bounds.width * 0.05).padding(.trailing,UIScreen.main.bounds.width * 0.05)
        
            
 }
