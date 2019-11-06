@@ -8,10 +8,10 @@
 
 import SwiftUI
 import FirebaseStorage
-
+import RemoteImage
 
 struct ProfileView: View {
-  @ObservedObject var travelPartners = partnerObserver()
+  @ObservedObject var travelPartners = TravelPartnerViewModel()
   
   var body: some View {
     VStack {
@@ -23,7 +23,7 @@ struct ProfileView: View {
               .frame(height: 150)
             Spacer()
           }
-          
+         
           VStack {
             Image("person_1")
               .resizable()
@@ -37,13 +37,15 @@ struct ProfileView: View {
           }
         }.frame(height: 280)
       }
+      
+               
       VStack {
         NavigationView {
           List{
             ForEach(travelPartners.travelPartners){partner in
               NavigationLink(destination: ProfileView()) {
                 HStack{
-                  FirebaseImage(id: partner.profilePicture)
+                  ProfileImageCached(urlString: partner.profilePicture)
                   Text(partner.firstName+" "+partner.lastName)
                 }
               }

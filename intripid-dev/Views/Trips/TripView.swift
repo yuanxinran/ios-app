@@ -11,8 +11,14 @@ import SwiftUI
 struct TripView: View {
   @State private var viewMode = ["List", "Map"]
   @State private var selectedViewMode = 0
+  @ObservedObject private var viewModel : TripViewModel
+//  @EnvironmentObject var settings: UserSettings
   
-  let trips: [Trip]
+  init(){
+    print("init")
+    self.viewModel = TripViewModel(userID: currentUserDoc)
+  }
+  
     
   var body: some View {
       NavigationView{
@@ -21,7 +27,7 @@ struct TripView: View {
           TripViewModePicker(viewMode: $viewMode, selectedViewMode: $selectedViewMode)
           
           if selectedViewMode == 0 {
-            TripListView(trips: trips)
+            TripListView(trips: self.viewModel.trips)
           } else {
 //            TripMapView(viewModel: TripMapViewModel(trips: self.trips))
             MapViewControllerWrapper()
@@ -29,12 +35,12 @@ struct TripView: View {
           
           }.navigationBarTitle(Text("All Trips"), displayMode: .automatic).navigationBarItems(trailing:
           NavigationLink("Create",destination: CreateView()))
-    }.edgesIgnoringSafeArea(.all)
+        }.onAppear(perform: viewModel.fetchData).edgesIgnoringSafeArea(.all)
   }
 }
 
 struct TripView_Previews: PreviewProvider {
     static var previews: some View {
-        TripView(trips: tripsData)
+        TripView()
     }
 }

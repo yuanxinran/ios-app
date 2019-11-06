@@ -11,31 +11,6 @@ import SwiftUI
 import Photos
 import PhotosUI
 
-
-//struct imageSelectorResultRow : View{
-//  var imageList: [UIImage]
-//  var count: Int
-//
-//  init(_ imageList: [UIImage]){
-//    self.imageList = imageList
-//    self.count = self.imageList.count
-//  }
-//
-//  var body : some View{
-//    HStack(alignment: .top) {
-//      ForEach(self.imageList[0 ..< self.count], id: \.self){ photo in
-//        Image(uiImage: photo)
-//          .resizable()
-//          .scaledToFill()
-//          .frame(width: UIScreen.main.bounds.width/4,height: UIScreen.main.bounds.width/4)
-//          .clipped()
-//          .cornerRadius(10)
-//      }
-//    }
-//  }
-//}
-
-
 struct imageSelectorResult : View{
   var imageList: [UIImage]
   var count: Int
@@ -49,14 +24,14 @@ struct imageSelectorResult : View{
       if self.count != 0 { //check that self.imageList is not empty
         ForEach(0 ... (self.count-1)/4, id: \.self) { row in
           HStack {
-            ForEach(self.imageList[row * 4 ..< self.imageList.count].prefix(4) , id: \.self) { photo in
-              Image(uiImage: photo)
-                .resizable()
-                .scaledToFill()
-                .frame(width: UIScreen.main.bounds.width * 0.23,height: UIScreen.main.bounds.width * 0.23) // TODO: change the width and height relative to geometryReader instead
-                .clipped()
-                .cornerRadius(10)
-            }
+              ForEach(self.imageList[row * 4 ..< self.imageList.count].prefix(4) , id: \.self) { photo in
+                Image(uiImage: photo)
+                  .resizable()
+                  .scaledToFill()
+                  .frame(width: UIScreen.main.bounds.width * 0.21,height: UIScreen.main.bounds.width * 0.21) // TODO: change the width and height relative to geometryReader instead
+                  .clipped()
+                  .cornerRadius(10)
+              }
           }.frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
         }
       }
@@ -68,10 +43,15 @@ struct NewTripAddPhotos :  View{
   @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
   @State var isShowingImagePicker = false
   @State var imageList = [UIImage]()
-  @State var imageAssetList = [PHObject]()
+  @State var imageAssetList = [PHAsset]()
+//  @State var imageURLList = [String]()
+  private var title: String
+  private var travelPartners: [String]
   
-  init(){
+  init(title: String, travelPartners: [String]){
     PHPhotoLibrary.requestAuthorization({_ in return})
+    self.title = title
+    self.travelPartners = travelPartners
   }
   
   
@@ -79,9 +59,6 @@ struct NewTripAddPhotos :  View{
     self.presentationMode.wrappedValue.dismiss()
   }) {
     HStack {
-      Image("ic_back") // set image here
-        .aspectRatio(contentMode: .fit)
-        .foregroundColor(.white)
       Text("Previous")
     }
     }
@@ -89,20 +66,38 @@ struct NewTripAddPhotos :  View{
   
   
   var body: some View {
-    VStack {
-      imageSelectorResult(self.imageList)
-      Button(action: {
-        self.isShowingImagePicker.toggle()
-      },label: {
-        Text("Select Image").sheet(isPresented: $isShowingImagePicker,content: {
-          ImagePickerView(isPresented: self.$isShowingImagePicker, selectedImage: self.$imageList, selectedImageList: self.$imageAssetList)
-        })
+    VStack(alignment: .leading) {
+      VStack(alignment: .leading, spacing: 20.0){
+        VStack(alignment: .leading, spacing: 10.0){
+          Text("Upload Photos").font(.title).fontWeight(.bold)
+          Button(action: {
+            self.isShowingImagePicker.toggle()
+          },label: {
+            Text("Select Image").foregroundColor(GreenColor).sheet(isPresented: $isShowingImagePicker,content: {
+              ImagePickerView(isPresented: self.$isShowingImagePicker, selectedImage: self.$imageList, selectedImageList: self.$imageAssetList)
+            })
+          }
+          )
+        }
+        
+        imageSelectorResult(self.imageList)
+        
       }
-      )
+      Spacer()
+      VStack(alignment: .leading){
+        HStack(alignment: .top){
+          Spacer()
+          NavigationLink(destination: NewTripSelectCover(title: self.title, travelPartners: self.travelPartners, imageList: self.imageList, imageAssetList: self.imageAssetList)){
+            GreenButton("Next")
+          }
+        }
+      }
+      Spacer()
+      
       
     }.navigationBarBackButtonHidden(true)
       .navigationBarItems(leading: btnBack)
-      .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .topLeading)
+      .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .topLeading).padding(.leading,20).padding(.trailing, 20)
   }
 }
 
@@ -114,7 +109,8 @@ struct ImagePickerView: UIViewControllerRepresentable{
   
   @Binding var isPresented: Bool
   @Binding var selectedImage: [UIImage]
-  @Binding var selectedImageList: [PHObject]
+  @Binding var selectedImageList: [PHAsset]
+//  @Binding var selectedImageUrlList: [String]
   
   func makeUIViewController(context: UIViewControllerRepresentableContext<ImagePickerView>) -> UIViewController{
     let controller = UIImagePickerController()
@@ -138,6 +134,7 @@ struct ImagePickerView: UIViewControllerRepresentable{
         self.parent.selectedImageList.append(assetInfo)
         if let selectedImage = info[.originalImage] as? UIImage {
           self.parent.selectedImage.append(selectedImage)
+//          self.parent.selectedImageUrlList.append(imageURL)
         }
       }
       self.parent.isPresented = false

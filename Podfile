@@ -14,6 +14,14 @@ target 'intripid-dev' do
   pod 'Firebase/Firestore'
   pod 'Firebase/Storage'
   pod "BSImagePicker", "~> 2.8"
+  pod 'Alamofire', '~> 5.0.0-rc.3'
+  pod 'SwiftyJSON', '~> 4.0'
+  pod 'RxFirebase/Firestore'
+  pod 'RxFirebase/RemoteConfig'
+  pod 'RxFirebase/Database'
+  pod 'RxFirebase/Storage'
+  pod 'RxFirebase/Auth'
+  pod 'RxFirebase/Functions'
 
   # Optionally, include the Swift extensions if you're using Swift.
   pod 'FirebaseFirestoreSwift'

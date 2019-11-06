@@ -13,6 +13,7 @@ import FirebaseFirestore
 
 
 struct ContentView: View {
+  @EnvironmentObject var settings: UserSettings
   
 //  var body: some View {
 //    NavigationView{
@@ -22,7 +23,7 @@ struct ContentView: View {
   var body: some View {
     // TODO: somehow remove the tab view when clicked on specific trip
     TabView {
-      TripView(trips: tripsData)
+      TripView()
           .tabItem {
             VStack {
               Image(systemName: "1.circle")
