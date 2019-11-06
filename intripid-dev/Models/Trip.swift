@@ -11,51 +11,51 @@ import FirebaseFirestore
 import Photos
 import PhotosUI
 
+
+
 struct Trip: Identifiable {
   var id: String
   var title: String
-  var cover: String
+  var coverImage: Photo?
+  var photoNum = 0
+  var journalNum = 0
   var startDate: NSDate
   var endDate: NSDate
-  var photos: [String] // TODO: fix this
-  var pictures: [Photo]
-  var journals: [Journal]
+  var photos: [String]? // TODO: fix this
+  var travelPartners: [String]
+  var travelPartnerImages: [String]
 }
 
 // TODO: get the trips from the API
 let tripsData = [
   Trip(id: "trip1",
        title: "Florida",
-       cover: "trip_1",
        startDate: NSDate(),
        endDate: NSDate(),
        photos: photosData.shuffled(),
-       pictures: [],
-       journals: []),
+       travelPartners: [],
+       travelPartnerImages: []),
   Trip(id: "trip1",
        title: "Hawaii",
-       cover: "trip_2",
        startDate: NSDate(),
        endDate: NSDate(),
        photos: photosData.shuffled(),
-       pictures: [],
-       journals: []),
+       travelPartners: [],
+       travelPartnerImages: []),
   Trip(id: "trip1",
        title: "Pittsburgh",
-       cover: "trip_1",
        startDate: NSDate(),
        endDate: NSDate(),
        photos: photosData.shuffled(),
-       pictures: [],
-       journals: []),
+       travelPartners: [],
+       travelPartnerImages: []),
   Trip(id: "trip1",
        title: "Miami",
-       cover: "trip_2",
        startDate: NSDate(),
        endDate: NSDate(),
        photos: photosData.shuffled(),
-       pictures: [],
-       journals: [])
+       travelPartners: [],
+       travelPartnerImages: [])
 ]
 
 let photosData = ["picture_1", "picture_2", "picture_3", "picture_4", "picture_5", "picture_6", "picture_7", "picture_8", "picture_9", "picture_10", "picture_11", "picture_12", "picture_13", "picture_14", "picture_15", "picture_16", "picture_17", "picture_18", "picture_19", "picture_20"]

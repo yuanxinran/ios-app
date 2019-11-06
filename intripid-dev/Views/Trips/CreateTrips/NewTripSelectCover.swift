@@ -29,13 +29,13 @@ struct imageSelectorResultSelectCoverImage : View{
   
   var body : some View{
     Image(uiImage: self.image)
-    .resizable()
-    .scaledToFill()
-    .frame(width: UIScreen.main.bounds.width * 0.21,height: UIScreen.main.bounds.width * 0.21)
-    .clipped()
-    .cornerRadius(10)
-    .overlay(RoundedRectangle(cornerRadius: 10)
-      .stroke(selected ? GreenColor : Color.white, lineWidth: 4))
+      .resizable()
+      .scaledToFill()
+      .frame(width: UIScreen.main.bounds.width * 0.21,height: UIScreen.main.bounds.width * 0.21)
+      .clipped()
+      .cornerRadius(10)
+      .overlay(RoundedRectangle(cornerRadius: 10)
+        .stroke(selected ? GreenColor : Color.white, lineWidth: 4))
   }
 }
 
@@ -51,7 +51,7 @@ struct imageSelectorResultSelectCover : View{
             ForEach((row * 4 ..< self.imageList.count).prefix(4) , id: \.self) { num in
               imageSelectorResultSelectCoverImage(image: self.imageList[num], num: num, selectedNum: self.coverImage )
                 .onTapGesture{
-                self.coverImage = num
+                  self.coverImage = num
               }
               
             }
@@ -64,12 +64,14 @@ struct imageSelectorResultSelectCover : View{
 
 struct NewTripSelectCover: View {
   @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+  @State private var clickedCreate = false
+  @State private var createCompleted = false
   
   var title: String
   var travelPartners: [String]
   var imageList: [UIImage]
   var imageAssetList: [PHAsset]
-//  var imageURLList: [String]
+  //  var imageURLList: [String]
   @State private var coverImage: Int = 0
   
   var btnBack : some View { Button(action: {
@@ -83,9 +85,13 @@ struct NewTripSelectCover: View {
   
   func createTrip(){
     let database = FirbaseConnection()
+    self.clickedCreate = true
+    
     database.createTrip(title: self.title, travelPartners: self.travelPartners, photos: self.imageAssetList, photoImages: self.imageList, coverImage: self.coverImage, userID: "xinrany") {(result: String?) in
       if let result = result {
         print("added docu \(result)")
+        self.createCompleted = true
+        
       } else {
         print("failed")
       }
@@ -95,25 +101,38 @@ struct NewTripSelectCover: View {
   
   var body: some View {
     VStack{
-      VStack(alignment: .leading, spacing: 20.0){
-        Text("Select Cover Picture").font(.title).fontWeight(.bold)
-        imageSelectorResultSelectCover(imageList: self.imageList, coverImage: self.$coverImage)
-      }
-      Spacer()
-      VStack(alignment: .leading){
-        HStack(alignment: .top){
-          Spacer()
-          Button(action: {self.createTrip()}) {
-          GreenButton("Create Trip")
+      if (clickedCreate) {
+        VStack{
+          Image("generating").resizable().scaledToFit().frame(width: UIScreen.main.bounds.width * 0.3, height: UIScreen.main.bounds.width * 0.3).clipped()
+          Text("Generating Your Trip").font(.title)
+          if createCompleted {
+            GreenButton("GoToTrip")
           }
         }
+      } else {
+        VStack{
+          VStack(alignment: .leading, spacing: 20.0){
+            Text("Select Cover Picture").font(.title).fontWeight(.bold)
+            imageSelectorResultSelectCover(imageList: self.imageList, coverImage: self.$coverImage)
+          }
+          Spacer()
+          VStack(alignment: .leading){
+            HStack(alignment: .top){
+              Spacer()
+              Button(action: {self.createTrip()}) {
+                GreenButton("Create Trip")
+              }
+            }
+          }
+          Spacer()
+        }
+        
       }
-      Spacer()
-      
-      
     }.navigationBarBackButtonHidden(true)
-    .navigationBarItems(leading: btnBack)
-      .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .topLeading).padding(.leading, UIScreen.main.bounds.width * 0.05).padding(.trailing,UIScreen.main.bounds.width * 0.05)
-           
+     .navigationBarItems(leading: btnBack)
+      .navigationBarHidden(self.clickedCreate ? true : false)
+      .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: self.clickedCreate ? .center : .topLeading).padding(.leading, UIScreen.main.bounds.width * 0.05).padding(.trailing, UIScreen.main.bounds.width * 0.05)
+    
+    
   }
 }

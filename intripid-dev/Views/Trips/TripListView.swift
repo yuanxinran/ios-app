@@ -18,7 +18,7 @@ struct TripListView: View {
         NavigationLink(destination: TripDetailView()) {
           
           // Cover Photo
-          Image(trip.cover)
+          Image("trip_2")
             .resizable()
             .scaledToFill()
             .frame(width: 120, height: 120)

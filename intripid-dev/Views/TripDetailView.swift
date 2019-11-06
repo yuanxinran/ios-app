@@ -26,7 +26,8 @@ struct TripDetailView: View {
 //  }
 //
   var body: some View {
-    Text("Map")
+    Text("haha")
+    
   }
 //    ZStack {
 //      ScrollView {
@@ -76,8 +77,8 @@ struct TripDetailView: View {
 //  } //view
 } //struct
 
-//struct TripDetailView_Previews: PreviewProvider {
-//    static var previews: some View {
-//      TripDetailView(trip: tripsData[0])
-//    }
-//}
+struct TripDetailView_Previews: PreviewProvider {
+    static var previews: some View {
+      TripDetailView()
+    }
+}

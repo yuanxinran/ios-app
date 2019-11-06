@@ -16,7 +16,7 @@ struct TripCoverView: View {
   
   var body: some View {
     ZStack (alignment: .leading) {
-      Image(trip.cover)
+      Image("trip_4")
         .resizable()
         .scaledToFill()
         .frame(height: CGFloat(250))

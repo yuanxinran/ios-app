@@ -24,7 +24,7 @@ struct PhotoLocation {
 struct Photo {
   var dateTime: NSDate
   var imagePath: String
-  var photoLocation: PhotoLocation
+  var photoLocation: PhotoLocation?
 }
 
 

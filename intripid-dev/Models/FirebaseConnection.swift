@@ -19,6 +19,7 @@ class FirbaseConnection {
 
 
   init(){
+    print("initiiii")
     db = Firestore.firestore()
   }
   
@@ -69,75 +70,92 @@ class FirbaseConnection {
   func addPhotosToTrip(photos: [PHAsset], photoImages: [UIImage], tripRef: DocumentReference, userID: String, coverImage: Int, completion: @escaping (_ result:[String]) -> Void){
     let storage = Storage.storage()
     var imageIDs = [String]()
+    let dispatchGroup = DispatchGroup()
     for num in (0 ..< photos.count){
       var photoRef: DocumentReference? = nil
       let photo = photos[num]
       let photoImage = photoImages[num]
+//      print(photo)
       print("photo \(num)")
+      dispatchGroup.enter()
       photo.getLocationDataForPhoto {
         (result: PhotoLocation?, error: Error?) in
-        print("photo location result \(result)")
-        
+        let data : [String : Any]
         if let result = result {
-          photoRef = tripRef.collection("photos").addDocument(data: [
-            "dateTime": photo.creationDate ?? NSNull(),
-            "imagePath": "",
-            "photoLocation":[
-              "city": result.city,
-              "country": result.country,
-              "geocoding": GeoPoint(latitude: result.latitude, longitude: result.longitude)
-            ]
-          ]){ err in
-            if let err = err {
-              print("\(err) encountered")
-              return
-            } else {
-              print("photoid: \(photoRef!.documentID)")
-              let storageRef = storage.reference()
-              // Create a reference to 'images/mountains.jpg'
-              let imageRef = storageRef.child("\(userID)/\(photoRef!.documentID).jpg")
-              
-              let uploadData = photoImage.pngData()
-              if let uploadData = uploadData {
-                _ = imageRef.putData(uploadData, metadata: nil) { (metadata, error) in
-                  guard metadata != nil else {
+          //the photo has location information
+          data =  ["dateTime": photo.creationDate ?? NSNull(), "imagePath": "",
+                   "photoLocation":[
+                       "city": result.city,
+                       "country": result.country,
+                       "geocoding": GeoPoint(latitude: result.latitude, longitude: result.longitude)]]
+          
+        } else {
+          data =  ["dateTime": photo.creationDate ?? NSNull(), "imagePath": "",
+                            "photoLocation": NSNull()]
+        }
+
+        photoRef = tripRef.collection("photos").addDocument(data: data){ err in
+          if let err = err {
+            print("getting error when creating photos : \(err)")
+            dispatchGroup.leave()
+            return
+          } else {
+            print("photoid: \(photoRef!.documentID)")
+            let storageRef = storage.reference()
+            let imageRef = storageRef.child("\(userID)/\(photoRef!.documentID).jpg")
+            
+            let uploadData = photoImage.jpegData(compressionQuality: 1.0)
+            if let uploadData = uploadData {
+              _ = imageRef.putData(uploadData, metadata: nil) { (metadata, error) in
+                imageRef.downloadURL { (url, error) in
+                  guard let downloadURL = url else {
+                    dispatchGroup.leave()
                     return
                   }
-                  imageRef.downloadURL { (url, error) in
-                    guard let downloadURL = url else {
-                      return
-                    }
-                    photoRef!.updateData([
-                      "imagePath": "\(downloadURL)"
-                    ]) { err in
-                      if let err = err {
-                        print("Error encountered when updating the trip information \(err)")
-                      } else {
-                        imageIDs.append(photoRef!.documentID)
-                        if num == coverImage {
-                          tripRef.updateData([
-                            "coverImage": "\(photoRef!.documentID)"
-                          ]) { err in
-                            if let err = err {
-                              print("Error encountered when updating the trip information \(err)")
-                            }
+                  photoRef!.updateData([
+                    "imagePath": "\(downloadURL)"
+                  ]) { err in
+                    if let err = err {
+                      dispatchGroup.leave()
+                      print("Error encountered when updating the trip information \(err)")
+                    } else {
+                      imageIDs.append(photoRef!.documentID)
+                      if num == coverImage {
+                        tripRef.updateData([
+                          "coverImage": "\(photoRef!.documentID)"
+                        ]) { err in
+                          if let err = err {
+                            dispatchGroup.leave()
+                            print("Error encountered when updating the trip information \(err)")
                           }
+                          //coverimage case
+                          //finished uploading the photo to the storage and reference to the database
+                          print("cover image uploaded")
+                          dispatchGroup.leave()
                         }
+                      } else {
+                        //finished uploading the photo (not cover image)
+                        print("non cover image uploaded")
+                        dispatchGroup.leave()
                       }
                     }
                   }
                 }
-              } else {
-                return
               }
+            } else {
+              print("couldn't convert the photo to data")
+              dispatchGroup.leave()
+              return
             }
           }
-          
-          
         }
       }
     }
-    completion(imageIDs)
+    
+    dispatchGroup.notify(queue: DispatchQueue.global()) {
+      print("completion handler called")
+      completion(imageIDs)
+    }
     
   }
 

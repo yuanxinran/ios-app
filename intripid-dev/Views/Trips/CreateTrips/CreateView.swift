@@ -12,30 +12,34 @@ import RemoteImage
 
 
 struct ListProfilePicture : View {
-    let url = URL(string: "https://firebasestorage.googleapis.com/v0/b/intripid-256611.appspot.com/o/profileImages%2Fanna.png?alt=media&token=11ed87aa-958e-4de0-a74e-ea7e9420d5dd")!
-
-    var body: some View {
-      
-
-      RemoteImage(url: url, errorView: { error in
-          Text(error.localizedDescription)
-      }, imageView: { image in
-          image
-          .resizable()
-          .scaledToFill()
-          .frame(width: 30, height: 30)
-          .clipShape(Circle())
-            .offset(CGSize(width: 20, height: 0)).padding(.trailing, 20)
-      }, loadingView: {
-          Image("person_2")
-          .resizable()
-          .scaledToFill()
-          .frame(width: 30, height: 30)
-          .clipShape(Circle())
-            .offset(CGSize(width: 20, height: 0)).padding(.trailing, 20)
-      })
-         
-    }
+  //    let url = URL(string: "https://firebasestorage.googleapis.com/v0/b/intripid-256611.appspot.com/o/profileImages%2Fanna.png?alt=media&token=11ed87aa-958e-4de0-a74e-ea7e9420d5dd")!
+  var url : URL
+  init(urlString: String){
+    self.url = URL(string: urlString)!
+  }
+  
+  var body: some View {
+    
+    
+    RemoteImage(url: url, errorView: { error in
+      Text(error.localizedDescription)
+    }, imageView: { image in
+      image
+        .resizable()
+        .scaledToFill()
+        .frame(width: 30, height: 30)
+        .clipShape(Circle())
+        .offset(CGSize(width: 20, height: 0)).padding(.trailing, 20)
+    }, loadingView: {
+      Image("person_2")
+        .resizable()
+        .scaledToFill()
+        .frame(width: 30, height: 30)
+        .clipShape(Circle())
+        .offset(CGSize(width: 20, height: 0)).padding(.trailing, 20)
+    })
+    
+  }
 }
 
 struct PartnerCell: View{
@@ -44,18 +48,18 @@ struct PartnerCell: View{
   private let selected: Bool
   
   init(person: TravelPartner, selected: Bool) {
-      self.person = person
-      self.selected = selected
+    self.person = person
+    self.selected = selected
   }
   
   var body: some View{
     HStack {
-      ListProfilePicture()
+      ListProfilePicture(urlString: person.profilePicture)
       Text(person.firstName+" "+person.lastName)
       Spacer()
-
+      
       Image(systemName: selected ? "checkmark.circle.fill" : "checkmark.circle")
-          .imageScale(.large)
+        .imageScale(.large)
     }
   }
 }
@@ -64,60 +68,63 @@ struct PartnerCell: View{
 
 
 struct CreateView: View {
-
+  
   @State private var selectedPartners = [String]()
-  @ObservedObject var allPartners = partnerObserver()
+  @ObservedObject var allPartners = TravelPartnerViewModel()
   @State private var title = ""
   var body: some View {
     
     VStack{
-        VStack(alignment: .leading, spacing: 20.0){
-          Text("Create A Trip").font(.title).fontWeight(.bold)
-          VStack(alignment: .leading, spacing: 8.0){
-            Text("Trip Title")
+      VStack(alignment: .leading, spacing: 20.0){
+        Text("Create A Trip").font(.title).fontWeight(.bold)
+        VStack(alignment: .leading, spacing: 8.0){
+          Text("Trip Title")
             .font(.headline)
-            TextField("Trip Title", text: $title).textFieldStyle(PlainTextFieldStyle())
-          }
+          TextField("Trip Title", text: $title).textFieldStyle(PlainTextFieldStyle())
+        }
+        
+        VStack(alignment: .leading, spacing: 12.0){
+          Text("Who are you traveling with?")
           
-          VStack(alignment: .leading, spacing: 12.0){
-            Text("Who are you traveling with?")
-            
-            VStack(alignment: .leading, spacing: 8.0){
-              ForEach(allPartners.travelPartners) {i in
-                PartnerCell(person: i, selected: self.selectedPartners.contains(i.id)).onTapGesture {
-                  if self.selectedPartners.contains(i.id){
-                    self.selectedPartners = self.selectedPartners.filter{$0 != i.id}
-                  } else {
-                    self.selectedPartners.append(i.id)
-                  }
+          VStack(alignment: .leading, spacing: 8.0){
+            ForEach(allPartners.travelPartners) {i in
+              PartnerCell(person: i, selected: self.selectedPartners.contains(i.id)).onTapGesture {
+                if self.selectedPartners.contains(i.id){
+                  self.selectedPartners = self.selectedPartners.filter{$0 != i.id}
+                } else {
+                  self.selectedPartners.append(i.id)
                 }
               }
             }
           }
-
         }
-        Spacer()
-        VStack(alignment: .leading){
-          HStack(alignment: .top){
-            Spacer()
-            NavigationLink(destination: NewTripAddPhotos(title: self.title, travelPartners: self.selectedPartners)){
-              GreenButton("Next")
-            }
+        
+      }
+      Spacer()
+      VStack(alignment: .leading){
+        HStack(alignment: .top){
+          Spacer()
+          NavigationLink(destination: TripDetail()){
+            GreenButton("Next")
           }
+          //            NavigationLink(destination: NewTripAddPhotos(title: self.title, travelPartners: self.selectedPartners)){
+          //              GreenButton("Next")
+          //            }
         }
-        Spacer()
-
+      }
+      Spacer()
+      
     }.padding(.leading, UIScreen.main.bounds.width * 0.05).padding(.trailing,UIScreen.main.bounds.width * 0.05)
-       
-           
-}
+    
+    
+  }
 }
 
 
 struct CreateView_Previews: PreviewProvider {
-    static var previews: some View {
-      CreateView()
-    }
+  static var previews: some View {
+    CreateView()
+  }
 }
 
 

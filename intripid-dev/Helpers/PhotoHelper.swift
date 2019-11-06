@@ -10,59 +10,38 @@ import Foundation
 import MapKit
 import PhotosUI
 import Photos
-import Alamofire
-import SwiftyJSON
 
 
 extension CLLocation {
-  func fetchCityAndCountry(completion: @escaping (_ data: Data?, _ error: Error?) -> ()) {
-
- AF.request("https://maps.googleapis.com/maps/api/geocode/json?latlng=\(self.coordinate.latitude),\(self.coordinate.longitude)&key=AIzaSyB_osNVXW9q_VEdGDrpEo-XfYfzbb9729w").responseData { response in
-      switch response.result {
-      case .success(let value):
-        print("printing the location result")
-//        print(String(data: value, encoding: .utf8)!)
-        
-        completion(value, nil)
-      case .failure(let error):
-        print("Connection to gmap api failed.")
-        completion(nil,error)
-      }
-    }
-    
-    
-    
-    
-  }
   
+  func geocode(completion: @escaping (_ placemarks: [CLPlacemark]?, _ error: Error?) -> Void)  {
+    CLGeocoder().reverseGeocodeLocation(CLLocation(latitude: self.coordinate.latitude, longitude: self.coordinate.longitude)) { placemark, error in
+          guard let placemark = placemark, error == nil else {
+              completion(nil, error)
+              return
+          }
+          completion(placemark, nil)
+      }
+  }
 }
 
 extension PHAsset {
   func getLocationDataForPhoto(completion: @escaping (_ location: PhotoLocation?, _ error: Error?) -> ()){
+    // if the photo has location information
     if let location = self.location {
       let lat = location.coordinate.latitude
       let lng = location.coordinate.longitude
-      location.fetchCityAndCountry { data, error in
-        guard let data = data else {
-          print("Error")
-          return
+      var country = ""
+      var city = ""
+      location.geocode { placemarks, error in
+        
+        if let placemarks = placemarks, placemarks.count >= 0 {
+          let place = placemarks[0]
+          country = place.country ?? ""
+          city = place.locality ?? (place.name ?? "")
         }
 
-        do {
-          let swiftyjson = try JSON(data: data as Data)
-          
-          if let location = swiftyjson["results"][0]["address_componenets"].array {
-            let locality = location[1]["short_name"]
-            let level_2 = location[2]["short_name"]
-            let level_1 = location[3]["short_name"]
-            let country = location[4]["short_name"]
-          }
-        } catch {
-            print("JSONSerialization error:", error)
-        }
-        print("city: \(city)")
-        print("country: \(country)")
-        guard let city = city, let country = country, error == nil else { return }
+//        guard let city = city, let country = country, error == nil else { return }
         completion(PhotoLocation(city: city, country: country, latitude: lat, longitude: lng), error)
       }
     }
@@ -71,6 +50,33 @@ extension PHAsset {
   
 }
 
+
+
+//guard let data = data else {
+//  print("Error")
+//  return
+//}
+//
+//let cityLong = ""
+//let cityShort = ""
+//let countryLong = ""
+//let countryShort = ""
+//
+//do {
+//  let swiftyjson = try JSON(data: data as Data)
+//
+//  if let locations = swiftyjson["results"][0]["address_componenets"].array {
+//    for locjson in locations {
+//      let longName = ""
+//      let type = locjson["types"].array![0].string!
+//      if type == "country"{
+//
+//      }
+//    }
+//  }
+//} catch {
+//    print("JSONSerialization error:", error)
+//}
 
 
 

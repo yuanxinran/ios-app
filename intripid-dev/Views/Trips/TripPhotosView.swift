@@ -51,6 +51,6 @@ struct TripPhotosView: View {
 
 struct TripPhotosView_Previews: PreviewProvider {
   static var previews: some View {
-    TripPhotosView(photos: tripsData[0].photos)
+    TripPhotosView(photos: tripsData[0].photos!)
   }
 }

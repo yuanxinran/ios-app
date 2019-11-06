@@ -11,6 +11,7 @@ import SwiftUI
 struct TripView: View {
   @State private var viewMode = ["List", "Map"]
   @State private var selectedViewMode = 0
+
   
   let trips: [Trip]
     
