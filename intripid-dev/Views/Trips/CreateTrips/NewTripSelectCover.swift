@@ -103,10 +103,12 @@ struct NewTripSelectCover: View {
     VStack{
       if (clickedCreate) {
         VStack{
-          Image("generating").resizable().scaledToFit().frame(width: UIScreen.main.bounds.width * 0.3, height: UIScreen.main.bounds.width * 0.3).clipped()
-          Text("Generating Your Trip").font(.title)
+//          Image("generating").resizable().scaledToFit().frame(width: UIScreen.main.bounds.width * 0.3, height: UIScreen.main.bounds.width * 0.3).clipped()
+//          Text("Generating Your Trip").font(.title)
           if createCompleted {
             GreenButton("GoToTrip")
+          } else {
+            SplashScreen()
           }
         }
       } else {
