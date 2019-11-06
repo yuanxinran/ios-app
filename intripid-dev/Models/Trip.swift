@@ -12,9 +12,24 @@ import Photos
 import PhotosUI
 
 
+struct TripDetail: Identifiable {
+  var id = UUID()
+  var docID: String
+  var title: String
+  var coverImage: Photo?
+  var photoNum = 0
+  var journalNum = 0
+  var startDate: NSDate
+  var endDate: NSDate
+  var photos: [String]? // TODO: fix this
+  var travelPartners: [String]
+  var travelPartnerImages: [String]
+}
+
 
 struct Trip: Identifiable {
-  var id: String
+  var id = UUID()
+  var docID: String
   var title: String
   var coverImage: Photo?
   var photoNum = 0
@@ -28,28 +43,28 @@ struct Trip: Identifiable {
 
 // TODO: get the trips from the API
 let tripsData = [
-  Trip(id: "trip1",
+  Trip(docID: "trip1",
        title: "Florida",
        startDate: NSDate(),
        endDate: NSDate(),
        photos: photosData.shuffled(),
        travelPartners: [],
        travelPartnerImages: []),
-  Trip(id: "trip1",
+  Trip(docID: "trip1",
        title: "Hawaii",
        startDate: NSDate(),
        endDate: NSDate(),
        photos: photosData.shuffled(),
        travelPartners: [],
        travelPartnerImages: []),
-  Trip(id: "trip1",
+  Trip(docID: "trip1",
        title: "Pittsburgh",
        startDate: NSDate(),
        endDate: NSDate(),
        photos: photosData.shuffled(),
        travelPartners: [],
        travelPartnerImages: []),
-  Trip(id: "trip1",
+  Trip(docID: "trip1",
        title: "Miami",
        startDate: NSDate(),
        endDate: NSDate(),

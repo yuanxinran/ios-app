@@ -11,37 +11,6 @@ import SwiftUI
 import RemoteImage
 
 
-struct ListProfilePicture : View {
-  //    let url = URL(string: "https://firebasestorage.googleapis.com/v0/b/intripid-256611.appspot.com/o/profileImages%2Fanna.png?alt=media&token=11ed87aa-958e-4de0-a74e-ea7e9420d5dd")!
-  var url : URL
-  init(urlString: String){
-    self.url = URL(string: urlString)!
-  }
-  
-  var body: some View {
-    
-    
-    RemoteImage(url: url, errorView: { error in
-      Text(error.localizedDescription)
-    }, imageView: { image in
-      image
-        .resizable()
-        .scaledToFill()
-        .frame(width: 30, height: 30)
-        .clipShape(Circle())
-        .offset(CGSize(width: 20, height: 0)).padding(.trailing, 20)
-    }, loadingView: {
-      Image("person_2")
-        .resizable()
-        .scaledToFill()
-        .frame(width: 30, height: 30)
-        .clipShape(Circle())
-        .offset(CGSize(width: 20, height: 0)).padding(.trailing, 20)
-    })
-    
-  }
-}
-
 struct PartnerCell: View{
   
   private let person: TravelPartner
@@ -54,7 +23,7 @@ struct PartnerCell: View{
   
   var body: some View{
     HStack {
-      ListProfilePicture(urlString: person.profilePicture)
+      CreateTripsProfileImageCached(urlString: person.profilePicture)
       Text(person.firstName+" "+person.lastName)
       Spacer()
       
@@ -104,12 +73,12 @@ struct CreateView: View {
       VStack(alignment: .leading){
         HStack(alignment: .top){
           Spacer()
-          NavigationLink(destination: TripDetail()){
+//          NavigationLink(destination: TripDetail()){
+//            GreenButton("Next")
+//          }
+          NavigationLink(destination: NewTripAddPhotos(title: self.title, travelPartners: self.selectedPartners)){
             GreenButton("Next")
           }
-          //            NavigationLink(destination: NewTripAddPhotos(title: self.title, travelPartners: self.selectedPartners)){
-          //              GreenButton("Next")
-          //            }
         }
       }
       Spacer()

@@ -7,6 +7,58 @@
 //
 
 import SwiftUI
+import RemoteImage
+
+
+struct TripListTravelPartnerImageCached : View {
+  var url : URL
+  init(urlString: String){
+    self.url = URL(string: urlString)!
+  }
+  
+  var body: some View {
+    RemoteImage(url: url, errorView: { error in
+       Image("person_2")
+       .resizable()
+       .scaledToFill()
+       .frame(width: 30, height: 30)
+       .clipShape(Circle())
+    }, imageView: { image in
+      image
+      .resizable()
+      .scaledToFill()
+      .frame(width: 30, height: 30)
+      .clipShape(Circle())
+//      .offset(CGSize(width: 20, height: 0))
+    }, loadingView: {
+      Image("person_2")
+      .resizable()
+      .scaledToFill()
+      .frame(width: 30, height: 30)
+      .clipShape(Circle())
+//      .offset(CGSize(width: 20, height: 0))
+    })
+  }
+}
+
+
+
+
+struct TripListTravelPartnersView : View{
+  let profileImages: [String]
+  var body: some View {
+    // Travel Partners
+    ZStack{
+      // TODO: ForEach(trip.travelbuddy) -> get photo
+      ForEach(self.profileImages, id:\.self) { imageURL in
+        TripListTravelPartnerImageCached(urlString: imageURL)
+
+      }
+      
+    }
+  }
+  
+}
 
 struct TripListView: View {
   let trips: [Trip]
@@ -15,40 +67,24 @@ struct TripListView: View {
     //Trips
     List {
       ForEach(trips) { trip in
-        NavigationLink(destination: TripDetailView()) {
+        NavigationLink(destination: TripDetailView(tripID: )) {
           
           // Cover Photo
-          Image("trip_2")
-            .resizable()
-            .scaledToFill()
-            .frame(width: 120, height: 120)
-            .clipped()
-            .cornerRadius(10)
-          
+           CoverImageCached(urlString: trip.coverImage?.imagePath ?? "")
+   
           // Trip Information
           VStack (alignment: .leading){
             Text("\(trip.title)")
-            Text("\(trip.startDate)")
+            Text("\(self.trips.count)")
+            Text("\(trip.startDate.formatDate())")
               .font(.caption)
               .padding(.top, 10)
-            Text("50 Photos, 3 Journals")
+            
+            Text("\(trip.photoNum) Photos, \(trip.journalNum) Journals")
               .font(.caption)
             
             // Travel Partners
-            ZStack{
-              // TODO: ForEach(trip.travelbuddy) -> get photo
-              Image("person_1")
-                .resizable()
-                .scaledToFill()
-                .frame(width: 30, height: 30)
-                .clipShape(Circle())
-              Image("person_2")
-                .resizable()
-                .scaledToFill()
-                .frame(width: 30, height: 30)
-                .clipShape(Circle())
-                .offset(CGSize(width: 20, height: 0))
-            }
+            TripListTravelPartnersView(profileImages: trip.travelPartnerImages)
           }
         }
       }

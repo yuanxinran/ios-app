@@ -18,7 +18,7 @@
 		1CB7DDDD23668E93000ED455 /* intripid_devTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CB7DDDC23668E93000ED455 /* intripid_devTests.swift */; };
 		1CB7DDE823668E93000ED455 /* intripid_devUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CB7DDE723668E93000ED455 /* intripid_devUITests.swift */; };
 		1CB7DDF92366939C000ED455 /* TripListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CB7DDF82366939C000ED455 /* TripListView.swift */; };
-		1CB7DDFD2366A64E000ED455 /* TripDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CB7DDFC2366A64E000ED455 /* TripDetailView.swift */; };
+		1CB7DDFD2366A64E000ED455 /* TripDetail1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CB7DDFC2366A64E000ED455 /* TripDetail1.swift */; };
 		1CB7DDFF2366A6E7000ED455 /* Trip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CB7DDFE2366A6E7000ED455 /* Trip.swift */; };
 		1CB7DE012366C649000ED455 /* StatisticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CB7DE002366C649000ED455 /* StatisticsView.swift */; };
 		1CB7DE032366C654000ED455 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CB7DE022366C654000ED455 /* ProfileView.swift */; };
@@ -38,7 +38,8 @@
 		5431E91C237054E400139BE4 /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5431E91B237054E400139BE4 /* DateHelper.swift */; };
 		544873082372266C00791CBD /* TravelPartnerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 544873072372266C00791CBD /* TravelPartnerViewModel.swift */; };
 		5448730A23722C8A00791CBD /* TripViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5448730923722C8A00791CBD /* TripViewModel.swift */; };
-		5448730D2372424600791CBD /* TripDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5448730C2372424500791CBD /* TripDetail.swift */; };
+		5448730D2372424600791CBD /* TripDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5448730C2372424500791CBD /* TripDetailView.swift */; };
+		544873132373186700791CBD /* CachedImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 544873122373186700791CBD /* CachedImageView.swift */; };
 		54817031236D20A000FEF1C3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 54817030236D20A000FEF1C3 /* GoogleService-Info.plist */; };
 		54817034236DF83500FEF1C3 /* TravelPartner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54817033236DF83400FEF1C3 /* TravelPartner.swift */; };
 		54817036236E1DA200FEF1C3 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54817035236E1DA200FEF1C3 /* ImageLoader.swift */; };
@@ -87,7 +88,7 @@
 		1CB7DDE723668E93000ED455 /* intripid_devUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = intripid_devUITests.swift; sourceTree = "<group>"; };
 		1CB7DDE923668E93000ED455 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1CB7DDF82366939C000ED455 /* TripListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripListView.swift; sourceTree = "<group>"; };
-		1CB7DDFC2366A64E000ED455 /* TripDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripDetailView.swift; sourceTree = "<group>"; };
+		1CB7DDFC2366A64E000ED455 /* TripDetail1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripDetail1.swift; sourceTree = "<group>"; };
 		1CB7DDFE2366A6E7000ED455 /* Trip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trip.swift; sourceTree = "<group>"; };
 		1CB7DE002366C649000ED455 /* StatisticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsView.swift; sourceTree = "<group>"; };
 		1CB7DE022366C654000ED455 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
@@ -107,7 +108,8 @@
 		5431E91B237054E400139BE4 /* DateHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateHelper.swift; sourceTree = "<group>"; };
 		544873072372266C00791CBD /* TravelPartnerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelPartnerViewModel.swift; sourceTree = "<group>"; };
 		5448730923722C8A00791CBD /* TripViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripViewModel.swift; sourceTree = "<group>"; };
-		5448730C2372424500791CBD /* TripDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripDetail.swift; sourceTree = "<group>"; };
+		5448730C2372424500791CBD /* TripDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripDetailView.swift; sourceTree = "<group>"; };
+		544873122373186700791CBD /* CachedImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CachedImageView.swift; sourceTree = "<group>"; };
 		54817030236D20A000FEF1C3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		54817033236DF83400FEF1C3 /* TravelPartner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelPartner.swift; sourceTree = "<group>"; };
 		54817035236E1DA200FEF1C3 /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
@@ -154,7 +156,6 @@
 		1CB39E05236A1196005E01F9 /* Trips */ = {
 			isa = PBXGroup;
 			children = (
-				54817041236F01A000FEF1C3 /* Common */,
 				54817037236E398E00FEF1C3 /* CreateTrips */,
 				1CB7DE042366C7CE000ED455 /* TripView.swift */,
 				1CD133E52367642B008230B7 /* TripViewModePicker.swift */,
@@ -235,9 +236,11 @@
 		1CB7DDFA236693A6000ED455 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				1CB7DDFC2366A64E000ED455 /* TripDetailView.swift */,
+				54817041236F01A000FEF1C3 /* Common */,
+				544873112373183C00791CBD /* ImageView */,
+				1CB7DDFC2366A64E000ED455 /* TripDetail1.swift */,
 				1CB7DDC923668E8E000ED455 /* ContentView.swift */,
-				5448730C2372424500791CBD /* TripDetail.swift */,
+				5448730C2372424500791CBD /* TripDetailView.swift */,
 				1CB39E05236A1196005E01F9 /* Trips */,
 				1CB7DDD023668E93000ED455 /* LaunchScreen.storyboard */,
 				1CB7DE002366C649000ED455 /* StatisticsView.swift */,
@@ -273,6 +276,14 @@
 				5448730923722C8A00791CBD /* TripViewModel.swift */,
 			);
 			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		544873112373183C00791CBD /* ImageView */ = {
+			isa = PBXGroup;
+			children = (
+				544873122373186700791CBD /* CachedImageView.swift */,
+			);
+			path = ImageView;
 			sourceTree = "<group>";
 		};
 		54817032236DCA1A00FEF1C3 /* Models */ = {
@@ -581,6 +592,7 @@
 				5431E91C237054E400139BE4 /* DateHelper.swift in Sources */,
 				1CB7DE032366C654000ED455 /* ProfileView.swift in Sources */,
 				1CBFDF3A236814050055EC34 /* TripCoverView.swift in Sources */,
+				544873132373186700791CBD /* CachedImageView.swift in Sources */,
 				1CBFDF3C236818E30055EC34 /* AddPhotosView.swift in Sources */,
 				54817034236DF83500FEF1C3 /* TravelPartner.swift in Sources */,
 				1CBFDF40236826B80055EC34 /* TripMapView.swift in Sources */,
@@ -591,10 +603,10 @@
 				5431E91A237050B900139BE4 /* FirebaseConnection.swift in Sources */,
 				54817036236E1DA200FEF1C3 /* ImageLoader.swift in Sources */,
 				54817040236E972D00FEF1C3 /* NewTripAddPhotos.swift in Sources */,
-				5448730D2372424600791CBD /* TripDetail.swift in Sources */,
+				5448730D2372424600791CBD /* TripDetailView.swift in Sources */,
 				544873082372266C00791CBD /* TravelPartnerViewModel.swift in Sources */,
 				1CB7DE052366C7CE000ED455 /* TripView.swift in Sources */,
-				1CB7DDFD2366A64E000ED455 /* TripDetailView.swift in Sources */,
+				1CB7DDFD2366A64E000ED455 /* TripDetail1.swift in Sources */,
 				1CD133E62367642B008230B7 /* TripViewModePicker.swift in Sources */,
 				5431E914236FDC2100139BE4 /* NewTripSelectCover.swift in Sources */,
 				1CB7DDC523668E8E000ED455 /* SceneDelegate.swift in Sources */,

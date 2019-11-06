@@ -16,7 +16,7 @@ typealias JSONDictionary = [String: Any]
 func parseTripData(id: String, data: JSONDictionary, coverImage: Photo?, photoNum: Int, journalNum: Int, images: [String]) -> Trip? {
   
   if let title = data["title"] as? String, let travelPartners = data["travelPartners"] as? [String], let startDate = data["startDate"] as? Timestamp,let endDate = data["endDate"] as? Timestamp{
-    let trip =  Trip(id: id, title: title, coverImage: coverImage, photoNum: photoNum, journalNum: journalNum, startDate: startDate.dateValue() as NSDate, endDate: endDate.dateValue() as NSDate, travelPartners: travelPartners, travelPartnerImages: images)
+    let trip =  Trip(docID: id, title: title, coverImage: coverImage, photoNum: photoNum, journalNum: journalNum, startDate: startDate.dateValue() as NSDate, endDate: endDate.dateValue() as NSDate, travelPartners: travelPartners, travelPartnerImages: images)
     
     return trip
   }
@@ -105,6 +105,7 @@ class TripViewModel: ObservableObject {
   
   
   func fetchData() {
+    self.trips = [Trip]()
     db.collection("trips").getDocuments() { (querySnapshot, err) in
       if let err = err {
         print("Error getting documents: \(err)")
@@ -161,8 +162,6 @@ class TripViewModel: ObservableObject {
   init(userID: String) {
     db = Firestore.firestore()
     self.userID = userID
-    print("Getting the environment object: \(userID)")
-    //    self.disposeBag = DisposeBag()
   }
   
 }
