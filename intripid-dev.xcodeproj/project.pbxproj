@@ -37,6 +37,9 @@
 		5411B0D12373D6C000833764 /* EditTripAddPhotos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5411B0D02373D6C000833764 /* EditTripAddPhotos.swift */; };
 		5411B0D52373F5E600833764 /* EditTripAddJournal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5411B0D42373F5E600833764 /* EditTripAddJournal.swift */; };
 		5411B0D72374155300833764 /* TextBox.swiftui.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5411B0D62374155200833764 /* TextBox.swiftui.swift */; };
+		5411B0D9237421B400833764 /* NewTripCreationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5411B0D8237421B300833764 /* NewTripCreationView.swift */; };
+		5411B0DB237421FD00833764 /* ToRootViewControllerWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5411B0DA237421FD00833764 /* ToRootViewControllerWrapper.swift */; };
+		5411B0DD2374223400833764 /* ToRootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5411B0DC2374223400833764 /* ToRootViewController.swift */; };
 		5431E908236F726F00139BE4 /* PhotoHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5431E907236F726F00139BE4 /* PhotoHelper.swift */; };
 		5431E911236FD89A00139BE4 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5431E90F236FD89A00139BE4 /* Photo.swift */; };
 		5431E912236FD89A00139BE4 /* Journal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5431E910236FD89A00139BE4 /* Journal.swift */; };
@@ -115,6 +118,9 @@
 		5411B0D02373D6C000833764 /* EditTripAddPhotos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTripAddPhotos.swift; sourceTree = "<group>"; };
 		5411B0D42373F5E600833764 /* EditTripAddJournal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTripAddJournal.swift; sourceTree = "<group>"; };
 		5411B0D62374155200833764 /* TextBox.swiftui.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextBox.swiftui.swift; sourceTree = "<group>"; };
+		5411B0D8237421B300833764 /* NewTripCreationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewTripCreationView.swift; sourceTree = "<group>"; };
+		5411B0DA237421FD00833764 /* ToRootViewControllerWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToRootViewControllerWrapper.swift; sourceTree = "<group>"; };
+		5411B0DC2374223400833764 /* ToRootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToRootViewController.swift; sourceTree = "<group>"; };
 		5431E907236F726F00139BE4 /* PhotoHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoHelper.swift; sourceTree = "<group>"; };
 		5431E90F236FD89A00139BE4 /* Photo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
 		5431E910236FD89A00139BE4 /* Journal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Journal.swift; sourceTree = "<group>"; };
@@ -334,6 +340,9 @@
 			children = (
 				5411B0CB2373C89B00833764 /* SplashScreen.swift */,
 				54817038236E39CE00FEF1C3 /* CreateView.swift */,
+				5411B0DC2374223400833764 /* ToRootViewController.swift */,
+				5411B0D8237421B300833764 /* NewTripCreationView.swift */,
+				5411B0DA237421FD00833764 /* ToRootViewControllerWrapper.swift */,
 				5481703F236E972D00FEF1C3 /* NewTripAddPhotos.swift */,
 				5431E913236FDC2100139BE4 /* NewTripSelectCover.swift */,
 			);
@@ -619,6 +628,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5431E911236FD89A00139BE4 /* Photo.swift in Sources */,
+				5411B0DB237421FD00833764 /* ToRootViewControllerWrapper.swift in Sources */,
 				5431E912236FD89A00139BE4 /* Journal.swift in Sources */,
 				1CB7DDF92366939C000ED455 /* TripListView.swift in Sources */,
 				5431E91C237054E400139BE4 /* DateHelper.swift in Sources */,
@@ -638,6 +648,7 @@
 				54817036236E1DA200FEF1C3 /* ImageLoader.swift in Sources */,
 				54817040236E972D00FEF1C3 /* NewTripAddPhotos.swift in Sources */,
 				5448730D2372424600791CBD /* TripDetailView.swift in Sources */,
+				5411B0DD2374223400833764 /* ToRootViewController.swift in Sources */,
 				544873082372266C00791CBD /* TravelPartnerViewModel.swift in Sources */,
 				1CB7DE052366C7CE000ED455 /* TripView.swift in Sources */,
 				1CD133E62367642B008230B7 /* TripViewModePicker.swift in Sources */,
@@ -646,6 +657,7 @@
 				5411B0C62373C7F900833764 /* Parsers.swift in Sources */,
 				5411B0D12373D6C000833764 /* EditTripAddPhotos.swift in Sources */,
 				1CB7DDC523668E8E000ED455 /* SceneDelegate.swift in Sources */,
+				5411B0D9237421B400833764 /* NewTripCreationView.swift in Sources */,
 				54817039236E39CE00FEF1C3 /* CreateView.swift in Sources */,
 				5411B0CE2373C8C300833764 /* TripDetailTestView.swift in Sources */,
 				1CB7DDCA23668E8E000ED455 /* ContentView.swift in Sources */,
