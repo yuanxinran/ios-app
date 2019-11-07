@@ -28,18 +28,18 @@ struct TripView: View {
           if selectedViewMode == 0 {
             TripListView(trips: self.viewModel.trips)
           } else {
-//            TripMapView(viewModel: TripMapViewModel(trips: self.trips))
             MapViewControllerWrapper()
           }
           
           }.navigationBarTitle(Text("All Trips"), displayMode: .automatic).navigationBarItems(trailing:
           NavigationLink("Create",destination: CreateView()))
-        }.onAppear(perform: viewModel.fetchData).edgesIgnoringSafeArea(.all)
+        }.onAppear(perform: viewModel.fetchData)
+        .edgesIgnoringSafeArea(.all)
   }
 }
 
-struct TripView_Previews: PreviewProvider {
-    static var previews: some View {
-        TripView()
-    }
-}
+//struct TripView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        TripView()
+//    }
+//}

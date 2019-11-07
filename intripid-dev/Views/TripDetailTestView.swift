@@ -16,7 +16,6 @@ struct TripDetailTestView: View {
   //  @EnvironmentObject var settings: UserSettings
   
   init(tripID: String){
-    print("init detail page")
     self.tripID = tripID
     self.viewModel = TripDetailViewModel(tripID: tripID)
     

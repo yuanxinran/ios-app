@@ -64,16 +64,16 @@ struct imageSelectorResultSelectCover : View{
 
 struct NewTripSelectCover: View {
   @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+  
   @State private var clickedCreate = false
   @State private var createCompleted = false
-  @State private var tripID = ""
+  @State private var coverImage: Int = 0
   
   var title: String
   var travelPartners: [String]
   var imageList: [UIImage]
   var imageAssetList: [PHAsset]
   //  var imageURLList: [String]
-  @State private var coverImage: Int = 0
   
   var btnBack : some View { Button(action: {
     self.presentationMode.wrappedValue.dismiss()
@@ -92,53 +92,46 @@ struct NewTripSelectCover: View {
       if let result = result {
         print("added docu \(result)")
         self.createCompleted = true
-        self.tripID = result
-        
       } else {
         print("failed")
       }
     }
-    
   }
   
   var body: some View {
     VStack{
       if (clickedCreate) {
         VStack{
-//          Image("generating").resizable().scaledToFit().frame(width: UIScreen.main.bounds.width * 0.3, height: UIScreen.main.bounds.width * 0.3).clipped()
-//          Text("Generating Your Trip").font(.title)
           if createCompleted {
-            NavigationLink(destination: TripDetailTestView(tripID: tripID)){
-              GreenButton("GoToTrip")
-            }
+              NewTripCreationView()
           } else {
             SplashScreen()
           }
         }
       } else {
-        VStack{
-          VStack(alignment: .leading, spacing: 20.0){
-            Text("Select Cover Picture").font(.title).fontWeight(.bold)
-            imageSelectorResultSelectCover(imageList: self.imageList, coverImage: self.$coverImage)
-          }
-          Spacer()
-          VStack(alignment: .leading){
-            HStack(alignment: .top){
-              Spacer()
-              Button(action: {self.createTrip()}) {
-                GreenButton("Create Trip")
-              }
+      VStack{
+        VStack(alignment: .leading, spacing: 20.0){
+          Text("Select Cover Picture").font(.title).fontWeight(.bold)
+          imageSelectorResultSelectCover(imageList: self.imageList, coverImage: self.$coverImage)
+        }
+        Spacer()
+        VStack(alignment: .leading){
+          HStack(alignment: .top){
+            Spacer()
+            Button(action: {self.createTrip()}) {
+              GreenButton("Create Trip")
             }
           }
-          Spacer()
         }
-        
+        Spacer()
       }
-    }.navigationBarBackButtonHidden(true)
-     .navigationBarItems(leading: btnBack)
-      .navigationBarHidden(self.clickedCreate ? true : false)
-      .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: self.clickedCreate ? .center : .topLeading).padding(.leading, UIScreen.main.bounds.width * 0.05).padding(.trailing, UIScreen.main.bounds.width * 0.05)
-    
-    
-  }
+      
+    }
+  }.navigationBarBackButtonHidden(true)
+  .navigationBarItems(leading: btnBack)
+  .navigationBarHidden(self.clickedCreate ? true : false)
+  .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: self.clickedCreate ? .center : .topLeading).padding(.leading, UIScreen.main.bounds.width * 0.05).padding(.trailing, UIScreen.main.bounds.width * 0.05)
+  
+  
+}
 }

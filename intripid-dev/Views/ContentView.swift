@@ -24,6 +24,7 @@ struct ContentView: View {
     // TODO: somehow remove the tab view when clicked on specific trip
     TabView {
       TripView()
+        .padding(.bottom, 1)
           .tabItem {
             VStack {
               Image(systemName: "1.circle")
