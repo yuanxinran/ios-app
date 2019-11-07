@@ -12,7 +12,7 @@ import Photos
 import PhotosUI
 import FirebaseStorage
 
-class FirbaseConnection {
+class CreateTripViewModel {
 
   var ref: DocumentReference? = nil
   var db: Firestore!
@@ -70,6 +70,7 @@ class FirbaseConnection {
   func addPhotosToTrip(photos: [PHAsset], photoImages: [UIImage], tripRef: DocumentReference, userID: String, coverImage: Int, completion: @escaping (_ result:[String]) -> Void){
     let storage = Storage.storage()
     var imageIDs = [String]()
+//    let locations = [PhotoLocation]()
     let dispatchGroup = DispatchGroup()
     for num in (0 ..< photos.count){
       var photoRef: DocumentReference? = nil
@@ -86,6 +87,7 @@ class FirbaseConnection {
           data =  ["dateTime": photo.creationDate ?? NSNull(), "imagePath": "",
                    "photoLocation":[
                        "city": result.city,
+                       "state": result.state,
                        "country": result.country,
                        "geocoding": GeoPoint(latitude: result.latitude, longitude: result.longitude)]]
           

@@ -12,24 +12,30 @@ import Photos
 import PhotosUI
 //
 //
-//struct TripDetail: Identifiable {
-//  var id = UUID()
-//  var docID: String
-//  var title: String
-//  var coverImage: Photo?
-//  var photoNum = 0
-//  var journalNum = 0
-//  var startDate: NSDate
-//  var endDate: NSDate
-//  var photos: [String]? // TODO: fix this
-//  var travelPartners: [String]
-//  var travelPartnerImages: [String]
-//}
+struct TripDetail: Identifiable {
+  var id: String
+  var title: String
+  var coverImage: Photo?
+  var photos: [Photo]
+  var journals: [Journal]
+  var startDate: NSDate
+  var endDate: NSDate
+  var travelPartners: [TravelPartner]
+  var locations: [TripLocation]
+}
+
+struct TripLocation: Identifiable {
+  var id = UUID()
+  var city: String
+  var state: String
+  var country: String
+  var latitude: Double
+  var longitude: Double
+}
 
 
 struct Trip: Identifiable {
-  var id = UUID()
-  var docID: String
+  var id :String
   var title: String
   var coverImage: Photo?
   var photoNum = 0
@@ -45,7 +51,7 @@ struct Trip: Identifiable {
 
 // TODO: get the trips from the API
 let tripsData = [
-  Trip(docID: "trip1",
+  Trip(id: "trip1",
        title: "Florida",
        startDate: NSDate(),
        endDate: NSDate(),
@@ -54,7 +60,7 @@ let tripsData = [
        travelPartnerImages: [],
        latitude: 28.4813989,
        longitude: -81.5088355),
-  Trip(docID: "trip1",
+  Trip(id: "trip1",
        title: "Hawaii",
        startDate: NSDate(),
        endDate: NSDate(),
@@ -63,7 +69,7 @@ let tripsData = [
        travelPartnerImages: [],
        latitude: 21.3281792,
        longitude: -157.8691135),
-  Trip(docID: "trip1",
+  Trip(id: "trip1",
        title: "Pittsburgh",
        startDate: NSDate(),
        endDate: NSDate(),
@@ -72,7 +78,7 @@ let tripsData = [
        travelPartnerImages: [],
        latitude: 40.431478,
        longitude: -80.0505405),
-  Trip(docID: "trip1",
+  Trip(id: "trip1",
        title: "Miami",
        startDate: NSDate(),
        endDate: NSDate(),
