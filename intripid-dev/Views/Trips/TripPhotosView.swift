@@ -9,27 +9,37 @@
 import SwiftUI
 
 struct TripPhotosView: View {
-  let photos : [Photo]
+  var photos: [Photo]
+  private var array1: [Int]
+  private var array2: [Int]
+  private var array3: [Int]
+  
+  init(photos:[Photo]) {
+    self.photos = photos
+    
+    self.array1 = Array(stride(from: 0, through: self.photos.count-1, by: 3))
+    self.array2 = Array(stride(from: 1, through: self.photos.count-1, by: 3))
+    self.array3 = Array(stride(from: 2, through: self.photos.count-1, by: 3))
+  }
+  
   
   // TODO: select every other element instead of split middle
   // TODO: create padding around the photos
   var body: some View {
     HStack(alignment: .top) {
       VStack {
-        ForEach((0 ..< photos.count), id: \.self) { index in
+        ForEach(array1, id: \.self) { index in
           URLImage(url: self.photos[index].imagePath)
         }
       }
       VStack {
-        ForEach((0 ..< photos.count), id: \.self) { index in
+        ForEach(array2, id: \.self) { index in
           URLImage(url: self.photos[index].imagePath)
         }
       }
       VStack {
-        ForEach((0 ..< photos.count), id: \.self) { index in
-              
+        ForEach(array3, id: \.self) { index in
           URLImage(url: self.photos[index].imagePath)
-            
         }
       }
       
