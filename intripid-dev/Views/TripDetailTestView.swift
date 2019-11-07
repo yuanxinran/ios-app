@@ -11,14 +11,26 @@ import SwiftUI
 
 
 struct TripDetailTestView: View {
+  @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
   var tripID: String
+  var parent: TripView
   @ObservedObject private var viewModel : TripDetailViewModel
+  
+  var btnBack : some View { Button(action: {
+    self.presentationMode.wrappedValue.dismiss()
+    self.parent.refresh()
+  }) {
+    HStack {
+      Text("All Trips")
+    }
+    }
+  }
   //  @EnvironmentObject var settings: UserSettings
   
-  init(tripID: String){
+  init(tripID: String, parent: TripView){
     self.tripID = tripID
     self.viewModel = TripDetailViewModel(tripID: tripID)
-    
+    self.parent = parent
   }
   
   
@@ -60,7 +72,8 @@ struct TripDetailTestView: View {
         Text("Loading your trip....")
       }
       
-    }.onAppear(perform: self.refresh)
+    }.onAppear(perform: self.refresh).navigationBarBackButtonHidden(true)
+    .navigationBarItems(leading: btnBack)
     
   }
 }

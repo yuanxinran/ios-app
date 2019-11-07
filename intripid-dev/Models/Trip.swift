@@ -33,6 +33,13 @@ struct TripLocation: Identifiable {
   var longitude: Double
 }
 
+struct TripDisplay: Identifiable{
+  var id :String
+  var title: String
+  var photoNum: String
+  var journalNum: String
+  var travelPartnerImages: [String]
+}
 
 struct Trip: Identifiable {
   var id :String

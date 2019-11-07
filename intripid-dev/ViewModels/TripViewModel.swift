@@ -16,6 +16,7 @@ typealias JSONDictionary = [String: Any]
 
 class TripViewModel: ObservableObject {
   @Published var trips = [Trip]()
+  @Published var numbers = ""
   var userID :  String
   var db: Firestore!
   
@@ -80,6 +81,20 @@ class TripViewModel: ObservableObject {
     }
   }
   
+//  func fetchRealTimePhotoJournal(){
+//    for i in 0..<self.trips.count {
+//      let tripID = self.trips[i].id
+//      print("this shit is called")
+//      db.collection("trips").document(tripID).collection("photos").addSnapshotListener  {(snap, error) in
+//        for j in snap!.documentChanges{
+//          print("wow document changes")
+//          if j.type == .added {
+//            self.trips[i].photoNum = self.trips[i].photoNum+1
+//          }
+//      }
+//    }
+//   }
+//  }
   
   func fetchData() {
     self.trips = [Trip]()
@@ -114,6 +129,98 @@ class TripViewModel: ObservableObject {
         }
       }
     }
+//    db.collection("trips").addSnapshotListener {(snap, error) in
+//
+//      for i in snap!.documentChanges{
+//        let document = i.document
+//        if i.type == .added {
+//
+//          let data = document.data() as JSONDictionary
+//
+//          if let coverImageID = data["coverImage"] as? String {
+//            self.fetchCoverPhoto(tripID: document.documentID, documentID: coverImageID){
+//              (coverResult) in
+//              self.fetchPhotoJournals(tripID: document.documentID) {
+//                (photoNum, journalNum) in
+//                self.fetchTravelPartnerPhoto(travelPartnerID: data["travelPartners"] as? [String] ?? []){
+//                  (images) in
+//                  if let trip = parseTripData(id: document.documentID, data: data, coverImage: coverResult, images: images) {
+//                    DispatchQueue.main.async {
+////                        self.numbers = "photos: \(data["photoNum"])"
+//                        self.trips.append(trip)
+//                    }
+//                  } else {
+//                    print("Error encountered parsing document \(document.documentID)")
+//                  }
+//                }
+//              }
+//            }
+//          }
+//
+//        }
+//
+//        if i.type == .modified{
+//          print("I am pissed off")
+//          for j in 0..<self.trips.count{
+//            if self.trips[j].id == i.document.documentID {
+//              let data = document.data() as JSONDictionary
+//              if let coverImageID = data["coverImage"] as? String {
+//                self.fetchCoverPhoto(tripID: document.documentID, documentID: coverImageID){
+//                  (coverResult) in
+//                    self.fetchTravelPartnerPhoto(travelPartnerID: data["travelPartners"] as? [String] ?? []){
+//                      (images) in
+//                      if let trip = parseTripData(id: document.documentID, data: data, coverImage: coverResult, images: images) {
+//                        DispatchQueue.main.async {
+////                          self.numbers = "last change: \(NSDate())"
+//                            self.trips[j] = trip
+//                          print(self.trips)
+//                        }
+//                      } else {
+//                        print("Error encountered parsing document \(document.documentID)")
+//                      }
+//                  }
+//                }
+//              }
+//
+//            }
+//          }
+//        }
+//      }
+//    }
+//
+    
+//
+//    db.collection("trips").getDocuments() { (querySnapshot, err) in
+//      if let err = err {
+//        print("Error getting documents: \(err)")
+//      } else {
+//        for document in querySnapshot!.documents {
+//
+//          let data = document.data() as JSONDictionary
+//
+//          if let coverImageID = data["coverImage"] as? String {
+//            self.fetchCoverPhoto(tripID: document.documentID, documentID: coverImageID){
+//              (coverResult) in
+//              self.fetchPhotoJournals(tripID: document.documentID) {
+//                (photoNum, journalNum) in
+//                self.fetchTravelPartnerPhoto(travelPartnerID: data["travelPartners"] as? [String] ?? []){
+//                  (images) in
+//                  if let trip = parseTripData(id: document.documentID, data: data, coverImage: coverResult, photoNum: photoNum, journalNum: journalNum, images: images) {
+//                    print("trips")
+//                    print(trip)
+//                    DispatchQueue.main.async {
+//                        self.trips.append(trip)
+//                    }
+//                  } else {
+//                    print("Error encountered parsing document \(document.documentID)")
+//                  }
+//                }
+//              }
+//            }
+//          }
+//        }
+//      }
+//    }
     
     //    db.collection("trips")
     //    .rx
@@ -140,6 +247,9 @@ class TripViewModel: ObservableObject {
   init(userID: String) {
     db = Firestore.firestore()
     self.userID = userID
+//    self.fetchData()
+//    self.fetchRealTimePhotoJournal()
+    
   }
   
 }
