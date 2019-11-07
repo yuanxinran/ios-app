@@ -36,10 +36,10 @@ func parsePhotoData(id: String, data: JSONDictionary) -> Photo? {
 }
 
 func parseJournalData(id: String, data: JSONDictionary) -> Journal? {
-  if let backgroundData = data["journalBlackground"] as? [String:AnyObject], let startArray = backgroundData["start"] as? [Double], let endArray = data["end"] as? [Double], let title = data["title"] as? String, let dateTime = data["dateTime"] as? Timestamp, let content = data["content"] as? String {
+  if let startColor = data["startColor"] as? String , let endColor = data["endColor"] as? String, let title = data["title"] as? String, let dateTime = data["dateTime"] as? Timestamp, let content = data["content"] as? String {
     
-    let startColor = Color(red: startArray[0], green: startArray[1], blue: startArray[2])
-    let endColor = Color(red: endArray[0], green: endArray[1], blue: endArray[2])
+    let startColor = Color(startColor)
+    let endColor = Color(endColor)
     return Journal(id: id, dateTime: dateTime.dateValue() as NSDate, title: title, content: content, gradientStart: startColor, gradientEnd: endColor)
   }
   return nil

@@ -10,6 +10,7 @@ import SwiftUI
 
 struct TripCoverView: View {
   let trip: TripDetail
+  let parent: TripDetailTestView
   @State var journalModalDisplayed = false
   @State var photoModalDisplayed = false
   
@@ -47,7 +48,7 @@ struct TripCoverView: View {
           .background(Color(.sRGB, red: 200/255, green: 200/255, blue: 200/255, opacity: 0.3))
           .clipShape(Capsule())
             .sheet(isPresented: $photoModalDisplayed) {
-              AddPhotosView(onDismiss: {
+              EditTripAddPhotos(tripID: self.trip.id, parent: self.parent, onDismiss: {
                   self.photoModalDisplayed = false
               })
           }
@@ -61,7 +62,7 @@ struct TripCoverView: View {
                    .background(Color(.sRGB, red: 200/255, green: 200/255, blue: 200/255, opacity: 0.3))
                    .clipShape(Capsule())
                      .sheet(isPresented: $journalModalDisplayed) {
-                       AddJournalView(onDismiss: {
+                      EditTripAddJournal(tripID: self.trip.id, parent: self.parent, startDate: self.trip.startDate, endDate: self.trip.endDate, onDismiss: {
                            self.journalModalDisplayed = false
                        })
                    }

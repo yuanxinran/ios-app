@@ -66,7 +66,6 @@ class TripViewModel: ObservableObject {
       ref.getDocument { (document, error) in
         if let document = document, document.exists {
           if let data = document.data(), let imageURL = data["profilePicture"] as? String {
-            print("Getting the imageURL: \(imageURL)")
             result.append(imageURL)
           }
         } else {

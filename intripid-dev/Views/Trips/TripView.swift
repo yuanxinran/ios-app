@@ -15,7 +15,6 @@ struct TripView: View {
 //  @EnvironmentObject var settings: UserSettings
   
   init(){
-    print("init")
     self.viewModel = TripViewModel(userID: currentUserDoc)
   }
   

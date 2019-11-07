@@ -31,9 +31,12 @@
 		424F3E743727E09698C6AE95 /* Pods_intripid_devUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 007FE4342221466759D186A9 /* Pods_intripid_devUITests.framework */; };
 		5411B0C62373C7F900833764 /* Parsers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5411B0C52373C7F900833764 /* Parsers.swift */; };
 		5411B0C82373C81200833764 /* TripDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5411B0C72373C81200833764 /* TripDetailViewModel.swift */; };
-		5411B0CA2373C81B00833764 /* CreateTripViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5411B0C92373C81B00833764 /* CreateTripViewModel.swift */; };
+		5411B0CA2373C81B00833764 /* EditTripViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5411B0C92373C81B00833764 /* EditTripViewModel.swift */; };
 		5411B0CC2373C89B00833764 /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5411B0CB2373C89B00833764 /* SplashScreen.swift */; };
 		5411B0CE2373C8C300833764 /* TripDetailTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5411B0CD2373C8C200833764 /* TripDetailTestView.swift */; };
+		5411B0D12373D6C000833764 /* EditTripAddPhotos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5411B0D02373D6C000833764 /* EditTripAddPhotos.swift */; };
+		5411B0D52373F5E600833764 /* EditTripAddJournal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5411B0D42373F5E600833764 /* EditTripAddJournal.swift */; };
+		5411B0D72374155300833764 /* TextBox.swiftui.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5411B0D62374155200833764 /* TextBox.swiftui.swift */; };
 		5431E908236F726F00139BE4 /* PhotoHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5431E907236F726F00139BE4 /* PhotoHelper.swift */; };
 		5431E911236FD89A00139BE4 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5431E90F236FD89A00139BE4 /* Photo.swift */; };
 		5431E912236FD89A00139BE4 /* Journal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5431E910236FD89A00139BE4 /* Journal.swift */; };
@@ -106,9 +109,12 @@
 		41F6F92022AA841B35DF4631 /* Pods_intripid_devTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_intripid_devTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5411B0C52373C7F900833764 /* Parsers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Parsers.swift; sourceTree = "<group>"; };
 		5411B0C72373C81200833764 /* TripDetailViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripDetailViewModel.swift; sourceTree = "<group>"; };
-		5411B0C92373C81B00833764 /* CreateTripViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateTripViewModel.swift; sourceTree = "<group>"; };
+		5411B0C92373C81B00833764 /* EditTripViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditTripViewModel.swift; sourceTree = "<group>"; };
 		5411B0CB2373C89B00833764 /* SplashScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
 		5411B0CD2373C8C200833764 /* TripDetailTestView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripDetailTestView.swift; sourceTree = "<group>"; };
+		5411B0D02373D6C000833764 /* EditTripAddPhotos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTripAddPhotos.swift; sourceTree = "<group>"; };
+		5411B0D42373F5E600833764 /* EditTripAddJournal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTripAddJournal.swift; sourceTree = "<group>"; };
+		5411B0D62374155200833764 /* TextBox.swiftui.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextBox.swiftui.swift; sourceTree = "<group>"; };
 		5431E907236F726F00139BE4 /* PhotoHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoHelper.swift; sourceTree = "<group>"; };
 		5431E90F236FD89A00139BE4 /* Photo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
 		5431E910236FD89A00139BE4 /* Journal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Journal.swift; sourceTree = "<group>"; };
@@ -166,6 +172,7 @@
 		1CB39E05236A1196005E01F9 /* Trips */ = {
 			isa = PBXGroup;
 			children = (
+				5411B0CF2373D5A900833764 /* Edit Trips */,
 				54817037236E398E00FEF1C3 /* CreateTrips */,
 				1CB7DE042366C7CE000ED455 /* TripView.swift */,
 				1CD133E52367642B008230B7 /* TripViewModePicker.swift */,
@@ -271,6 +278,15 @@
 			path = Delegate;
 			sourceTree = "<group>";
 		};
+		5411B0CF2373D5A900833764 /* Edit Trips */ = {
+			isa = PBXGroup;
+			children = (
+				5411B0D02373D6C000833764 /* EditTripAddPhotos.swift */,
+				5411B0D42373F5E600833764 /* EditTripAddJournal.swift */,
+			);
+			path = "Edit Trips";
+			sourceTree = "<group>";
+		};
 		5431E906236F725800139BE4 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
@@ -287,7 +303,7 @@
 			children = (
 				544873072372266C00791CBD /* TravelPartnerViewModel.swift */,
 				5448730923722C8A00791CBD /* TripViewModel.swift */,
-				5411B0C92373C81B00833764 /* CreateTripViewModel.swift */,
+				5411B0C92373C81B00833764 /* EditTripViewModel.swift */,
 				5411B0C72373C81200833764 /* TripDetailViewModel.swift */,
 			);
 			path = ViewModels;
@@ -328,6 +344,7 @@
 			isa = PBXGroup;
 			children = (
 				54817042236F01BD00FEF1C3 /* Button.swift */,
+				5411B0D62374155200833764 /* TextBox.swiftui.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -608,11 +625,12 @@
 				1CB7DE032366C654000ED455 /* ProfileView.swift in Sources */,
 				1CBFDF3A236814050055EC34 /* TripCoverView.swift in Sources */,
 				544873132373186700791CBD /* CachedImageView.swift in Sources */,
+				5411B0D72374155300833764 /* TextBox.swiftui.swift in Sources */,
 				1CBFDF3C236818E30055EC34 /* AddPhotosView.swift in Sources */,
 				54817034236DF83500FEF1C3 /* TravelPartner.swift in Sources */,
 				1CBFDF40236826B80055EC34 /* TripMapView.swift in Sources */,
 				1CBFDF3E23681AA80055EC34 /* AddJournalView.swift in Sources */,
-				5411B0CA2373C81B00833764 /* CreateTripViewModel.swift in Sources */,
+				5411B0CA2373C81B00833764 /* EditTripViewModel.swift in Sources */,
 				5431E908236F726F00139BE4 /* PhotoHelper.swift in Sources */,
 				1CBFDF38236811D00055EC34 /* TripPhotosView.swift in Sources */,
 				1CB7DDC323668E8E000ED455 /* AppDelegate.swift in Sources */,
@@ -626,10 +644,12 @@
 				5431E914236FDC2100139BE4 /* NewTripSelectCover.swift in Sources */,
 				5411B0CC2373C89B00833764 /* SplashScreen.swift in Sources */,
 				5411B0C62373C7F900833764 /* Parsers.swift in Sources */,
+				5411B0D12373D6C000833764 /* EditTripAddPhotos.swift in Sources */,
 				1CB7DDC523668E8E000ED455 /* SceneDelegate.swift in Sources */,
 				54817039236E39CE00FEF1C3 /* CreateView.swift in Sources */,
 				5411B0CE2373C8C300833764 /* TripDetailTestView.swift in Sources */,
 				1CB7DDCA23668E8E000ED455 /* ContentView.swift in Sources */,
+				5411B0D52373F5E600833764 /* EditTripAddJournal.swift in Sources */,
 				1CB39E07236B8341005E01F9 /* User.swift in Sources */,
 				5448730A23722C8A00791CBD /* TripViewModel.swift in Sources */,
 				1CB7DE012366C649000ED455 /* StatisticsView.swift in Sources */,
