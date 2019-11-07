@@ -43,6 +43,14 @@ struct Trip: Identifiable {
   var longitude: Double
 }
 
+extension Trip: Equatable {
+    static func == (lhs: Trip, rhs: Trip) -> Bool {
+        return
+            lhs.docID == rhs.docID &&
+            lhs.title == rhs.title
+    }
+}
+
 // TODO: get the trips from the API
 let tripsData = [
   Trip(docID: "trip1",

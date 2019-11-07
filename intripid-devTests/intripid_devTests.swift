@@ -7,7 +7,7 @@
 //
 
 import XCTest
-@testable import intripid_dev
+//@testable import intripid_dev
 
 class intripid_devTests: XCTestCase {
 
