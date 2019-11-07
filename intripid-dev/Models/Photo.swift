@@ -16,6 +16,7 @@ import FirebaseStorage
 
 struct PhotoLocation {
   var city: String
+  var state: String
   var country: String
   var latitude: Double
   var longitude: Double
@@ -32,7 +33,8 @@ extension PhotoLocation: Equatable {
     }
 }
 
-struct Photo {
+struct Photo : Identifiable {
+  var id: String
   var dateTime: NSDate
   var imagePath: String
   var photoLocation: PhotoLocation?

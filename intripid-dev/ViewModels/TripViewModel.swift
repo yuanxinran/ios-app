@@ -13,27 +13,6 @@ import FirebaseFirestore
 
 typealias JSONDictionary = [String: Any]
 
-func parseTripData(id: String, data: JSONDictionary, coverImage: Photo?, photoNum: Int, journalNum: Int, images: [String]) -> Trip? {
-  
-  if let title = data["title"] as? String, let travelPartners = data["travelPartners"] as? [String], let startDate = data["startDate"] as? Timestamp,let endDate = data["endDate"] as? Timestamp{
-    let trip =  Trip(docID: id, title: title, coverImage: coverImage, photoNum: photoNum, journalNum: journalNum, startDate: startDate.dateValue() as NSDate, endDate: endDate.dateValue() as NSDate, travelPartners: travelPartners, travelPartnerImages: images, latitude: 28.4813989, longitude: -81.5088355)
-    
-    return trip
-  }
-  return nil
-}
-
-func parsePhotoData(id: String, data: JSONDictionary) -> Photo? {
-  var photoLocation : PhotoLocation?
-  if let locationData = data["photoLocation"] as? [String:AnyObject], let geopoint = locationData["geocoding"] as? GeoPoint, let city = locationData["city"] as? String, let country = locationData["country"] as? String {
-    
-    photoLocation = PhotoLocation(city: city, country: country, latitude: geopoint.latitude, longitude: geopoint.longitude)
-  }
-  if let dateTime = data["dateTime"] as? Timestamp, let imagePath = data["imagePath"] as? String {
-    return Photo(dateTime: dateTime.dateValue() as NSDate, imagePath: imagePath, photoLocation: photoLocation)
-  }
-  return nil
-}
 
 class TripViewModel: ObservableObject {
   @Published var trips = [Trip]()
@@ -46,7 +25,7 @@ class TripViewModel: ObservableObject {
     let photoRef = db.collection("trips").document(tripID).collection("photos").document(documentID)
     photoRef.getDocument { (document, error) in
       if let document = document, document.exists {
-        if let data = document.data(), let photo = parsePhotoData(id: document.documentID, data:data) {
+        if let data = document.data(), let photo = parsePhotoData(id: documentID, data:data) {
           result = photo
         }
       } else {
@@ -98,7 +77,6 @@ class TripViewModel: ObservableObject {
     }
     
     dispatchGroup.notify(queue: DispatchQueue.global()) {
-      print("complete fetching images for all travel partners")
       completion(result)
     }
   }
@@ -137,6 +115,7 @@ class TripViewModel: ObservableObject {
         }
       }
     }
+    
     //    db.collection("trips")
     //    .rx
     //    .getDocuments()

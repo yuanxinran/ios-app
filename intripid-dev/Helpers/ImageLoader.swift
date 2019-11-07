@@ -6,11 +6,65 @@
 //  Copyright © 2019 zona. All rights reserved.
 //
 
-//import Foundation
-//import SwiftUI
-//import Combine
+import Foundation
+import SwiftUI
+import Combine
 //import FirebaseStorage
-//
+
+struct URLImage: View {
+  
+  @ObservedObject private var imageLoader = ImageLoader()
+  
+  var placeholder: Image
+  
+  init(url: String, placeholder: Image = Image(systemName: "photo")) {
+    self.placeholder = placeholder
+    self.imageLoader.load(url: url)
+  }
+  
+  var body: some View {
+    if let uiImage = self.imageLoader.downloadedImage {
+      return Image(uiImage: uiImage).resizable()
+        .scaledToFill()
+        .frame(width: UIScreen.main.bounds.width/3)
+        .clipped()
+        .cornerRadius(10)
+    } else {
+      return placeholder.resizable()
+        .scaledToFill()
+        .frame(width: UIScreen.main.bounds.width/3)
+        .clipped()
+        .cornerRadius(10)
+    }
+  }
+  
+}
+
+class ImageLoader: ObservableObject {
+  @Published var downloadedImage: UIImage?
+  
+  
+  func load(url: String) {
+    
+    guard let imageURL = URL(string: url) else {
+      fatalError("ImageURL is not correct!")
+    }
+    
+    URLSession.shared.dataTask(with: imageURL) { data, response, error in
+      
+      guard let data = data, error == nil else {
+        return
+      }
+      
+      self.downloadedImage = UIImage(data: data)
+      
+    }.resume()
+    
+  }
+  
+  
+}
+
 //let placeholder = UIImage(named: "person_4")!
 //
 //struct FirebaseImage : View {
@@ -37,7 +91,7 @@
 //
 //final class Loader : ObservableObject {
 //  @Published var data : Data?
-//  
+//
 //  init(_ id: String){
 //      // the path to the image
 //    let url = "\(id)"
@@ -49,7 +103,7 @@
 //      }
 //      self.data = data
 //
-//          
+//
 //      }
 //  }
 //}

@@ -84,7 +84,7 @@ struct NewTripSelectCover: View {
   }
   
   func createTrip(){
-    let database = FirbaseConnection()
+    let database = CreateTripViewModel()
     self.clickedCreate = true
     
     database.createTrip(title: self.title, travelPartners: self.travelPartners, photos: self.imageAssetList, photoImages: self.imageList, coverImage: self.coverImage, userID: "xinrany") {(result: String?) in
