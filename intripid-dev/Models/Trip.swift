@@ -52,7 +52,7 @@ struct Trip: Identifiable {
 extension Trip: Equatable {
     static func == (lhs: Trip, rhs: Trip) -> Bool {
         return
-            lhs.docID == rhs.docID &&
+            lhs.id == rhs.id &&
             lhs.title == rhs.title
     }
 }

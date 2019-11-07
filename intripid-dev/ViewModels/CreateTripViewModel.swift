@@ -155,7 +155,6 @@ class CreateTripViewModel {
     }
     
     dispatchGroup.notify(queue: DispatchQueue.global()) {
-      print("completion handler called")
       completion(imageIDs)
     }
     
