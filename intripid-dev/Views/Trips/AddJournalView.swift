@@ -31,10 +31,6 @@ struct AddJournalView: View {
         Text("Adding a Journal Entry")
           .font(.title)
           .fontWeight(.bold)
-        
-//        TextField("Enter your name", text: $name)
-//        Text("Hello, \(name)!")
-        
         ZStack {
           Rectangle()
             .fill(LinearGradient(

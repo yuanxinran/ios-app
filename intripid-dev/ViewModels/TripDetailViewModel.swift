@@ -126,7 +126,9 @@ class TripDetailViewModel: ObservableObject {
                 (coverPhoto) in
                 let tripResult = self.parseTripDetailData(id: document.documentID, data: data, coverImage: coverPhoto, photos: photos, journals: journals, travelPartners: travelPartners)
                 if let tripResult = tripResult{
+                  print("Here is the trip result...")
                   self.trip = [tripResult]
+                  print(self.trip)
                 }
               }
             }
@@ -136,8 +138,6 @@ class TripDetailViewModel: ObservableObject {
         print("Document does not exist")
       }
     }
-    
-    
   }
   
   

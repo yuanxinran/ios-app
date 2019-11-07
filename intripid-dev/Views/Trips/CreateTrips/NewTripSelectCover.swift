@@ -85,7 +85,7 @@ struct NewTripSelectCover: View {
   }
   
   func createTrip(){
-    let database = CreateTripViewModel()
+    let database = EditTripViewModel()
     self.clickedCreate = true
     
     database.createTrip(title: self.title, travelPartners: self.travelPartners, photos: self.imageAssetList, photoImages: self.imageList, coverImage: self.coverImage, userID: "xinrany") {(result: String?) in
@@ -104,8 +104,6 @@ struct NewTripSelectCover: View {
         VStack{
           if createCompleted {
               NewTripCreationView()
-//              Button(action: {self.fullDissmiss = true})
-//              { Text("Pop two levels to Master View.") }
           } else {
             SplashScreen()
           }

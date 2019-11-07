@@ -16,9 +16,15 @@ struct TripDetailTestView: View {
   //  @EnvironmentObject var settings: UserSettings
   
   init(tripID: String){
-    print("[TripDetailTestView] init")
     self.tripID = tripID
     self.viewModel = TripDetailViewModel(tripID: tripID)
+    
+  }
+  
+  
+  func refresh() {
+    self.viewModel.fetchData()
+    print("refresh called")
   }
   
   var body : some View{
@@ -28,7 +34,7 @@ struct TripDetailTestView: View {
         ScrollView {
           VStack (alignment: .leading){
             
-            TripCoverView(trip: viewModel.trip[0])
+            TripCoverView(trip: viewModel.trip[0], parent: self)
             
             //TODO: Integrate Map View!
             Text("Map")
@@ -54,7 +60,7 @@ struct TripDetailTestView: View {
         Text("Loading your trip....")
       }
       
-    }.onAppear(perform: viewModel.fetchData)
+    }.onAppear(perform: self.refresh)
     
   }
 }

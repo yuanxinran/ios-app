@@ -11,15 +11,26 @@ import FirebaseFirestore
 import Photos
 import PhotosUI
 import FirebaseStorage
+import SwiftUI
 
-class CreateTripViewModel {
+
+extension UIColor {
+    var coreImageColor: CIColor {
+        return CIColor(color: self)
+    }
+    var components: (red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat) {
+        let coreImageColor = self.coreImageColor
+        return (coreImageColor.red, coreImageColor.green, coreImageColor.blue, coreImageColor.alpha)
+    }
+}
+
+class EditTripViewModel {
 
   var ref: DocumentReference? = nil
   var db: Firestore!
 
 
   init(){
-    print("initiiii")
     db = Firestore.firestore()
   }
   
@@ -28,7 +39,6 @@ class CreateTripViewModel {
     var docID: String? = nil
     var startDate: NSDate? = nil
     var endDate: NSDate? = nil
-    //TODO: ADD PHOTOS TO THE CLOUD STORAGE
     
     let sortedPhotos = photos.filter{ $0.creationDate != nil }.sorted {
       ($0.creationDate!) < ($1.creationDate!)
@@ -54,7 +64,7 @@ class CreateTripViewModel {
         print("Trip added with ID: \(ref!.documentID)")
         
         docID = ref!.documentID
-        self.addPhotosToTrip(photos: photos, photoImages: photoImages, tripRef: ref!, userID: userID,coverImage: coverImage) { (result: [String]) in
+        self.addPhotosToTrip(photos: photos, photoImages: photoImages, tripID: docID!, coverImage: coverImage) { (result: [String]) in
 
           for r in result {
             print(r)
@@ -65,9 +75,30 @@ class CreateTripViewModel {
     }
   }
   
+    
+  func addJournalToTrip(title: String, content: String, startColor: String, endColor: String, dateTime: NSDate, tripID: String, completion: @escaping (_ result:String) -> Void){
+      var journalRef: DocumentReference? = nil
+      journalRef = db.collection("trips").document(tripID).collection("journals").addDocument(data: [
+        "title": title,
+        "content": content,
+        "dateTime": dateTime,
+        "startColor": startColor,
+        "endColor": endColor
+        
+      ]) { err in
+      if let err = err {
+        print("getting error when creating photos : \(err)")
+        return
+      }
+        
+      completion(journalRef!.documentID)
+    }
+  }
+    
   
 
-  func addPhotosToTrip(photos: [PHAsset], photoImages: [UIImage], tripRef: DocumentReference, userID: String, coverImage: Int, completion: @escaping (_ result:[String]) -> Void){
+  func addPhotosToTrip(photos: [PHAsset], photoImages: [UIImage], tripID: String, coverImage: Int?, completion: @escaping (_ result:[String]) -> Void){
+    let tripRef = db.collection("trips").document(tripID)
     let storage = Storage.storage()
     var imageIDs = [String]()
 //    let locations = [PhotoLocation]()
@@ -81,7 +112,7 @@ class CreateTripViewModel {
       dispatchGroup.enter()
       photo.getLocationDataForPhoto {
         (result: PhotoLocation?, error: Error?) in
-        let data : [String : Any]
+        var data : [String : Any]
         if let result = result {
           //the photo has location information
           data =  ["dateTime": photo.creationDate ?? NSNull(), "imagePath": "",
@@ -102,9 +133,8 @@ class CreateTripViewModel {
             dispatchGroup.leave()
             return
           } else {
-            print("photoid: \(photoRef!.documentID)")
             let storageRef = storage.reference()
-            let imageRef = storageRef.child("\(userID)/\(photoRef!.documentID).jpg")
+            let imageRef = storageRef.child("tripPhotos/\(photoRef!.documentID).jpg")
             
             let uploadData = photoImage.jpegData(compressionQuality: 1.0)
             if let uploadData = uploadData {
@@ -122,7 +152,7 @@ class CreateTripViewModel {
                       print("Error encountered when updating the trip information \(err)")
                     } else {
                       imageIDs.append(photoRef!.documentID)
-                      if num == coverImage {
+                      if let coverImage = coverImage, num == coverImage {
                         tripRef.updateData([
                           "coverImage": "\(photoRef!.documentID)"
                         ]) { err in
@@ -132,12 +162,10 @@ class CreateTripViewModel {
                           }
                           //coverimage case
                           //finished uploading the photo to the storage and reference to the database
-                          print("cover image uploaded")
                           dispatchGroup.leave()
                         }
                       } else {
                         //finished uploading the photo (not cover image)
-                        print("non cover image uploaded")
                         dispatchGroup.leave()
                       }
                     }
@@ -163,5 +191,6 @@ class CreateTripViewModel {
 
 
 }
+
 
 
