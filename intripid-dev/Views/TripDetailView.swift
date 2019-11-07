@@ -9,6 +9,7 @@ import SwiftUI
 
 struct TripDetailView: View {
   let trip: Trip
+//  var tripID: String
 //
 //  //ACTION SHEET
 //  //TODO: Refactor
@@ -31,7 +32,7 @@ struct TripDetailView: View {
       ScrollView {
         VStack (alignment: .leading){
 
-          TripCoverView(trip: trip)
+//          TripCoverView(trip: trip)
 
           //TODO: Integrate Map View!
           Text("Map")
@@ -44,37 +45,20 @@ struct TripDetailView: View {
           Text("Entries")
             .padding(.leading)
             .font(.headline)
-          TripPhotosView(photos: photosData)
+//          TripPhotosView(photos: photosData)
           Spacer()
         }
       }.edgesIgnoringSafeArea(.all)
 
       VStack (alignment: .center) {
         Spacer()
-
-        //Show Action Sheet
-//        Button(action: {
-//            self.showActionSheet.toggle()
-//        }) {
-//          Text("Display Action Sheet")
-//            .foregroundColor(.white)
-//        }.padding(10)
-//        .background(Color(.sRGB, red: 200/255, green: 200/255, blue: 200/255, opacity: 0.7))
-//        .clipShape(Capsule())
-//        .actionSheet(isPresented: $showActionSheet, content: {
-//            self.actionSheet })
-//        //Show Adding of Entry
-//        NavigationLink(destination: ProfileView(users: usersData)) {
-//            Text("Add Entry")
-//            .padding(10)
-//            .clipShape(Capsule())
-//        }
       }
     } //ZStack
   } //view
 } //struct
 struct TripDetailView_Previews: PreviewProvider {
     static var previews: some View {
-      TripDetailView(trip: tripsData[0])
+      Text("Sorry no preview available lool")
+//      TripDetailView(trip: tripsData[0])
     }
 }

@@ -33,16 +33,24 @@ extension PHAsset {
       let lng = location.coordinate.longitude
       var country = ""
       var city = ""
+      var state = ""
       location.geocode { placemarks, error in
         
         if let placemarks = placemarks, placemarks.count >= 0 {
           let place = placemarks[0]
+//          print("country : \(place.country ?? "")")
+//          print("city : \(place.locality ?? "")")
+//          print("name : \(place.name ?? "")")
+//          print("state : \(place.administrativeArea ?? "")")
+//          print("sub: \(place.subAdministrativeArea ?? "")")
+          
           country = place.country ?? ""
           city = place.locality ?? (place.name ?? "")
+          state = place.administrativeArea ?? ""
         }
 
 //        guard let city = city, let country = country, error == nil else { return }
-        completion(PhotoLocation(city: city, country: country, latitude: lat, longitude: lng), error)
+        completion(PhotoLocation(city: city, state: state, country: country, latitude: lat, longitude: lng), error)
       }
     }
   }

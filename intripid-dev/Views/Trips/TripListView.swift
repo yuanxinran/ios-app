@@ -54,7 +54,6 @@ struct TripListTravelPartnersView : View{
         TripListTravelPartnerImageCached(urlString: imageURL)
 
       }
-      
     }
   }
   
@@ -67,7 +66,7 @@ struct TripListView: View {
     //Trips
     List {
       ForEach(trips) { trip in
-        NavigationLink(destination: TripDetailView(trip: trip)) {
+        NavigationLink(destination: TripDetailTestView(tripID: trip.id)) {
           
           // Cover Photo
            CoverImageCached(urlString: trip.coverImage?.imagePath ?? "")

@@ -9,9 +9,13 @@
 import Foundation
 import SwiftUI
 
+
+
 struct Journal{
+  var id: String
   var dateTime: NSDate
-  var title: String?
+  var title: String
   var content: String
-  var backgroundPicture: Color
+  var gradientStart: Color
+  var gradientEnd: Color
 }
