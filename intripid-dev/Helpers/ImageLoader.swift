@@ -17,7 +17,7 @@ struct URLImage: View {
   
   var placeholder: Image
   
-  init(url: String, placeholder: Image = Image(systemName: "photo")) {
+  init(url: String, placeholder: Image = Image(systemName: "rectangle.fill")) {
     self.placeholder = placeholder
     self.imageLoader.load(url: url)
   }

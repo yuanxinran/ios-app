@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		1CB39E07236B8341005E01F9 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CB39E06236B8341005E01F9 /* User.swift */; };
+		1CB39EAB2374138A005E01F9 /* ToRootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CB39EA82374138A005E01F9 /* ToRootViewController.swift */; };
+		1CB39EAC2374138A005E01F9 /* NewTripCreationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CB39EA92374138A005E01F9 /* NewTripCreationView.swift */; };
+		1CB39EAD2374138A005E01F9 /* ToRootViewControllerWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CB39EAA2374138A005E01F9 /* ToRootViewControllerWrapper.swift */; };
 		1CB7DDC323668E8E000ED455 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CB7DDC223668E8E000ED455 /* AppDelegate.swift */; };
 		1CB7DDC523668E8E000ED455 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CB7DDC423668E8E000ED455 /* SceneDelegate.swift */; };
 		1CB7DDC823668E8E000ED455 /* intripid_dev.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1CB7DDC623668E8E000ED455 /* intripid_dev.xcdatamodeld */; };
@@ -83,6 +86,9 @@
 		007FE4342221466759D186A9 /* Pods_intripid_devUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_intripid_devUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		016774B7A290AAC743A0CA56 /* Pods-intripid-devTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-intripid-devTests.debug.xcconfig"; path = "Target Support Files/Pods-intripid-devTests/Pods-intripid-devTests.debug.xcconfig"; sourceTree = "<group>"; };
 		1CB39E06236B8341005E01F9 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		1CB39EA82374138A005E01F9 /* ToRootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToRootViewController.swift; sourceTree = "<group>"; };
+		1CB39EA92374138A005E01F9 /* NewTripCreationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewTripCreationView.swift; sourceTree = "<group>"; };
+		1CB39EAA2374138A005E01F9 /* ToRootViewControllerWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToRootViewControllerWrapper.swift; sourceTree = "<group>"; };
 		1CB7DDBF23668E8E000ED455 /* intripid.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = intripid.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1CB7DDC223668E8E000ED455 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1CB7DDC423668E8E000ED455 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -338,6 +344,9 @@
 		54817037236E398E00FEF1C3 /* CreateTrips */ = {
 			isa = PBXGroup;
 			children = (
+				1CB39EA92374138A005E01F9 /* NewTripCreationView.swift */,
+				1CB39EA82374138A005E01F9 /* ToRootViewController.swift */,
+				1CB39EAA2374138A005E01F9 /* ToRootViewControllerWrapper.swift */,
 				5411B0CB2373C89B00833764 /* SplashScreen.swift */,
 				54817038236E39CE00FEF1C3 /* CreateView.swift */,
 				5411B0DC2374223400833764 /* ToRootViewController.swift */,
@@ -653,12 +662,15 @@
 				1CB7DE052366C7CE000ED455 /* TripView.swift in Sources */,
 				1CD133E62367642B008230B7 /* TripViewModePicker.swift in Sources */,
 				5431E914236FDC2100139BE4 /* NewTripSelectCover.swift in Sources */,
+				1CB39EAB2374138A005E01F9 /* ToRootViewController.swift in Sources */,
 				5411B0CC2373C89B00833764 /* SplashScreen.swift in Sources */,
+				1CB39EAD2374138A005E01F9 /* ToRootViewControllerWrapper.swift in Sources */,
 				5411B0C62373C7F900833764 /* Parsers.swift in Sources */,
 				5411B0D12373D6C000833764 /* EditTripAddPhotos.swift in Sources */,
 				1CB7DDC523668E8E000ED455 /* SceneDelegate.swift in Sources */,
 				5411B0D9237421B400833764 /* NewTripCreationView.swift in Sources */,
 				54817039236E39CE00FEF1C3 /* CreateView.swift in Sources */,
+				1CB39EAC2374138A005E01F9 /* NewTripCreationView.swift in Sources */,
 				5411B0CE2373C8C300833764 /* TripDetailTestView.swift in Sources */,
 				1CB7DDCA23668E8E000ED455 /* ContentView.swift in Sources */,
 				5411B0D52373F5E600833764 /* EditTripAddJournal.swift in Sources */,
