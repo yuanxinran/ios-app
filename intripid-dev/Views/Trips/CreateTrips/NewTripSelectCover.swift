@@ -106,7 +106,9 @@ struct NewTripSelectCover: View {
 //          Image("generating").resizable().scaledToFit().frame(width: UIScreen.main.bounds.width * 0.3, height: UIScreen.main.bounds.width * 0.3).clipped()
 //          Text("Generating Your Trip").font(.title)
           if createCompleted {
-            GreenButton("GoToTrip")
+            NavigationLink(destination: ContentView()){
+              GreenButton("GoToTrip")
+            }
           } else {
             SplashScreen()
           }
