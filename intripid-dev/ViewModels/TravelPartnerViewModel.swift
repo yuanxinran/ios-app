@@ -15,7 +15,6 @@ class TravelPartnerViewModel : ObservableObject {
   @Published var travelPartners = [TravelPartner]()
   var userID: String
   let currentUID = "mD6zAy0T0oh9qAYajiyE"
-  private var disposables = Set<AnyCancellable>()
 
   
   init(){

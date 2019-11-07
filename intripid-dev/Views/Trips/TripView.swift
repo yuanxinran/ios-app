@@ -18,6 +18,10 @@ struct TripView: View {
     self.viewModel = TripViewModel(userID: currentUserDoc)
   }
   
+  func refresh(){
+    print("ok now i know that refresh is called")
+    self.viewModel.fetchData()
+  }
     
   var body: some View {
       NavigationView{
@@ -26,15 +30,14 @@ struct TripView: View {
           TripViewModePicker(viewMode: $viewMode, selectedViewMode: $selectedViewMode)
           
           if selectedViewMode == 0 {
-            TripListView(trips: self.viewModel.trips)
+            TripListView(trips: self.viewModel.trips, numbers: self.viewModel.numbers, parent: self)
           } else {
             MapViewControllerWrapper()
           }
           
           }.navigationBarTitle(Text("All Trips"), displayMode: .automatic).navigationBarItems(trailing:
           NavigationLink("Create",destination: CreateView()))
-        }.onAppear(perform: viewModel.fetchData)
-        .edgesIgnoringSafeArea(.all)
+      }.onAppear(perform: self.refresh).edgesIgnoringSafeArea(.all)
   }
 }
 

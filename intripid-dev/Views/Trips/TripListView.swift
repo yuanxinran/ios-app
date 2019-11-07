@@ -60,30 +60,32 @@ struct TripListTravelPartnersView : View{
 }
 
 struct TripListView: View {
-  let trips: [Trip]
+  var trips: [Trip]
+  var numbers: String = ""
+  var parent: TripView
   
   var body: some View {
     //Trips
     List {
-      ForEach(trips) { trip in
-        NavigationLink(destination: TripDetailTestView(tripID: trip.id)) {
+      ForEach((0 ..< trips.count), id:\.self) { index in
+        NavigationLink(destination: TripDetailTestView(tripID: self.trips[index].id, parent: self.parent)) {
           
           // Cover Photo
-           CoverImageCached(urlString: trip.coverImage?.imagePath ?? "")
+          CoverImageCached(urlString: self.trips[index].coverImage?.imagePath ?? "")
    
           // Trip Information
           VStack (alignment: .leading){
-            Text("\(trip.title)")
+            Text("\(self.trips[index].title)")
             Text("\(self.trips.count)")
-            Text("\(trip.startDate.formatDate())")
+            Text("\(self.trips[index].startDate.formatDate())")
               .font(.caption)
               .padding(.top, 10)
             
-            Text("\(trip.photoNum) Photos, \(trip.journalNum) Journals")
+            Text("\(self.trips[index].photoNum) Photos, \(self.trips[index].journalNum) Journals")
               .font(.caption)
             
             // Travel Partners
-            TripListTravelPartnersView(profileImages: trip.travelPartnerImages)
+            TripListTravelPartnersView(profileImages: self.trips[index].travelPartnerImages)
           }
         }
       }
@@ -93,6 +95,6 @@ struct TripListView: View {
 
 struct TripListView_Previews: PreviewProvider {
     static var previews: some View {
-      TripListView(trips: tripsData)
+      Text("no available")
     }
 }

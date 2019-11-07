@@ -59,8 +59,7 @@ class ImageLoader: ObservableObject {
       DispatchQueue.main.async {
         self.downloadedImage = UIImage(data: data)
       }
-      
-      
+
     }.resume()
     
   }

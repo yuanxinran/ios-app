@@ -23,6 +23,9 @@ func parseTripData(id: String, data: JSONDictionary, coverImage: Photo?, photoNu
   return nil
 }
 
+
+
+
 func parsePhotoData(id: String, data: JSONDictionary) -> Photo? {
   var photoLocation : PhotoLocation?
   if let locationData = data["photoLocation"] as? [String:AnyObject], let geopoint = locationData["geocoding"] as? GeoPoint, let city = locationData["city"] as? String, let country = locationData["country"] as? String {
