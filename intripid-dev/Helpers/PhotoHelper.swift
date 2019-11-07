@@ -60,6 +60,8 @@ extension PHAsset {
 
 
 
+
+
 //guard let data = data else {
 //  print("Error")
 //  return

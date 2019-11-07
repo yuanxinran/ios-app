@@ -107,8 +107,6 @@ class EditTripViewModel {
       var photoRef: DocumentReference? = nil
       let photo = photos[num]
       let photoImage = photoImages[num]
-//      print(photo)
-      print("photo \(num)")
       dispatchGroup.enter()
       photo.getLocationDataForPhoto {
         (result: PhotoLocation?, error: Error?) in

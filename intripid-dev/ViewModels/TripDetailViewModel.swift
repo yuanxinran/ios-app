@@ -23,7 +23,7 @@ class TripDetailViewModel: ObservableObject {
 
   
   
-  func parseTripDetailData(id: String, data: JSONDictionary, coverImage: Photo?, photos: [Photo], journals: [Journal], travelPartners: [TravelPartner]) -> TripDetail? {
+  func parseTripDetailData(id: String, data: JSONDictionary, coverImage: Photo?, entries: [Entry], travelPartners: [TravelPartner]) -> TripDetail? {
     
     if let title = data["title"] as? String, let startDate = data["startDate"] as? Timestamp, let endDate = data["endDate"] as? Timestamp {
       
@@ -34,7 +34,7 @@ class TripDetailViewModel: ObservableObject {
          tripLocation = TripLocation(city: "Pittsburgh", state: "PA", country: "United States", latitude: 40.44062, longitude: -79.99589)
       }
       
-      let trip = TripDetail(id: id, title: title, coverImage: coverImage, photos: photos, journals: journals, startDate: startDate.dateValue() as NSDate, endDate: endDate.dateValue() as NSDate, travelPartners: travelPartners, locations: [tripLocation])
+      let trip = TripDetail(id: id, title: title, coverImage: coverImage, entries: entries, startDate: startDate.dateValue() as NSDate, endDate: endDate.dateValue() as NSDate, travelPartners: travelPartners, locations: [tripLocation])
       
        return trip
      }
@@ -124,7 +124,14 @@ class TripDetailViewModel: ObservableObject {
               (travelPartners) in
               self.fetchCoverPhoto(documentID: data["coverImage"] as! String) {
                 (coverPhoto) in
-                let tripResult = self.parseTripDetailData(id: document.documentID, data: data, coverImage: coverPhoto, photos: photos, journals: journals, travelPartners: travelPartners)
+                var entries = [Entry]()
+                let photoEntries = photos.map {Entry(journal: nil, photo: $0, type: "photo")}
+                let journalEntries = journals.map{Entry(journal: $0, photo: nil, type:"journal")}
+                entries = (photoEntries + journalEntries).sorted(by: <)
+                let tripResult = self.parseTripDetailData(id: document.documentID, data: data, coverImage: coverPhoto, entries: entries, travelPartners: travelPartners)
+  
+                
+
                 if let tripResult = tripResult{
                   self.trip = [tripResult]
                 }

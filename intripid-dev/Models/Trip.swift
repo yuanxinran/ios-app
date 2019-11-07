@@ -16,8 +16,7 @@ struct TripDetail: Identifiable {
   var id: String
   var title: String
   var coverImage: Photo?
-  var photos: [Photo]
-  var journals: [Journal]
+  var entries: [Entry]
   var startDate: NSDate
   var endDate: NSDate
   var travelPartners: [TravelPartner]
