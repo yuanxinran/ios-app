@@ -76,8 +76,7 @@ struct TripListView: View {
           // Trip Information
           VStack (alignment: .leading){
             Text("\(self.trips[index].title)")
-            Text("\(self.trips.count)")
-            Text("\(self.trips[index].startDate.formatDate())")
+            Text("\(self.trips[index].startDate.formatDate()) - \(self.trips[index].endDate.formatDate())")
               .font(.caption)
               .padding(.top, 10)
             

@@ -14,7 +14,7 @@ extension NSDate {
     //    dateFormatterGet.dateFormat = "yyyy-MM-dd HH:mm:ss"
     
     let dateFormatterPrint = DateFormatter()
-    dateFormatterPrint.dateFormat = "MMM dd,yyyy"
+    dateFormatterPrint.dateFormat = "MM/dd/yyyy"
     
     //    print(dateFormatterPrint.string(from: self as Date))
     return dateFormatterPrint.string(from: self as Date)

@@ -18,7 +18,7 @@ struct TripDetailTestView: View {
   
   var btnBack : some View { Button(action: {
     self.presentationMode.wrappedValue.dismiss()
-    self.parent.refresh()
+    self.parent.refreshTripData(tripID: self.tripID)
   }) {
     HStack {
       Text("All Trips")
@@ -59,7 +59,7 @@ struct TripDetailTestView: View {
             Text("Entries")
               .padding(.leading)
               .font(.headline)
-            TripPhotosView(photos: viewModel.trip[0].photos)
+            TripEntriesView(entries: viewModel.trip[0].entries)
             Spacer()
           }
         }.edgesIgnoringSafeArea(.all)
