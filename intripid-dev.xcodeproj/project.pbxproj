@@ -47,6 +47,8 @@
 		5411B0DB237421FD00833764 /* ToRootViewControllerWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5411B0DA237421FD00833764 /* ToRootViewControllerWrapper.swift */; };
 		5411B0DD2374223400833764 /* ToRootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5411B0DC2374223400833764 /* ToRootViewController.swift */; };
 		5411B0E92374F09400833764 /* EntryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5411B0E82374F09400833764 /* EntryCell.swift */; };
+		5411B0ED23756D8800833764 /* ParserTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5411B0EC23756D8700833764 /* ParserTest.swift */; };
+		5411B0EF237570C400833764 /* Entry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5411B0EE237570C400833764 /* Entry.swift */; };
 		5431E908236F726F00139BE4 /* PhotoHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5431E907236F726F00139BE4 /* PhotoHelper.swift */; };
 		5431E911236FD89A00139BE4 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5431E90F236FD89A00139BE4 /* Photo.swift */; };
 		5431E912236FD89A00139BE4 /* Journal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5431E910236FD89A00139BE4 /* Journal.swift */; };
@@ -65,6 +67,7 @@
 		5481703E236E7ADB00FEF1C3 /* RemoteImage in Frameworks */ = {isa = PBXBuildFile; productRef = 5481703D236E7ADB00FEF1C3 /* RemoteImage */; };
 		54817040236E972D00FEF1C3 /* NewTripAddPhotos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5481703F236E972D00FEF1C3 /* NewTripAddPhotos.swift */; };
 		54817043236F01BD00FEF1C3 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54817042236F01BD00FEF1C3 /* Button.swift */; };
+		54AAEF9E2375B17700F3E2E0 /* HelperTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54AAEF9D2375B17700F3E2E0 /* HelperTest.swift */; };
 		BE1514D608F2BECC91AE6B61 /* Pods_intripid_devTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41F6F92022AA841B35DF4631 /* Pods_intripid_devTests.framework */; };
 		D593E15DF7A1365FB43AED88 /* Pods_intripid_dev.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF2AC859EEFB42893449A814 /* Pods_intripid_dev.framework */; };
 /* End PBXBuildFile section */
@@ -135,6 +138,8 @@
 		5411B0DA237421FD00833764 /* ToRootViewControllerWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToRootViewControllerWrapper.swift; sourceTree = "<group>"; };
 		5411B0DC2374223400833764 /* ToRootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToRootViewController.swift; sourceTree = "<group>"; };
 		5411B0E82374F09400833764 /* EntryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntryCell.swift; sourceTree = "<group>"; };
+		5411B0EC23756D8700833764 /* ParserTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParserTest.swift; sourceTree = "<group>"; };
+		5411B0EE237570C400833764 /* Entry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entry.swift; sourceTree = "<group>"; };
 		5431E907236F726F00139BE4 /* PhotoHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoHelper.swift; sourceTree = "<group>"; };
 		5431E90F236FD89A00139BE4 /* Photo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
 		5431E910236FD89A00139BE4 /* Journal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Journal.swift; sourceTree = "<group>"; };
@@ -152,6 +157,7 @@
 		54817038236E39CE00FEF1C3 /* CreateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateView.swift; sourceTree = "<group>"; };
 		5481703F236E972D00FEF1C3 /* NewTripAddPhotos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTripAddPhotos.swift; sourceTree = "<group>"; };
 		54817042236F01BD00FEF1C3 /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
+		54AAEF9D2375B17700F3E2E0 /* HelperTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperTest.swift; sourceTree = "<group>"; };
 		768284AD6014BAF1EAAAC6AA /* Pods-intripid-dev.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-intripid-dev.debug.xcconfig"; path = "Target Support Files/Pods-intripid-dev/Pods-intripid-dev.debug.xcconfig"; sourceTree = "<group>"; };
 		BF2AC859EEFB42893449A814 /* Pods_intripid_dev.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_intripid_dev.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9194F058AEDA7A9E7983020 /* Pods-intripid-dev.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-intripid-dev.release.xcconfig"; path = "Target Support Files/Pods-intripid-dev/Pods-intripid-dev.release.xcconfig"; sourceTree = "<group>"; };
@@ -271,6 +277,8 @@
 			isa = PBXGroup;
 			children = (
 				1CB7DDDC23668E93000ED455 /* intripid_devTests.swift */,
+				5411B0EC23756D8700833764 /* ParserTest.swift */,
+				54AAEF9D2375B17700F3E2E0 /* HelperTest.swift */,
 				1CB7DDDE23668E93000ED455 /* Info.plist */,
 			);
 			path = "intripid-devTests";
@@ -323,7 +331,6 @@
 			children = (
 				5431E907236F726F00139BE4 /* PhotoHelper.swift */,
 				5431E91B237054E400139BE4 /* DateHelper.swift */,
-				54817035236E1DA200FEF1C3 /* ImageLoader.swift */,
 				5411B0C52373C7F900833764 /* Parsers.swift */,
 			);
 			path = Helpers;
@@ -352,6 +359,7 @@
 			isa = PBXGroup;
 			children = (
 				1CB39E06236B8341005E01F9 /* User.swift */,
+				5411B0EE237570C400833764 /* Entry.swift */,
 				1CB7DDFE2366A6E7000ED455 /* Trip.swift */,
 				5431E910236FD89A00139BE4 /* Journal.swift */,
 				5431E90F236FD89A00139BE4 /* Photo.swift */,
@@ -380,6 +388,7 @@
 		54817041236F01A000FEF1C3 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				54817035236E1DA200FEF1C3 /* ImageLoader.swift */,
 				54817042236F01BD00FEF1C3 /* Button.swift */,
 				5411B0E82374F09400833764 /* EntryCell.swift */,
 				5411B0D62374155200833764 /* TextBox.swiftui.swift */,
@@ -674,6 +683,7 @@
 				5411B0CA2373C81B00833764 /* EditTripViewModel.swift in Sources */,
 				5431E908236F726F00139BE4 /* PhotoHelper.swift in Sources */,
 				1CBFDF38236811D00055EC34 /* TripPhotosView.swift in Sources */,
+				5411B0EF237570C400833764 /* Entry.swift in Sources */,
 				1CB39EB22374D676005E01F9 /* MapDetailViewControllerWrapper.swift in Sources */,
 				1CB7DDC323668E8E000ED455 /* AppDelegate.swift in Sources */,
 				5411B0C82373C81200833764 /* TripDetailViewModel.swift in Sources */,
@@ -713,7 +723,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				54AAEF9E2375B17700F3E2E0 /* HelperTest.swift in Sources */,
 				1CB7DDDD23668E93000ED455 /* intripid_devTests.swift in Sources */,
+				5411B0ED23756D8800833764 /* ParserTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -927,7 +939,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/intripid-dev.app/intripid-dev";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/intripid.app/intripid";
 			};
 			name = Debug;
 		};
@@ -950,7 +962,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/intripid-dev.app/intripid-dev";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/intripid.app/intripid";
 			};
 			name = Release;
 		};

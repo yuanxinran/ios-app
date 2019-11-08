@@ -24,10 +24,10 @@ class TravelPartnerViewModel : ObservableObject {
       
       for i in snap!.documentChanges{
         let doc = i.document
+        let data = doc.data() as JSONDictionary
         if i.type == .added {
-          if let firstName = doc.get("firstName") as? String, let lastName = doc.get("lastName") as? String{
-            let partnerData = TravelPartner(id: doc.documentID, firstName: firstName, lastName: lastName, profilePicture: doc.get("profilePicture") as? String ?? "")
-            self.travelPartners.append(partnerData)
+          if let partner = parseTravelPartnerData(id: doc.documentID, data: data){
+            self.travelPartners.append(partner)
           }
         }
         
@@ -46,4 +46,20 @@ class TravelPartnerViewModel : ObservableObject {
     }
   }
   
+}
+
+func getUserByID(userID: String, completion: @escaping (_ result: User?) -> Void) {
+  var user : User?
+  let userRef = Firestore.firestore().collection("users").document(userID)
+  userRef.getDocument { (document, error) in
+    if let document = document, document.exists {
+      let data = document.data()
+      if let data = data, let lastName = data["lastName"] as? String, let firstName=data["firstName"] as? String, let email = data["email"] as? String, let username = data["username"] as? String {
+        user = User(id: userID, firstName: firstName, lastName: lastName, email: email, username: username, profilePicture: data["profilePicture"] as? String ?? "")
+    } else {
+      print("Document does not exist")
+    }
+     completion(user)
+  }
+}
 }

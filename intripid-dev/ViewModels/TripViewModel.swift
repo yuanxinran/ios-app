@@ -97,6 +97,7 @@ class TripViewModel: ObservableObject {
                     if let trip = parseTripData(id: tripID, data: data, coverImage: coverResult, photoNum: photoNum, journalNum: journalNum, images: images) {
                       DispatchQueue.main.async {
                         self.trips[j] = trip
+                        self.trips = self.trips.sorted(by: > )
                       }
                     } else {
                       print("Error encountered parsing document \(document.documentID)")
@@ -131,10 +132,9 @@ class TripViewModel: ObservableObject {
                 self.fetchTravelPartnerPhoto(travelPartnerID: data["travelPartners"] as? [String] ?? []){
                   (images) in
                   if let trip = parseTripData(id: document.documentID, data: data, coverImage: coverResult, photoNum: photoNum, journalNum: journalNum, images: images) {
-                    print("trips")
-                    print(trip)
                     DispatchQueue.main.async {
                       self.trips.append(trip)
+                      self.trips = self.trips.sorted(by: > )
                     }
                   } else {
                     print("Error encountered parsing document \(document.documentID)")

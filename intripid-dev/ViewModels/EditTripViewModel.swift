@@ -94,6 +94,7 @@ class EditTripViewModel {
       completion(journalRef!.documentID)
     }
   }
+  
     
   func updateDates(photos:[PHAsset], tripID: String, completion: @escaping () -> () ){
     var startDate: NSDate? = nil
