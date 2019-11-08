@@ -59,8 +59,8 @@ struct TripEntriesView: View {
   }
 }
 
-struct TripEntriesView_Previews: PreviewProvider {
-  static var previews: some View {
-    Text("not available")
-  }
-}
+//struct TripEntriesView_Previews: PreviewProvider {
+//  static var previews: some View {
+//    Text("not available")
+//  }
+//}

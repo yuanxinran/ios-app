@@ -48,7 +48,12 @@ extension TripLocation: Equatable {
 extension TripDetail: Equatable {
   static func == (lhs: TripDetail, rhs: TripDetail) -> Bool {
     return
-      lhs.id == rhs.id && lhs.title == rhs.title && lhs.coverImage == rhs.coverImage && lhs.entries == rhs.entries && lhs.startDate == rhs.startDate && lhs.endDate == rhs.endDate && lhs.travelPartners == rhs.travelPartners
+      lhs.id == rhs.id && lhs.title == rhs.title &&
+        lhs.coverImage == rhs.coverImage &&
+        lhs.entries == rhs.entries &&
+        lhs.startDate == rhs.startDate &&
+        lhs.endDate == rhs.endDate &&
+        lhs.travelPartners == rhs.travelPartners
   }
 }
 

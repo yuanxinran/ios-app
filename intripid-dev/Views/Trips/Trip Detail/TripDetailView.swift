@@ -56,9 +56,9 @@ struct TripDetailView: View {
     } //ZStack
   } //view
 } //struct
-struct TripDetailView_Previews: PreviewProvider {
-    static var previews: some View {
-      Text("Sorry no preview available lool")
-//      TripDetailView(trip: tripsData[0])
-    }
-}
+
+//struct TripDetailView_Previews: PreviewProvider {
+//    static var previews: some View {
+//      Text("Sorry no preview available lool")
+//    }
+//}

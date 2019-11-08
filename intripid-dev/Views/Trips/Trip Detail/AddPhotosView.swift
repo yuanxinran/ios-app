@@ -132,8 +132,8 @@ struct AddPhotosView: View {
 //    }
 //}
 
-struct AddPhotosView_Previews: PreviewProvider {
-  static var previews: some View {
-    AddPhotosView(onDismiss: {return})
-  }
-}
+//struct AddPhotosView_Previews: PreviewProvider {
+//  static var previews: some View {
+//    AddPhotosView(onDismiss: {return})
+//  }
+//}
