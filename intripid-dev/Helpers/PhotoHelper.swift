@@ -38,18 +38,11 @@ extension PHAsset {
         
         if let placemarks = placemarks, placemarks.count >= 0 {
           let place = placemarks[0]
-//          print("country : \(place.country ?? "")")
-//          print("city : \(place.locality ?? "")")
-//          print("name : \(place.name ?? "")")
-//          print("state : \(place.administrativeArea ?? "")")
-//          print("sub: \(place.subAdministrativeArea ?? "")")
-          
           country = place.country ?? ""
           city = place.locality ?? (place.name ?? "")
           state = place.administrativeArea ?? ""
         }
 
-//        guard let city = city, let country = country, error == nil else { return }
         completion(PhotoLocation(city: city, state: state, country: country, latitude: lat, longitude: lng), error)
       }
     }
@@ -57,36 +50,5 @@ extension PHAsset {
   
   
 }
-
-
-
-
-
-//guard let data = data else {
-//  print("Error")
-//  return
-//}
-//
-//let cityLong = ""
-//let cityShort = ""
-//let countryLong = ""
-//let countryShort = ""
-//
-//do {
-//  let swiftyjson = try JSON(data: data as Data)
-//
-//  if let locations = swiftyjson["results"][0]["address_componenets"].array {
-//    for locjson in locations {
-//      let longName = ""
-//      let type = locjson["types"].array![0].string!
-//      if type == "country"{
-//
-//      }
-//    }
-//  }
-//} catch {
-//    print("JSONSerialization error:", error)
-//}
-
 
 
