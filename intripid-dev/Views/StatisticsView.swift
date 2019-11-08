@@ -9,14 +9,19 @@
 import SwiftUI
 
 struct StatisticsView: View {
+  @ObservedObject private var viewModel : TripViewModel
+    
+    init(){
+      self.viewModel = TripViewModel(userID: currentUserDoc)
+    }
+  
   var body: some View {
     ScrollView {
       VStack(alignment: .leading) {
         Text("My Footsteps")
           .font(.title)
           .fontWeight(.bold)
-        //      TripMapView(viewModel: TripMapViewModel(trips: tripsData))
-        MapViewControllerWrapper()
+        MapViewControllerWrapper(trips: self.viewModel.trips)
           .frame(height: 300)
         
         HStack {
