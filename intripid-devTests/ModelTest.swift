@@ -147,7 +147,7 @@ class ModelTest: XCTestCase {
   }
   
   func testTravelPartnerModel() {
-    let testTravelPartner = TravelPartner(id: "partner_id", firstName: "partner_fname", lastName: "partner_lname", profilePicture: "parter_picture")
+    let testTravelPartner = TravelPartner(id: "partner_id", firstName: "partner_fname", lastName: "partner_lname", profilePicture: "partner_picture")
     let testTravelPartnerEquality = TravelPartner(id: "partner_id", firstName: "partner_fname", lastName: "partner_lname", profilePicture: "partner_picture")
     
     XCTAssertNotNil(testTravelPartner)

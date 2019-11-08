@@ -44,7 +44,7 @@ class MapDetailViewController: UIViewController, GMSMapViewDelegate {
     
     // MAP SETUP
     //TODO: generate latitude, longitude and zoom dynamically!
-    let camera = GMSCameraPosition.camera(withLatitude: 28.4813989, longitude: -81.5088355, zoom: 5)
+    let camera = GMSCameraPosition.camera(withLatitude: locationDetails[0].latitude, longitude: locationDetails[0].longitude, zoom: 10)
     let mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
     // MAP STYLING
     do {
