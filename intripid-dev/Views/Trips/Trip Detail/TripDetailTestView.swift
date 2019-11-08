@@ -52,8 +52,8 @@ struct TripDetailTestView: View {
             Text("Map")
               .padding(.leading)
               .font(.headline)
-            //TripMapView(viewModel: TripMapViewModel)
-            MapViewControllerWrapper().frame(height: 150)
+//            TripMapView(viewModel: TripMapViewModel)
+            MapDetailViewControllerWrapper(trip: viewModel.trip[0]).frame(height: 150)
             
             
             Text("Entries")

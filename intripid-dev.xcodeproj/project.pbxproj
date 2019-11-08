@@ -11,6 +11,8 @@
 		1CB39EAB2374138A005E01F9 /* ToRootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CB39EA82374138A005E01F9 /* ToRootViewController.swift */; };
 		1CB39EAC2374138A005E01F9 /* NewTripCreationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CB39EA92374138A005E01F9 /* NewTripCreationView.swift */; };
 		1CB39EAD2374138A005E01F9 /* ToRootViewControllerWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CB39EAA2374138A005E01F9 /* ToRootViewControllerWrapper.swift */; };
+		1CB39EB02374D663005E01F9 /* MapDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CB39EAF2374D663005E01F9 /* MapDetailViewController.swift */; };
+		1CB39EB22374D676005E01F9 /* MapDetailViewControllerWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CB39EB12374D676005E01F9 /* MapDetailViewControllerWrapper.swift */; };
 		1CB7DDC323668E8E000ED455 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CB7DDC223668E8E000ED455 /* AppDelegate.swift */; };
 		1CB7DDC523668E8E000ED455 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CB7DDC423668E8E000ED455 /* SceneDelegate.swift */; };
 		1CB7DDC823668E8E000ED455 /* intripid_dev.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1CB7DDC623668E8E000ED455 /* intripid_dev.xcdatamodeld */; };
@@ -89,6 +91,8 @@
 		1CB39EA82374138A005E01F9 /* ToRootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToRootViewController.swift; sourceTree = "<group>"; };
 		1CB39EA92374138A005E01F9 /* NewTripCreationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewTripCreationView.swift; sourceTree = "<group>"; };
 		1CB39EAA2374138A005E01F9 /* ToRootViewControllerWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToRootViewControllerWrapper.swift; sourceTree = "<group>"; };
+		1CB39EAF2374D663005E01F9 /* MapDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapDetailViewController.swift; sourceTree = "<group>"; };
+		1CB39EB12374D676005E01F9 /* MapDetailViewControllerWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapDetailViewControllerWrapper.swift; sourceTree = "<group>"; };
 		1CB7DDBF23668E8E000ED455 /* intripid.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = intripid.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1CB7DDC223668E8E000ED455 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1CB7DDC423668E8E000ED455 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -184,6 +188,7 @@
 		1CB39E05236A1196005E01F9 /* Trips */ = {
 			isa = PBXGroup;
 			children = (
+				1CB39EAE2374C9F4005E01F9 /* Trip Detail */,
 				5411B0CF2373D5A900833764 /* Edit Trips */,
 				54817037236E398E00FEF1C3 /* CreateTrips */,
 				1CB7DE042366C7CE000ED455 /* TripView.swift */,
@@ -191,12 +196,23 @@
 				1CB7DDF82366939C000ED455 /* TripListView.swift */,
 				5448731823733A4600791CBD /* MapViewController.swift */,
 				5448731623733A3D00791CBD /* MapViewControllerWrapper.swift */,
+			);
+			path = Trips;
+			sourceTree = "<group>";
+		};
+		1CB39EAE2374C9F4005E01F9 /* Trip Detail */ = {
+			isa = PBXGroup;
+			children = (
+				5411B0CD2373C8C200833764 /* TripDetailTestView.swift */,
+				5448730C2372424500791CBD /* TripDetailView.swift */,
 				1CBFDF37236811D00055EC34 /* TripPhotosView.swift */,
 				1CBFDF39236814050055EC34 /* TripCoverView.swift */,
 				1CBFDF3B236818E30055EC34 /* AddPhotosView.swift */,
 				1CBFDF3D23681AA80055EC34 /* AddJournalView.swift */,
+				1CB39EAF2374D663005E01F9 /* MapDetailViewController.swift */,
+				1CB39EB12374D676005E01F9 /* MapDetailViewControllerWrapper.swift */,
 			);
-			path = Trips;
+			path = "Trip Detail";
 			sourceTree = "<group>";
 		};
 		1CB7DDB623668E8E000ED455 = {
@@ -269,9 +285,7 @@
 			children = (
 				54817041236F01A000FEF1C3 /* Common */,
 				544873112373183C00791CBD /* ImageView */,
-				5411B0CD2373C8C200833764 /* TripDetailTestView.swift */,
 				1CB7DDC923668E8E000ED455 /* ContentView.swift */,
-				5448730C2372424500791CBD /* TripDetailView.swift */,
 				1CB39E05236A1196005E01F9 /* Trips */,
 				1CB7DDD023668E93000ED455 /* LaunchScreen.storyboard */,
 				1CB7DE002366C649000ED455 /* StatisticsView.swift */,
@@ -652,6 +666,7 @@
 				5411B0CA2373C81B00833764 /* EditTripViewModel.swift in Sources */,
 				5431E908236F726F00139BE4 /* PhotoHelper.swift in Sources */,
 				1CBFDF38236811D00055EC34 /* TripPhotosView.swift in Sources */,
+				1CB39EB22374D676005E01F9 /* MapDetailViewControllerWrapper.swift in Sources */,
 				1CB7DDC323668E8E000ED455 /* AppDelegate.swift in Sources */,
 				5411B0C82373C81200833764 /* TripDetailViewModel.swift in Sources */,
 				54817036236E1DA200FEF1C3 /* ImageLoader.swift in Sources */,
@@ -679,6 +694,7 @@
 				1CB7DE012366C649000ED455 /* StatisticsView.swift in Sources */,
 				1CB7DDFF2366A6E7000ED455 /* Trip.swift in Sources */,
 				5448731723733A3D00791CBD /* MapViewControllerWrapper.swift in Sources */,
+				1CB39EB02374D663005E01F9 /* MapDetailViewController.swift in Sources */,
 				1CB7DDC823668E8E000ED455 /* intripid_dev.xcdatamodeld in Sources */,
 				54817043236F01BD00FEF1C3 /* Button.swift in Sources */,
 				5448731923733A4600791CBD /* MapViewController.swift in Sources */,

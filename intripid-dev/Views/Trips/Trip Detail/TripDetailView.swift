@@ -39,7 +39,7 @@ struct TripDetailView: View {
             .padding(.leading)
           .font(.headline)
 //          TripMapView(viewModel: TripMapViewModel)
-          MapViewControllerWrapper().frame(height: 150)
+//          MapViewControllerWrapper(trips: ).frame(height: 150)
 
 
           Text("Entries")

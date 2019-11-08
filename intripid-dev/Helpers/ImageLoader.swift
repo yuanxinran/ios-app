@@ -24,17 +24,21 @@ struct URLImage: View {
   
   var body: some View {
     if let uiImage = self.imageLoader.downloadedImage {
-      return Image(uiImage: uiImage).resizable()
-        .scaledToFill()
+      return Image(uiImage: uiImage)
+        .resizable()
+        .aspectRatio(contentMode: .fit)
+//        .scaledToFill()
         .frame(width: UIScreen.main.bounds.width/3)
         .clipped()
-        .cornerRadius(10)
+        .cornerRadius(5)
     } else {
-      return placeholder.resizable()
-        .scaledToFill()
+      return placeholder
+        .resizable()
+        .aspectRatio(contentMode: .fit)
+//        .scaledToFill()
         .frame(width: UIScreen.main.bounds.width/3)
         .clipped()
-        .cornerRadius(10)
+        .cornerRadius(5)
     }
   }
   

@@ -39,7 +39,7 @@ struct TripView: View {
           if selectedViewMode == 0 {
             TripListView(trips: self.viewModel.trips, numbers: self.viewModel.numbers, parent: self)
           } else {
-            MapViewControllerWrapper()
+            MapViewControllerWrapper(trips: self.viewModel.trips)
           }
           
           }.navigationBarTitle(Text("All Trips"), displayMode: .automatic).navigationBarItems(trailing:
