@@ -75,26 +75,10 @@ class TripViewModel: ObservableObject {
         dispatchGroup.leave()
       }
     }
-    
     dispatchGroup.notify(queue: DispatchQueue.global()) {
       completion(result)
     }
   }
-  
-  //  func fetchRealTimePhotoJournal(){
-  //    for i in 0..<self.trips.count {
-  //      let tripID = self.trips[i].id
-  //      print("this shit is called")
-  //      db.collection("trips").document(tripID).collection("photos").addSnapshotListener  {(snap, error) in
-  //        for j in snap!.documentChanges{
-  //          print("wow document changes")
-  //          if j.type == .added {
-  //            self.trips[i].photoNum = self.trips[i].photoNum+1
-  //          }
-  //      }
-  //    }
-  //   }
-  //  }
   
   
   func refreshDataForTrip(tripID: String){
@@ -281,8 +265,6 @@ class TripViewModel: ObservableObject {
   init(userID: String) {
     db = Firestore.firestore()
     self.userID = userID
-    //    self.fetchData()
-    //    self.fetchRealTimePhotoJournal()
     
   }
   

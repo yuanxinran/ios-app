@@ -84,7 +84,7 @@ struct CoverImageCached : View {
   }
   var body: some View {
     RemoteImage(url: url, errorView: { error in
-      Image("picture_16")
+      Image("placeholder")
         .resizable()
         .scaledToFill()
         .frame(width: 120, height: 120)
@@ -98,7 +98,7 @@ struct CoverImageCached : View {
         .clipped()
         .cornerRadius(10)
     }, loadingView: {
-      Image("picture_16")
+      Image("placeholder")
         .resizable()
         .scaledToFill()
         .frame(width: 120, height: 120)
@@ -117,7 +117,7 @@ struct CoverImageDetailCached : View {
   }
   var body: some View {
     RemoteImage(url: url, errorView: { error in
-      Image("picture_16")
+      Image("placeholder")
         .resizable()
         .scaledToFill()
         .frame(height: CGFloat(250))
@@ -129,7 +129,7 @@ struct CoverImageDetailCached : View {
         .frame(height: CGFloat(250))
         .clipped()
     }, loadingView: {
-      Image("picture_16")
+      Image("placeholder")
         .resizable()
         .scaledToFill()
         .frame(height: CGFloat(250))

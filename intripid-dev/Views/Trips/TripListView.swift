@@ -12,8 +12,11 @@ import RemoteImage
 
 struct TripListTravelPartnerImageCached : View {
   var url : URL
-  init(urlString: String){
+  var offset: Int
+  
+  init(urlString: String, offset: Int){
     self.url = URL(string: urlString)!
+    self.offset = offset
   }
   
   var body: some View {
@@ -23,20 +26,21 @@ struct TripListTravelPartnerImageCached : View {
        .scaledToFill()
        .frame(width: 30, height: 30)
        .clipShape(Circle())
+        .offset(CGSize(width: 20*self.offset, height: 0))
     }, imageView: { image in
       image
       .resizable()
       .scaledToFill()
       .frame(width: 30, height: 30)
       .clipShape(Circle())
-//      .offset(CGSize(width: 20, height: 0))
+      .offset(CGSize(width: 20*self.offset, height: 0))
     }, loadingView: {
       Image("person_2")
       .resizable()
       .scaledToFill()
       .frame(width: 30, height: 30)
       .clipShape(Circle())
-//      .offset(CGSize(width: 20, height: 0))
+      .offset(CGSize(width: 20*self.offset, height: 0))
     })
   }
 }
@@ -50,8 +54,8 @@ struct TripListTravelPartnersView : View{
     // Travel Partners
     ZStack{
       // TODO: ForEach(trip.travelbuddy) -> get photo
-      ForEach(self.profileImages, id:\.self) { imageURL in
-        TripListTravelPartnerImageCached(urlString: imageURL)
+      ForEach((0 ..< self.profileImages.count), id:\.self) { index in
+        TripListTravelPartnerImageCached(urlString: self.profileImages[index], offset: index)
 
       }
     }
@@ -75,10 +79,11 @@ struct TripListView: View {
    
           // Trip Information
           VStack (alignment: .leading){
-            Text("\(self.trips[index].title)")
+            Text("\(self.trips[index].title)").font(.headline).fontWeight(.bold)
             Text("\(self.trips[index].startDate.formatDate()) - \(self.trips[index].endDate.formatDate())")
               .font(.caption)
               .padding(.top, 10)
+
             
             Text("\(self.trips[index].photoNum) Photos, \(self.trips[index].journalNum) Journals")
               .font(.caption)
