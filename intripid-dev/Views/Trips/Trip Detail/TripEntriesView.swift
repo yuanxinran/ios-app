@@ -14,6 +14,8 @@ struct TripEntriesView: View {
   private var array2: [Int]
   private var array3: [Int]
   
+  private let testPhotos: [String] = ["landscape", "portrait"]
+  
   init(entries:[Entry]) {
     self.entries = entries
     
@@ -28,6 +30,14 @@ struct TripEntriesView: View {
   var body: some View {
     HStack(alignment: .top) {
       VStack {
+//
+//        ForEach(testPhotos, id: \.self) { photo in
+//          Image(photo)
+//          .resizable()
+//          .scaledToFit()
+//          .frame(width: UIScreen.main.bounds.width/3)
+//        }
+        
         ForEach(array1, id: \.self) { index in
           EntryCell(entry: self.entries[index])
 //          URLImage(url: self.photos[index].imagePath)
