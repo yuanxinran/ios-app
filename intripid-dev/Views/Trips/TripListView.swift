@@ -15,6 +15,11 @@ struct TripListTravelPartnerImageCached : View {
   var offset: Int
   
   init(urlString: String, offset: Int){
+    if let url = URL(string: urlString){
+      self.url = url
+    } else {
+      self.url = URL(string: "https://firebasestorage.googleapis.com/v0/b/intripid-256611.appspot.com/o/profileImages%2Fzoe.png?alt=media&token=15078f14-d7a8-4fbf-a7b5-f1497ce829ed")!
+    }
     self.url = URL(string: urlString)!
     self.offset = offset
   }

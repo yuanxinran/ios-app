@@ -27,6 +27,7 @@ class TravelPartnerViewModel : ObservableObject {
         let data = doc.data() as JSONDictionary
         if i.type == .added {
           if let partner = parseTravelPartnerData(id: doc.documentID, data: data){
+            print("the image url")
             self.travelPartners.append(partner)
           }
         }

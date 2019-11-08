@@ -27,7 +27,7 @@ struct PartnerCell: View{
       Text(person.firstName+" "+person.lastName)
       Spacer()
       
-      Image(systemName: selected ? "checkmark.circle.fill" : "checkmark.circle")
+      Image(systemName: selected ? "checkmark.circle.fill" : "circle")
         .imageScale(.large)
     }
   }
