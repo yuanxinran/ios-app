@@ -24,19 +24,25 @@ struct URLImage: View {
   
   var body: some View {
     if let uiImage = self.imageLoader.downloadedImage {
+      print(uiImage)
+      print(uiImage.size.height)
+      print(uiImage.size.width)
       return Image(uiImage: uiImage)
+//      return Image("portrait")
         .resizable()
-        .aspectRatio(contentMode: .fit)
-//        .scaledToFill()
+        .aspectRatio(uiImage.size.width/uiImage.size.height, contentMode: .fit)
+//        .scaledToFit()
         .frame(width: UIScreen.main.bounds.width/3)
+//        .frame(minWidth:0, idealWidth: UIScreen.main.bounds.width/3, maxWidth: .infinity, minHeight:0, maxHeight:.infinity)
         .clipped()
         .cornerRadius(5)
     } else {
       return placeholder
         .resizable()
         .aspectRatio(contentMode: .fit)
-//        .scaledToFill()
+//        .scaledToFit()
         .frame(width: UIScreen.main.bounds.width/3)
+//        .frame(minWidth:0, idealWidth: UIScreen.main.bounds.width/3, maxWidth: .infinity, minHeight:0, maxHeight:.infinity)
         .clipped()
         .cornerRadius(5)
     }
@@ -51,7 +57,7 @@ class ImageLoader: ObservableObject {
   func load(url: String) {
     
     guard let imageURL = URL(string: url) else {
-      fatalError("ImageURL is not correct!")
+      fatalError("ImageURL \(url) is not correct!")
     }
     
     URLSession.shared.dataTask(with: imageURL) { data, response, error in

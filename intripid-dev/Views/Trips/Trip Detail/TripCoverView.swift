@@ -14,15 +14,25 @@ struct TripCoverView: View {
   @State var journalModalDisplayed = false
   @State var photoModalDisplayed = false
   
+  private let gradientStart = Color(red: 0.0 / 255, green: 0.0 / 255, blue: 0.0 / 255, opacity: 0.75)
+  private let gradientMid = Color(red: 0.0 / 255, green: 0.0 / 255, blue: 0.0 / 255, opacity: 0)
+  private let gradientEnd = Color(red: 0.0 / 255, green: 0.0 / 255, blue: 0.0 / 255, opacity: 0.75)
+  
   var body: some View {
     ZStack (alignment: .leading) {
       // Cover Photo
       CoverImageDetailCached(urlString: trip.coverImage?.imagePath ?? "")
+      
+      // Translucent screen
+      Rectangle()
+        .fill(LinearGradient(gradient: Gradient(colors: [gradientStart, gradientMid, gradientEnd]), startPoint: .top, endPoint: .bottom))
+      
       VStack (alignment: .leading) {
         Spacer() // push content to bottom align with cover image
         Text(trip.title)
           .font(.title)
           .fontWeight(.bold)
+        
         // TODO: figure out how to convert NSDate into a String
         Text("\(trip.startDate.formatDate()) - \(trip.endDate.formatDate())")
         
