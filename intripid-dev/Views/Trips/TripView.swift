@@ -19,14 +19,11 @@ struct TripView: View {
   }
   
   func refresh(){
-    print("ok now i know that refresh is called")
     self.viewModel.fetchData()
   }
   
   
   func refreshTripData(tripID: String){
-    print(tripID)
-    print("here it is")
     self.viewModel.refreshDataForTrip(tripID: tripID)
   }
     
