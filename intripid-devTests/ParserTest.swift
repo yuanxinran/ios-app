@@ -226,53 +226,6 @@ class ParserTest: XCTestCase {
   }
   
   
-  func testEntryModel(){
-    let entryPhoto = Entry(journal: nil, photo: testPhoto, type: "photo")
-    let entryPhoto2 = Entry(journal: nil, photo: testPhoto, type: "photo")
-    let entryJournal  = Entry(journal: testJournal, photo: nil, type: "journal")
-    let invalidEntry = Entry(journal: nil, photo: nil, type: "non")
-    XCTAssertNotEqual(entryPhoto, nil)
-    XCTAssertNotEqual(entryJournal, nil)
-    XCTAssertEqual(entryPhoto.getDateTime(), photoDate)
-    XCTAssertEqual(entryJournal.getDateTime(), journalDate)
-    XCTAssertEqual(entryPhoto, entryPhoto2)
-    
-    XCTAssertEqual(entryPhoto.getDocID(), "photo_id")
-    XCTAssertEqual(entryJournal.getDocID(), "journal_id")
-    XCTAssertEqual(invalidEntry.getDocID(), "noid")
-    
-    let entries : [Entry] = [entryPhoto, entryJournal]
-    let sortedEntries = entries.sorted(by: <)
-    
-    XCTAssertEqual(sortedEntries[0], entryPhoto)
-    XCTAssertEqual(sortedEntries[1], entryJournal)
-  
-  }
-  
-  func testTripModel(){
-    //photo time < journal time
-    let testTripData2:JSONDictionary = ["startDate": journalTimestamp, "travelPartners": ["partner_1", "partner_2"], "coverImage": ["cover_image_1","cover_image_2"], "endDate": journalTimestamp, "title": "Trip Test 1"]
-    
-    let testTripData3:JSONDictionary = ["startDate": photoTimestamp, "travelPartners": ["partner_1", "partner_2"], "coverImage": ["cover_image_1","cover_image_2"], "endDate": journalTimestamp, "title": "Trip Test 1"]
-    
-    let trip1 : Trip? = parseTripData(id: "trip_id_42", data: testTripData, coverImage: testPhoto, photoNum: 42, journalNum: 1, images: ["image_1", "image_2", "image_3", "image_4"])
-    let trip2 : Trip? = parseTripData(id: "trip_id_43", data: testTripData2, coverImage: testPhoto, photoNum: 42, journalNum: 1, images: ["image_1", "image_2", "image_3", "image_4"])
-    let trip3 : Trip? = parseTripData(id: "trip_id_44", data: testTripData3, coverImage: testPhoto, photoNum: 42, journalNum: 1, images: ["image_1", "image_2", "image_3", "image_4"])
-    
-
-    
-    let trips : [Trip] = [trip1!, trip2!, trip3!]
-    let sortedTrips = Array(trips.sorted(by: < ).reversed())
-    
-    XCTAssertEqual(sortedTrips[0], trip2)
-    XCTAssertEqual(sortedTrips[1], trip3)
-    XCTAssertEqual(sortedTrips[2], trip1)
-    
-    
-  }
-  
-  
-  
   func testPerformanceExample() {
     // This is an example of a performance test case.
     //        self.measure {

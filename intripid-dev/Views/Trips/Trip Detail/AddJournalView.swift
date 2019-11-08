@@ -72,8 +72,8 @@ struct AddJournalView: View {
     }
 }
 
-struct AddJournalView_Previews: PreviewProvider {
-    static var previews: some View {
-        AddJournalView(onDismiss: {return})
-    }
-}
+//struct AddJournalView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        AddJournalView(onDismiss: {return})
+//    }
+//}

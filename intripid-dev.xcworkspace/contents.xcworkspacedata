@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:/Users/zoeteohy/Desktop/67442/ios-app/intripid-devTests/ModelTest.swift">
+   </FileRef>
+   <FileRef
       location = "group:intripid-dev.xcodeproj">
    </FileRef>
    <FileRef

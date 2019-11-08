@@ -24,11 +24,11 @@ struct TripViewModePicker: View {
   }
 }
 
-struct TripViewModePicker_Previews: PreviewProvider {
-  @State static var viewMode = ["List", "Map"]
-  @State static var selectedViewMode = 0
-  
-    static var previews: some View {
-      TripViewModePicker(viewMode: $viewMode, selectedViewMode: $selectedViewMode)
-    }
-}
+//struct TripViewModePicker_Previews: PreviewProvider {
+//  @State static var viewMode = ["List", "Map"]
+//  @State static var selectedViewMode = 0
+//
+//    static var previews: some View {
+//      TripViewModePicker(viewMode: $viewMode, selectedViewMode: $selectedViewMode)
+//    }
+//}

@@ -27,4 +27,14 @@ struct User: Identifiable {
   var profilePicture : String
 }
 
+extension User: Equatable {
+  static func == (lhs: User, rhs: User) -> Bool {
+    lhs.id == lhs.id &&
+    lhs.firstName == lhs.firstName &&
+    lhs.lastName == rhs.lastName &&
+    lhs.email == rhs.email &&
+    lhs.username == lhs.username
+  }
+}
+
 
