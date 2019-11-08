@@ -13,9 +13,10 @@ import GoogleMaps
 struct MapViewControllerWrapper: UIViewControllerRepresentable {
   typealias UIViewControllerType = MapViewController
   var trips: [Trip]
+  var parent: TripView
 
     func makeUIViewController(context: UIViewControllerRepresentableContext<MapViewControllerWrapper>) -> MapViewControllerWrapper.UIViewControllerType {
-      return MapViewController(trips: trips)
+      return MapViewController(trips: trips, vparent: self.parent)
     }
 
     func updateUIViewController(_ uiViewController: MapViewControllerWrapper.UIViewControllerType, context: UIViewControllerRepresentableContext<MapViewControllerWrapper>) {

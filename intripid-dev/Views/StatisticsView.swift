@@ -21,8 +21,8 @@ struct StatisticsView: View {
         Text("My Footsteps")
           .font(.title)
           .fontWeight(.bold)
-        MapViewControllerWrapper(trips: self.viewModel.trips)
-          .frame(height: 300)
+//        MapViewControllerWrapper(trips: self.viewModel.trips)
+//          .frame(height: 300)
         
         HStack {
           VStack {
