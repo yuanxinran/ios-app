@@ -24,9 +24,6 @@ struct URLImage: View {
   
   var body: some View {
     if let uiImage = self.imageLoader.downloadedImage {
-      print(uiImage)
-      print(uiImage.size.height)
-      print(uiImage.size.width)
       return Image(uiImage: uiImage)
 //      return Image("portrait")
         .resizable()
