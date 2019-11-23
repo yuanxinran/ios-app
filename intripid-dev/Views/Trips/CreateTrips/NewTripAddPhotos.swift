@@ -21,20 +21,18 @@ struct imageSelectorResult : View{
   
   var body : some View{
     VStack{
-      if self.count != 0 { //check that self.imageList is not empty
         ForEach(0 ... (self.count-1)/4, id: \.self) { row in
           HStack {
               ForEach(self.imageList[row * 4 ..< self.imageList.count].prefix(4) , id: \.self) { photo in
                 Image(uiImage: photo)
                   .resizable()
                   .scaledToFill()
-                  .frame(width: UIScreen.main.bounds.width * 0.21,height: UIScreen.main.bounds.width * 0.21) // TODO: change the width and height relative to geometryReader instead
+                  .frame(width: UIScreen.main.bounds.width * 0.21,height: UIScreen.main.bounds.width * 0.21)
                   .clipped()
                   .cornerRadius(10)
               }
           }.frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
         }
-      }
     }
   }
 }

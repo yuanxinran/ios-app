@@ -52,7 +52,7 @@ struct EditTripAddJournal :  View {
               .font(.body)
           }
           Section(header: Text("Content")){
-            MultilineTextField("Write your journal here", text: $content, onCommit: nil)
+            MultilineTextField("Write your journal here", text: $content, onCommit: {print("Final text:")})
           }
           
           Section(header: Text("Date")) {
@@ -77,7 +77,7 @@ struct EditTripAddJournal :  View {
             }, label: {Text("Change Color")})
           }
           
-        }.background(Color.white)
+        }
         
         VStack(alignment: .leading){
           HStack(alignment: .top){
