@@ -32,8 +32,10 @@ struct EditTripAddPhotos :  View {
   }
   
   func addPhotosToTrip(){
-    self.viewModel.addPhotosToTrip(photos: imageAssetList, photoImages: imageList, tripID: tripID, coverImage: nil) { (result: [String]) in
+    self.viewModel.addPhotosToTrip(photos: imageAssetList, photoImages: imageList, tripID: tripID, coverImage: nil) { (_ imageIDs: [String], _ imagesHQ: [UIImage])  in
+      self.viewModel.addPhotoHQ(imageIDs: imageIDs, imageHQs: imagesHQ, tripID: self.tripID)
       self.parent.refresh()
+      //self.viewModel.addHighQualityPhotosToTrip
     }
     self.onDismiss()
   }

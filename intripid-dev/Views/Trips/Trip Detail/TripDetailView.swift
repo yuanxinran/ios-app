@@ -9,22 +9,6 @@ import SwiftUI
 
 struct TripDetailView: View {
   let trip: Trip
-//  var tripID: String
-//
-//  //ACTION SHEET
-//  //TODO: Refactor
-//  @State var showActionSheet: Bool = false
-//
-//  var actionSheet: ActionSheet {
-//      ActionSheet(title: Text("Action Sheet"), message: Text("Choose Option"), buttons: [
-//          .default(Text("Add Photo"), action: {
-//              print("Adding Photo!!")
-//          }),
-//          .default(Text("Add Journal")),
-//          .destructive(Text("Cancel"))
-//      ])
-//  }
-//
   var body: some View {
 //    Text("Map")
 //  }

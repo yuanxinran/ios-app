@@ -61,13 +61,13 @@
 		544873132373186700791CBD /* CachedImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 544873122373186700791CBD /* CachedImageView.swift */; };
 		5448731723733A3D00791CBD /* MapViewControllerWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5448731623733A3D00791CBD /* MapViewControllerWrapper.swift */; };
 		5448731923733A4600791CBD /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5448731823733A4600791CBD /* MapViewController.swift */; };
-		54817031236D20A000FEF1C3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 54817030236D20A000FEF1C3 /* GoogleService-Info.plist */; };
 		54817034236DF83500FEF1C3 /* TravelPartner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54817033236DF83400FEF1C3 /* TravelPartner.swift */; };
 		54817036236E1DA200FEF1C3 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54817035236E1DA200FEF1C3 /* ImageLoader.swift */; };
 		54817039236E39CE00FEF1C3 /* CreateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54817038236E39CE00FEF1C3 /* CreateView.swift */; };
 		5481703E236E7ADB00FEF1C3 /* RemoteImage in Frameworks */ = {isa = PBXBuildFile; productRef = 5481703D236E7ADB00FEF1C3 /* RemoteImage */; };
 		54817040236E972D00FEF1C3 /* NewTripAddPhotos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5481703F236E972D00FEF1C3 /* NewTripAddPhotos.swift */; };
 		54817043236F01BD00FEF1C3 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54817042236F01BD00FEF1C3 /* Button.swift */; };
+		54A5D25F237DB94300981009 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 54A5D25E237DB94300981009 /* GoogleService-Info.plist */; };
 		54AAEF9E2375B17700F3E2E0 /* HelperTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54AAEF9D2375B17700F3E2E0 /* HelperTest.swift */; };
 		BE1514D608F2BECC91AE6B61 /* Pods_intripid_devTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41F6F92022AA841B35DF4631 /* Pods_intripid_devTests.framework */; };
 		D593E15DF7A1365FB43AED88 /* Pods_intripid_dev.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF2AC859EEFB42893449A814 /* Pods_intripid_dev.framework */; };
@@ -153,12 +153,12 @@
 		544873122373186700791CBD /* CachedImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CachedImageView.swift; sourceTree = "<group>"; };
 		5448731623733A3D00791CBD /* MapViewControllerWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewControllerWrapper.swift; sourceTree = "<group>"; };
 		5448731823733A4600791CBD /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
-		54817030236D20A000FEF1C3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		54817033236DF83400FEF1C3 /* TravelPartner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelPartner.swift; sourceTree = "<group>"; };
 		54817035236E1DA200FEF1C3 /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
 		54817038236E39CE00FEF1C3 /* CreateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateView.swift; sourceTree = "<group>"; };
 		5481703F236E972D00FEF1C3 /* NewTripAddPhotos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTripAddPhotos.swift; sourceTree = "<group>"; };
 		54817042236F01BD00FEF1C3 /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
+		54A5D25E237DB94300981009 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		54AAEF9D2375B17700F3E2E0 /* HelperTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperTest.swift; sourceTree = "<group>"; };
 		768284AD6014BAF1EAAAC6AA /* Pods-intripid-dev.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-intripid-dev.debug.xcconfig"; path = "Target Support Files/Pods-intripid-dev/Pods-intripid-dev.debug.xcconfig"; sourceTree = "<group>"; };
 		BF2AC859EEFB42893449A814 /* Pods_intripid_dev.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_intripid_dev.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -259,8 +259,8 @@
 				1CB7DDFB23669479000ED455 /* Delegate */,
 				1CB7DDFA236693A6000ED455 /* Views */,
 				1CB7DDCB23668E93000ED455 /* Assets.xcassets */,
-				54817030236D20A000FEF1C3 /* GoogleService-Info.plist */,
 				1CB7DDD323668E93000ED455 /* Info.plist */,
+				54A5D25E237DB94300981009 /* GoogleService-Info.plist */,
 				1CB7DDC623668E8E000ED455 /* intripid_dev.xcdatamodeld */,
 				1CB7DDCD23668E93000ED455 /* Preview Content */,
 			);
@@ -538,7 +538,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1CB7DDD223668E93000ED455 /* LaunchScreen.storyboard in Resources */,
-				54817031236D20A000FEF1C3 /* GoogleService-Info.plist in Resources */,
+				54A5D25F237DB94300981009 /* GoogleService-Info.plist in Resources */,
 				1CB7DDCF23668E93000ED455 /* Preview Assets.xcassets in Resources */,
 				1CB7DDCC23668E93000ED455 /* Assets.xcassets in Resources */,
 			);
@@ -818,7 +818,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -872,7 +872,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -889,14 +889,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"intripid-dev/Preview Content\"";
-				DEVELOPMENT_TEAM = 4STWRV34C4;
+				DEVELOPMENT_TEAM = 77MQD95M5Y;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "intripid-dev/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "zona.intripid-dev";
+				PRODUCT_BUNDLE_IDENTIFIER = "zona.intripid-dev1";
 				PRODUCT_NAME = intripid;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -910,14 +910,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"intripid-dev/Preview Content\"";
-				DEVELOPMENT_TEAM = 4STWRV34C4;
+				DEVELOPMENT_TEAM = 77MQD95M5Y;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "intripid-dev/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "zona.intripid-dev";
+				PRODUCT_BUNDLE_IDENTIFIER = "zona.intripid-dev1";
 				PRODUCT_NAME = intripid;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -931,7 +931,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 4STWRV34C4;
+				DEVELOPMENT_TEAM = 77MQD95M5Y;
 				INFOPLIST_FILE = "intripid-devTests/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -954,7 +954,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 4STWRV34C4;
+				DEVELOPMENT_TEAM = 77MQD95M5Y;
 				INFOPLIST_FILE = "intripid-devTests/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -976,7 +976,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 4STWRV34C4;
+				DEVELOPMENT_TEAM = 77MQD95M5Y;
 				INFOPLIST_FILE = "intripid-devUITests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -997,7 +997,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 4STWRV34C4;
+				DEVELOPMENT_TEAM = 77MQD95M5Y;
 				INFOPLIST_FILE = "intripid-devUITests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
