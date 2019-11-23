@@ -37,20 +37,6 @@ class EditTripViewModel {
   func createTrip(title: String, travelPartners: [String], photos: [PHAsset], photoImages: [UIImage], coverImage: Int, userID: String, completion: @escaping (_ result:String?) -> Void){
     var ref: DocumentReference? = nil
     var docID: String? = nil
-//    var startDate: NSDate? = nil
-//    var endDate: NSDate? = nil
-//    let sortedPhotos = photos.filter{ $0.creationDate != nil }.sorted {
-//      ($0.creationDate!) < ($1.creationDate!)
-//    }
-//    if sortedPhotos.count > 0 {
-//      if let date = sortedPhotos[0].creationDate {
-//        startDate = date as NSDate
-//      }
-//      startDate = sortedPhotos[0].creationDate! as NSDate
-//      if let lastPhoto = sortedPhotos.last, let date = lastPhoto.creationDate {
-//        endDate = date as NSDate
-//      }
-//    }
     ref = db.collection("trips").addDocument(data: [
       "title": title,
       "travelPartners": travelPartners,
@@ -63,12 +49,9 @@ class EditTripViewModel {
         print("Trip added with ID: \(ref!.documentID)")
         
         docID = ref!.documentID
-        self.addPhotosToTrip(photos: photos, photoImages: photoImages, tripID: docID!, coverImage: coverImage) { (result: [String]) in
-
-          for r in result {
-            print(r)
-          }
+        self.addPhotosToTrip(photos: photos, photoImages: photoImages, tripID: docID!, coverImage: coverImage) { (_ imageIDs: [String], _ imagesHQ: [UIImage])  in
           completion(docID)
+          self.addPhotoHQ(imageIDs: imageIDs, imageHQs: imagesHQ, tripID: docID!)
         }
       }
     }
@@ -156,10 +139,44 @@ class EditTripViewModel {
     }
   }
   
+  func addPhotoHQ(imageIDs: [String], imageHQs: [UIImage],  tripID: String){
+    
+    let imageCollection = db.collection("trips").document(tripID).collection("photos")
+    let storage = Storage.storage()
+    for index in (0 ..< imageHQs.count){
+      let imageID = imageIDs[index]
+      let photoImage = imageHQs[index]
+      
+      let storageRef = storage.reference()
+      let imageRef = storageRef.child("tripPhotosHQ/\(imageID).jpg")
+      let uploadDataHQ = photoImage.jpegData(compressionQuality: 1)
+      
+      if let uploadDataHQ = uploadDataHQ {
+        _ = imageRef.putData(uploadDataHQ, metadata: nil) { (metadata, error) in
+          imageRef.downloadURL { (url, error) in
+            guard let downloadURL = url else {
+              return
+            }
+            imageCollection.document(imageID).updateData([
+              "imagePathHQ": "\(downloadURL)"
+            ])
+            print("successfully uploaded the high-quality image for \(imageID)")
+          }
+        }
+      } else {
+        print("lol cannot convert image to data")
+      }
+      
+        
+    }
+  }
+    
+  
 
-  func addPhotosToTrip(photos: [PHAsset], photoImages: [UIImage], tripID: String, coverImage: Int?, completion: @escaping (_ result:[String]) -> Void){
+  func addPhotosToTrip(photos: [PHAsset], photoImages: [UIImage], tripID: String, coverImage: Int?, completion: @escaping (_ imageIDs: [String], _ imagesHQ: [UIImage]) -> Void){
     let tripRef = db.collection("trips").document(tripID)
     let storage = Storage.storage()
+    var photoImagesHQ = [UIImage]()
     var imageIDs = [String]()
     let dispatchGroup = DispatchGroup()
     self.updateDates(photos: photos, tripID: tripID){
@@ -195,7 +212,7 @@ class EditTripViewModel {
               let storageRef = storage.reference()
               let imageRef = storageRef.child("tripPhotos/\(photoRef!.documentID).jpg")
               
-              let uploadData = photoImage.jpegData(compressionQuality: 1.0)
+              let uploadData = photoImage.jpegData(compressionQuality: 0.3)
               if let uploadData = uploadData {
                 _ = imageRef.putData(uploadData, metadata: nil) { (metadata, error) in
                   imageRef.downloadURL { (url, error) in
@@ -210,6 +227,7 @@ class EditTripViewModel {
                         dispatchGroup.leave()
                         print("Error encountered when updating the trip information \(err)")
                       } else {
+                        photoImagesHQ.append(photoImage)
                         imageIDs.append(photoRef!.documentID)
                         if let coverImage = coverImage, num == coverImage {
                           tripRef.updateData([
@@ -242,7 +260,7 @@ class EditTripViewModel {
       }
       
       dispatchGroup.notify(queue: DispatchQueue.global()) {
-        completion(imageIDs)
+        completion(imageIDs, photoImagesHQ)
       }
     }
     

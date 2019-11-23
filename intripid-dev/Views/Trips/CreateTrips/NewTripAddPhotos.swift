@@ -21,7 +21,6 @@ struct imageSelectorResult : View{
   
   var body : some View{
     VStack{
-      if self.count != 0 { //check that self.imageList is not empty
         ForEach(0 ... (self.count-1)/4, id: \.self) { row in
           HStack {
               ForEach(self.imageList[row * 4 ..< self.imageList.count].prefix(4) , id: \.self) { photo in
@@ -34,7 +33,6 @@ struct imageSelectorResult : View{
               }
           }.frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
         }
-      }
     }
   }
 }
@@ -74,7 +72,8 @@ struct NewTripAddPhotos :  View{
             self.isShowingImagePicker.toggle()
           },label: {
             Text("Select Image").foregroundColor(GreenColor).sheet(isPresented: $isShowingImagePicker,content: {
-              ImagePickerView(isPresented: self.$isShowingImagePicker, selectedImage: self.$imageList, selectedImageList: self.$imageAssetList)
+//              ImagePickerView(isPresented: self.$isShowingImagePicker, selectedImage: self.$imageList, selectedImageList: self.$imageAssetList)
+              EditTripAddPhotosViewControllerWrapper(selectedImage: self.$imageList, selectedImageList: self.$imageAssetList)
             })
           }
           )

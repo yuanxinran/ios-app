@@ -13,9 +13,14 @@ target 'intripid-dev' do
   pod 'Firebase/Core'
   pod 'Firebase/Firestore'
   pod 'Firebase/Storage'
-  pod "BSImagePicker", "~> 2.8"
   pod 'Alamofire', '~> 5.0.0-rc.3'
   pod 'SwiftyJSON', '~> 4.0'
+
+  # Pods used for selection of multiple photos
+  # 2: AssetsPickerVC (https://cocoapods.org/pods/AssetsPickerViewController)
+  pod 'AssetsPickerViewController', '~> 2.0'
+  pod 'SnapKit', '~> 5.0.0'
+  
 
 
   # Optionally, include the Swift extensions if you're using Swift.

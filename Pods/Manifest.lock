@@ -1,16 +1,15 @@
 PODS:
   - Alamofire (5.0.0-rc.3)
+  - AssetsPickerViewController (2.7.5):
+    - Device
+    - SnapKit
   - BoringSSL-GRPC (0.0.3):
     - BoringSSL-GRPC/Implementation (= 0.0.3)
     - BoringSSL-GRPC/Interface (= 0.0.3)
   - BoringSSL-GRPC/Implementation (0.0.3):
     - BoringSSL-GRPC/Interface (= 0.0.3)
   - BoringSSL-GRPC/Interface (0.0.3)
-  - BSGridCollectionViewLayout (1.2.5)
-  - BSImagePicker (2.10.3):
-    - BSGridCollectionViewLayout (= 1.2.5)
-    - BSImageView (= 1.0.3)
-  - BSImageView (1.0.3)
+  - Device (3.2.1)
   - Firebase/Core (6.11.0):
     - Firebase/CoreOnly
     - FirebaseAnalytics (= 6.1.3)
@@ -22,10 +21,6 @@ PODS:
   - Firebase/Storage (6.11.0):
     - Firebase/CoreOnly
     - FirebaseStorage (~> 3.4.1)
-  - FirebaseABTesting (3.1.2):
-    - FirebaseAnalyticsInterop (~> 1.3)
-    - FirebaseCore (~> 6.1)
-    - Protobuf (>= 3.9.2, ~> 3.9)
   - FirebaseAnalytics (6.1.3):
     - FirebaseCore (~> 6.3)
     - FirebaseInstanceID (~> 4.2)
@@ -35,13 +30,6 @@ PODS:
     - GoogleUtilities/Network (~> 6.0)
     - "GoogleUtilities/NSData+zlib (~> 6.0)"
     - nanopb (~> 0.3.901)
-  - FirebaseAnalyticsInterop (1.4.0)
-  - FirebaseAuth (6.3.1):
-    - FirebaseAuthInterop (~> 1.0)
-    - FirebaseCore (~> 6.2)
-    - GoogleUtilities/AppDelegateSwizzler (~> 6.2)
-    - GoogleUtilities/Environment (~> 6.2)
-    - GTMSessionFetcher/Core (~> 1.1)
   - FirebaseAuthInterop (1.0.0)
   - FirebaseCore (6.3.2):
     - FirebaseCoreDiagnostics (~> 1.0)
@@ -55,10 +43,6 @@ PODS:
     - GoogleUtilities/Logger (~> 6.2)
     - nanopb (~> 0.3.901)
   - FirebaseCoreDiagnosticsInterop (1.0.0)
-  - FirebaseDatabase (6.1.2):
-    - FirebaseAuthInterop (~> 1.0)
-    - FirebaseCore (~> 6.0)
-    - leveldb-library (~> 1.22)
   - FirebaseFirestore (1.6.1):
     - FirebaseAuthInterop (~> 1.0)
     - FirebaseCore (~> 6.2)
@@ -76,22 +60,10 @@ PODS:
     - Protobuf (>= 3.9.2, ~> 3.9)
   - FirebaseFirestoreSwift (0.2):
     - FirebaseFirestore (>= 1.6.1, ~> 1.6)
-  - FirebaseFunctions (2.5.1):
-    - FirebaseAuthInterop (~> 1.0)
-    - FirebaseCore (~> 6.0)
-    - GTMSessionFetcher/Core (~> 1.1)
   - FirebaseInstanceID (4.2.6):
     - FirebaseCore (~> 6.0)
     - GoogleUtilities/Environment (~> 6.0)
     - GoogleUtilities/UserDefaults (~> 6.0)
-  - FirebaseRemoteConfig (4.4.4):
-    - FirebaseABTesting (~> 3.1)
-    - FirebaseAnalyticsInterop (~> 1.4)
-    - FirebaseCore (~> 6.2)
-    - FirebaseInstanceID (~> 4.2)
-    - GoogleUtilities/Environment (~> 6.2)
-    - "GoogleUtilities/NSData+zlib (~> 6.2)"
-    - Protobuf (>= 3.9.2, ~> 3.9)
   - FirebaseStorage (3.4.1):
     - FirebaseAuthInterop (~> 1.0)
     - FirebaseCore (~> 6.0)
@@ -155,90 +127,36 @@ PODS:
   - nanopb/decode (0.3.9011)
   - nanopb/encode (0.3.9011)
   - Protobuf (3.10.0)
-  - RxCocoa (5.0.1):
-    - RxRelay (~> 5)
-    - RxSwift (~> 5)
-  - RxFirebase/Auth (0.3.8):
-    - RxFirebaseAuthentication (~> 0.3)
-  - RxFirebase/Database (0.3.8):
-    - RxFirebaseDatabase (~> 0.3)
-  - RxFirebase/Firestore (0.3.8):
-    - RxFirebaseFirestore (~> 0.3)
-  - RxFirebase/Functions (0.3.8):
-    - RxFirebaseFunctions (~> 0.3)
-  - RxFirebase/RemoteConfig (0.3.8):
-    - RxFirebaseRemoteConfig (~> 0.3)
-  - RxFirebase/Storage (0.3.8):
-    - RxFirebaseStorage (~> 0.3)
-  - RxFirebaseAuthentication (0.3.8):
-    - FirebaseAuth (~> 6)
-    - FirebaseCore (~> 6)
-    - RxCocoa (~> 5)
-    - RxSwift (~> 5)
-  - RxFirebaseDatabase (0.3.8):
-    - FirebaseDatabase (~> 6)
-    - RxCocoa (~> 5)
-    - RxSwift (~> 5)
-  - RxFirebaseFirestore (0.3.8):
-    - FirebaseFirestore (~> 1.5)
-    - RxCocoa (~> 5)
-    - RxSwift (~> 5)
-  - RxFirebaseFunctions (0.3.8):
-    - FirebaseFunctions (~> 2.5)
-    - RxCocoa (~> 5)
-    - RxSwift (~> 5)
-  - RxFirebaseRemoteConfig (0.3.8):
-    - FirebaseRemoteConfig (~> 4)
-    - RxCocoa (~> 5)
-    - RxSwift (~> 5)
-  - RxFirebaseStorage (0.3.8):
-    - FirebaseStorage (~> 3)
-    - RxCocoa (~> 5)
-    - RxSwift (~> 5)
-  - RxRelay (5.0.1):
-    - RxSwift (~> 5)
-  - RxSwift (5.0.1)
+  - SnapKit (5.0.1)
   - SwiftyJSON (4.3.0)
 
 DEPENDENCIES:
   - Alamofire (~> 5.0.0-rc.3)
-  - BSImagePicker (~> 2.8)
+  - AssetsPickerViewController (~> 2.0)
   - Firebase/Core
   - Firebase/Firestore
   - Firebase/Storage
   - FirebaseFirestoreSwift
   - GoogleMaps
   - GooglePlaces
-  - RxFirebase/Auth
-  - RxFirebase/Database
-  - RxFirebase/Firestore
-  - RxFirebase/Functions
-  - RxFirebase/RemoteConfig
-  - RxFirebase/Storage
+  - SnapKit (~> 5.0.0)
   - SwiftyJSON (~> 4.0)
 
 SPEC REPOS:
   trunk:
     - Alamofire
+    - AssetsPickerViewController
     - BoringSSL-GRPC
-    - BSGridCollectionViewLayout
-    - BSImagePicker
-    - BSImageView
+    - Device
     - Firebase
-    - FirebaseABTesting
     - FirebaseAnalytics
-    - FirebaseAnalyticsInterop
-    - FirebaseAuth
     - FirebaseAuthInterop
     - FirebaseCore
     - FirebaseCoreDiagnostics
     - FirebaseCoreDiagnosticsInterop
-    - FirebaseDatabase
     - FirebaseFirestore
     - FirebaseFirestoreSwift
-    - FirebaseFunctions
     - FirebaseInstanceID
-    - FirebaseRemoteConfig
     - FirebaseStorage
     - GoogleAppMeasurement
     - GoogleDataTransport
@@ -252,39 +170,23 @@ SPEC REPOS:
     - leveldb-library
     - nanopb
     - Protobuf
-    - RxCocoa
-    - RxFirebase
-    - RxFirebaseAuthentication
-    - RxFirebaseDatabase
-    - RxFirebaseFirestore
-    - RxFirebaseFunctions
-    - RxFirebaseRemoteConfig
-    - RxFirebaseStorage
-    - RxRelay
-    - RxSwift
+    - SnapKit
     - SwiftyJSON
 
 SPEC CHECKSUMS:
   Alamofire: ca8c0de6906873be89d6deec5c8de279e00bf872
+  AssetsPickerViewController: 6954aff04b95d26be0d65a58557a9dfbef7811c3
   BoringSSL-GRPC: db8764df3204ccea016e1c8dd15d9a9ad63ff318
-  BSGridCollectionViewLayout: 333dcb457a5a3bdd9212607ab5756553dcfe06cb
-  BSImagePicker: 07404254f2fcdaf5a2eb403c0f8c337267ce8738
-  BSImageView: a149459433a2687157d034c78e059d30ac7f2544
+  Device: 0738862dd8a30856b4bd9e21cb9b728873d21392
   Firebase: bc9cfc7a96c73268656d5aaab453ff1b4b530e0e
-  FirebaseABTesting: 0d10f3cdc3fa00f3f175b5b56c1003c8e888299f
   FirebaseAnalytics: 0e3ecff2c5d86070f7d4325e21f1edabfbd558dc
-  FirebaseAnalyticsInterop: d48b6ab67bcf016a05e55b71fc39c61c0cb6b7f3
-  FirebaseAuth: b401a012cc33b04df3b52bb308b04e8766f2693e
   FirebaseAuthInterop: 0ffa57668be100582bb7643d4fcb7615496c41fc
   FirebaseCore: beeff42c07c30ea94702471d99db2089b594fbbd
   FirebaseCoreDiagnostics: af29e43048607588c050889d19204f4d7b758c9f
   FirebaseCoreDiagnosticsInterop: 6829da2b8d1fc795ff1bd99df751d3788035d2cb
-  FirebaseDatabase: 963515d232ded06f36f6ce830507c94551866170
   FirebaseFirestore: bb8315fa13a15ea8977e940496b74ba6ad9071f2
   FirebaseFirestoreSwift: 0437bb10d83f8161a9131da1739998254c78fdf5
-  FirebaseFunctions: 5af7c35d1c5e41608fecbb667eb6c4e672e318d0
   FirebaseInstanceID: d0eafcd8bdbd3447cd694594734078c3e3e77d8b
-  FirebaseRemoteConfig: 8bb483b372bf859635c719d01911d5f7bf6df4b4
   FirebaseStorage: b7c6d00997bc21d4465453bdcc5cc65513110fed
   GoogleAppMeasurement: 434cc7be25e71dc04b8d0e3079125127b330e84a
   GoogleDataTransport: 166f9b9f82cbf60a204e8fe2daa9db3e3ec1fb15
@@ -298,18 +200,9 @@ SPEC CHECKSUMS:
   leveldb-library: 55d93ee664b4007aac644a782d11da33fba316f7
   nanopb: 18003b5e52dab79db540fe93fe9579f399bd1ccd
   Protobuf: a4dc852ad69c027ca2166ed287b856697814375b
-  RxCocoa: e741b9749968e8a143e2b787f1dfbff2b63d0a5c
-  RxFirebase: 45e6448c69c7212e21f8ba89144443f916437861
-  RxFirebaseAuthentication: 5d0573fd641947ed857346624d1c849bbd86bdff
-  RxFirebaseDatabase: 5c1d3d31c9858f05ff6ad92e5b4b696354d1497b
-  RxFirebaseFirestore: edabc5e6b02bd876a323a0e53cb5071356505db2
-  RxFirebaseFunctions: c32622f9bb7c75c01a2489a38e376b5038e2d6f3
-  RxFirebaseRemoteConfig: 0ed07be283650b572cb07bb8b940f08546c4b792
-  RxFirebaseStorage: 271184ff8f8d3660bfc751dcafdbb4dd01d0b8a1
-  RxRelay: 89d54507f4fd4d969e6ec1d4bd7f3673640b4640
-  RxSwift: e2dc62b366a3adf6a0be44ba9f405efd4c94e0c4
+  SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
   SwiftyJSON: 6faa0040f8b59dead0ee07436cbf76b73c08fd08
 
-PODFILE CHECKSUM: 238c5373bd786da1ec7b7fb37c401394a09f25ba
+PODFILE CHECKSUM: f23dee9753327145a2d3dd8c3dd530481c34cf90
 
 COCOAPODS: 1.8.4
