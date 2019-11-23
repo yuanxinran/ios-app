@@ -27,7 +27,7 @@ struct imageSelectorResult : View{
                 Image(uiImage: photo)
                   .resizable()
                   .scaledToFill()
-                  .frame(width: UIScreen.main.bounds.width * 0.21,height: UIScreen.main.bounds.width * 0.21)
+                  .frame(width: UIScreen.main.bounds.width * 0.21,height: UIScreen.main.bounds.width * 0.21) // TODO: change the width and height relative to geometryReader instead
                   .clipped()
                   .cornerRadius(10)
               }
@@ -72,7 +72,8 @@ struct NewTripAddPhotos :  View{
             self.isShowingImagePicker.toggle()
           },label: {
             Text("Select Image").foregroundColor(GreenColor).sheet(isPresented: $isShowingImagePicker,content: {
-              ImagePickerView(isPresented: self.$isShowingImagePicker, selectedImage: self.$imageList, selectedImageList: self.$imageAssetList)
+//              ImagePickerView(isPresented: self.$isShowingImagePicker, selectedImage: self.$imageList, selectedImageList: self.$imageAssetList)
+              EditTripAddPhotosViewControllerWrapper(selectedImage: self.$imageList, selectedImageList: self.$imageAssetList)
             })
           }
           )

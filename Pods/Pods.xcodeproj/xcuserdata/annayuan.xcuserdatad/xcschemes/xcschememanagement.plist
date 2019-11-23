@@ -9,27 +9,22 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>BSGridCollectionViewLayout.xcscheme</key>
+		<key>AssetsPickerViewController-AssetsPickerViewController.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>BSImagePicker-BSImagePicker.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>BSImagePicker.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>BSImageView.xcscheme</key>
+		<key>AssetsPickerViewController.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
 		<key>BoringSSL-GRPC.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Device.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -135,6 +130,11 @@
 			<false/>
 		</dict>
 		<key>Protobuf.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>SnapKit.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
