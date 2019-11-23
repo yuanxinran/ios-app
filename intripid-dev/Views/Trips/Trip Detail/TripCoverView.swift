@@ -13,6 +13,7 @@ struct TripCoverView: View {
   let parent: TripDetailTestView
   @State var journalModalDisplayed = false
   @State var photoModalDisplayed = false
+  @State var editModalDisplayed = false
   
   private let gradientStart = Color(red: 0.0 / 255, green: 0.0 / 255, blue: 0.0 / 255, opacity: 0.75)
   private let gradientMid = Color(red: 0.0 / 255, green: 0.0 / 255, blue: 0.0 / 255, opacity: 0)
@@ -40,7 +41,7 @@ struct TripCoverView: View {
           TripListTravelPartnersView(profileImages: trip.travelPartners.map{$0.profilePicture})
           Spacer()
           
-          Button(action: {}) {
+          Button(action: { self.editModalDisplayed = true }) {
             Text("Edit")
           }.font(.caption)
             .padding(5)
@@ -48,34 +49,39 @@ struct TripCoverView: View {
             .padding(.trailing, 15)
             .background(Color(.sRGB, red: 200/255, green: 200/255, blue: 200/255, opacity: 0.3))
             .clipShape(Capsule())
+            .sheet(isPresented: $editModalDisplayed) {
+            EditTripAddMultiplePhotos(tripID: self.trip.id, parent: self.parent, onDismiss: {
+              self.editModalDisplayed = false
+            })
+          }
           
           Button(action: { self.photoModalDisplayed = true }) {
-              Text("Add Photo")
+            Text("Add Photo")
           }.font(.caption)
-          .padding(5)
+            .padding(5)
             .padding(.leading, 15)
-          .padding(.trailing, 15)
-          .background(Color(.sRGB, red: 200/255, green: 200/255, blue: 200/255, opacity: 0.3))
-          .clipShape(Capsule())
+            .padding(.trailing, 15)
+            .background(Color(.sRGB, red: 200/255, green: 200/255, blue: 200/255, opacity: 0.3))
+            .clipShape(Capsule())
             .sheet(isPresented: $photoModalDisplayed) {
               EditTripAddPhotos(tripID: self.trip.id, parent: self.parent, onDismiss: {
-                  self.photoModalDisplayed = false
+                self.photoModalDisplayed = false
               })
           }
           
           Button(action: { self.journalModalDisplayed = true }) {
-                       Text("Add Journal")
-                   }.font(.caption)
-                   .padding(5)
+            Text("Add Journal")
+          }.font(.caption)
+            .padding(5)
             .padding(.leading, 15)
-                   .padding(.trailing, 15)
-                   .background(Color(.sRGB, red: 200/255, green: 200/255, blue: 200/255, opacity: 0.3))
-                   .clipShape(Capsule())
-                     .sheet(isPresented: $journalModalDisplayed) {
-                      EditTripAddJournal(tripID: self.trip.id, parent: self.parent, startDate: self.trip.startDate, endDate: self.trip.endDate, onDismiss: {
-                           self.journalModalDisplayed = false
-                       })
-                   }
+            .padding(.trailing, 15)
+            .background(Color(.sRGB, red: 200/255, green: 200/255, blue: 200/255, opacity: 0.3))
+            .clipShape(Capsule())
+            .sheet(isPresented: $journalModalDisplayed) {
+              EditTripAddJournal(tripID: self.trip.id, parent: self.parent, startDate: self.trip.startDate, endDate: self.trip.endDate, onDismiss: {
+                self.journalModalDisplayed = false
+              })
+          }
         }
         
       }.foregroundColor(.white)
