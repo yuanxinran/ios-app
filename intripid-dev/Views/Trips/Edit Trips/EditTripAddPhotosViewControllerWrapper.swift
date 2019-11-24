@@ -22,7 +22,6 @@ struct EditTripAddPhotosViewControllerWrapper: UIViewControllerRepresentable {
   typealias UIViewControllerType = AssetsPickerViewController
   
   func makeUIViewController(context: UIViewControllerRepresentableContext<EditTripAddPhotosViewControllerWrapper>) -> EditTripAddPhotosViewControllerWrapper.UIViewControllerType {
-    print("[EditTripAddPhotosViewControllerWrapper] in makeUIViewController")
     let picker = AssetsPickerViewController()
     picker.pickerDelegate = context.coordinator
     return picker
@@ -73,18 +72,25 @@ struct EditTripAddPhotosViewControllerWrapper: UIViewControllerRepresentable {
     func assetsPickerCannotAccessPhotoLibrary(controller: AssetsPickerViewController) {}
     func assetsPickerDidCancel(controller: AssetsPickerViewController) {}
     func assetsPicker(controller: AssetsPickerViewController, selected assets: [PHAsset]) {
-      self.parent.selectedImageList += assets
-      self.parent.selectedImage += getUIImageList(assets: assets)
-      print("in assetsPicker", self.parent.selectedImageList)
+//      self.parent.selectedImageList += assets
+//      self.parent.selectedImage += getUIImageList(assets: assets)
     }
     func assetsPicker(controller: AssetsPickerViewController, shouldSelect asset: PHAsset, at indexPath: IndexPath) -> Bool {
       return true
     }
-    func assetsPicker(controller: AssetsPickerViewController, didSelect asset: PHAsset, at indexPath: IndexPath) {}
+    func assetsPicker(controller: AssetsPickerViewController, didSelect asset: PHAsset, at indexPath: IndexPath) {
+      self.parent.selectedImageList.append(asset)
+      self.parent.selectedImage.append(getUIImage(asset: asset)!)
+    }
     func assetsPicker(controller: AssetsPickerViewController, shouldDeselect asset: PHAsset, at indexPath: IndexPath) -> Bool {
       return true
     }
-    func assetsPicker(controller: AssetsPickerViewController, didDeselect asset: PHAsset, at indexPath: IndexPath) {}
+    func assetsPicker(controller: AssetsPickerViewController, didDeselect asset: PHAsset, at indexPath: IndexPath) {
+      if let deselectIndex = self.parent.selectedImageList.firstIndex(where: { $0 == asset }) {
+        self.parent.selectedImageList.remove(at: deselectIndex)
+        self.parent.selectedImage.remove(at: deselectIndex)
+      }
+    }
     
   }
 }
