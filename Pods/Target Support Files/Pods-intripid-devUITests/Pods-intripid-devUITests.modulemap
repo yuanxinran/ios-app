@@ -1,6 +1,0 @@
-framework module Pods_intripid_devUITests {
-  umbrella header "Pods-intripid-devUITests-umbrella.h"
-
-  export *
-  module * { export * }
-}
