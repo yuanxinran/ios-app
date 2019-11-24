@@ -31,7 +31,8 @@ struct EditTripAddMultiplePhotos :  View {
   }
   
   func addPhotosToTrip(){
-    self.viewModel.addPhotosToTrip(photos: imageAssetList, photoImages: imageList, tripID: tripID, coverImage: nil) { (result: [String], ignore)  in
+    self.viewModel.addPhotosToTrip(photos: imageAssetList, photoImages: imageList, tripID: tripID, coverImage: nil) { (_ imageIDs: [String], _ imagesHQ: [UIImage])  in
+      self.viewModel.addPhotoHQ(imageIDs: imageIDs, imageHQs: imagesHQ, tripID: self.tripID)
       self.parent.refresh()
     }
     self.onDismiss()
@@ -39,39 +40,38 @@ struct EditTripAddMultiplePhotos :  View {
   
   
   var body: some View {
-    ZStack {
-      VStack(alignment: .leading) {
-        VStack(alignment: .leading, spacing: 20.0){
-          VStack(alignment: .leading, spacing: 10.0){
-            Text("Upload Photos").font(.title).fontWeight(.bold)
-            Button(action: {
-              self.isShowingImagePicker.toggle()
-            },label: {
-              Text("Select Image").foregroundColor(GreenColor).sheet(isPresented: $isShowingImagePicker,content: {
-  //              ImagePickerView(isPresented: self.$isShowingImagePicker, selectedImage: self.$imageList, selectedImageList: self.$imageAssetList)
-                EditTripAddPhotosViewControllerWrapper(selectedImage: self.$imageList, selectedImageList: self.$imageAssetList)
-              })
-            }
-            )
+    VStack(alignment: .leading) {
+      VStack(alignment: .leading, spacing: 20.0){
+        VStack(alignment: .leading, spacing: 10.0){
+          Text("Upload Photos").font(.title).fontWeight(.bold)
+          Button(action: {
+            self.isShowingImagePicker.toggle()
+          },label: {
+            Text("Select Image").foregroundColor(GreenColor).sheet(isPresented: $isShowingImagePicker,content: {
+//              ImagePickerView(isPresented: self.$isShowingImagePicker, selectedImage: self.$imageList, selectedImageList: self.$imageAssetList)
+              EditTripAddPhotosViewControllerWrapper(selectedImage: self.$imageList, selectedImageList: self.$imageAssetList)
+            })
           }
+          )
+        }
 
-          imageSelectorResult(self.imageList)
+        imageSelectorResult(self.imageList)
 
-        }.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .topLeading)
-  //      Spacer()
       }
-      VStack {
-        Spacer()
-        HStack {
+      Spacer()
+      VStack(alignment: .leading){
+        HStack(alignment: .top){
           Spacer()
           GreenButton("Add Photos").onTapGesture {
             self.addPhotosToTrip()
           }
         }
       }
-    }.padding(.leading, UIScreen.main.bounds.width * 0.05)
-    .padding(.trailing,UIScreen.main.bounds.width * 0.05)
-    .padding(.top,20)
+      Spacer()
+    }.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .topLeading).padding(.leading, UIScreen.main.bounds.width * 0.05).padding(.trailing,UIScreen.main.bounds.width * 0.05).padding(.top,20)
+
+    //    EditTripAddPhotosViewControllerWrapper()
+  
   }
 }
 
