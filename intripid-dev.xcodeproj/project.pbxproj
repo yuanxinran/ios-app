@@ -33,6 +33,8 @@
 		1CBFDF3E23681AA80055EC34 /* AddJournalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CBFDF3D23681AA80055EC34 /* AddJournalView.swift */; };
 		1CBFDF40236826B80055EC34 /* TripMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CBFDF3F236826B80055EC34 /* TripMapView.swift */; };
 		1CD133E62367642B008230B7 /* TripViewModePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CD133E52367642B008230B7 /* TripViewModePicker.swift */; };
+		1CD17B8F2389BC1F008675C8 /* EditTripAddPhotosViewControllerWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CD17B8E2389BC1F008675C8 /* EditTripAddPhotosViewControllerWrapper.swift */; };
+		1CD17B932389C196008675C8 /* EditTripAddMultiplePhotos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CD17B922389C196008675C8 /* EditTripAddMultiplePhotos.swift */; };
 		1CE50FCA23753456007DEE50 /* TripEntriesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CE50FC923753455007DEE50 /* TripEntriesView.swift */; };
 		1CE5102F2375CA0E007DEE50 /* ModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CE5102E2375CA0E007DEE50 /* ModelTest.swift */; };
 		424F3E743727E09698C6AE95 /* Pods_intripid_devUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 007FE4342221466759D186A9 /* Pods_intripid_devUITests.framework */; };
@@ -127,6 +129,8 @@
 		1CBFDF3D23681AA80055EC34 /* AddJournalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddJournalView.swift; sourceTree = "<group>"; };
 		1CBFDF3F236826B80055EC34 /* TripMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripMapView.swift; sourceTree = "<group>"; };
 		1CD133E52367642B008230B7 /* TripViewModePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripViewModePicker.swift; sourceTree = "<group>"; };
+		1CD17B8E2389BC1F008675C8 /* EditTripAddPhotosViewControllerWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTripAddPhotosViewControllerWrapper.swift; sourceTree = "<group>"; };
+		1CD17B922389C196008675C8 /* EditTripAddMultiplePhotos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTripAddMultiplePhotos.swift; sourceTree = "<group>"; };
 		1CE50FC923753455007DEE50 /* TripEntriesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripEntriesView.swift; sourceTree = "<group>"; };
 		1CE5102E2375CA0E007DEE50 /* ModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ModelTest.swift; path = "/Users/zoeteohy/Desktop/67442/ios-app/intripid-devTests/ModelTest.swift"; sourceTree = "<absolute>"; };
 		41F6F92022AA841B35DF4631 /* Pods_intripid_devTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_intripid_devTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -331,6 +335,8 @@
 				54024A062389F49E003895A2 /* EditTripAddPhotosViewControllerWrapper.swift */,
 				54024A042389F46F003895A2 /* EditTripAddMultiplePhotos.swift */,
 				5411B0D42373F5E600833764 /* EditTripAddJournal.swift */,
+				1CD17B8E2389BC1F008675C8 /* EditTripAddPhotosViewControllerWrapper.swift */,
+				1CD17B922389C196008675C8 /* EditTripAddMultiplePhotos.swift */,
 			);
 			path = "Edit Trips";
 			sourceTree = "<group>";
@@ -680,6 +686,7 @@
 				1CB7DDF92366939C000ED455 /* TripListView.swift in Sources */,
 				5431E91C237054E400139BE4 /* DateHelper.swift in Sources */,
 				1CB7DE032366C654000ED455 /* ProfileView.swift in Sources */,
+				1CD17B8F2389BC1F008675C8 /* EditTripAddPhotosViewControllerWrapper.swift in Sources */,
 				5411B0E92374F09400833764 /* EntryCell.swift in Sources */,
 				1CBFDF3A236814050055EC34 /* TripCoverView.swift in Sources */,
 				544873132373186700791CBD /* CachedImageView.swift in Sources */,
@@ -692,7 +699,11 @@
 				5411B0CA2373C81B00833764 /* EditTripViewModel.swift in Sources */,
 				5431E908236F726F00139BE4 /* PhotoHelper.swift in Sources */,
 				1CBFDF38236811D00055EC34 /* TripPhotosView.swift in Sources */,
+<<<<<<< HEAD
+				1CD17B932389C196008675C8 /* EditTripAddMultiplePhotos.swift in Sources */,
+=======
 				54024A072389F49E003895A2 /* EditTripAddPhotosViewControllerWrapper.swift in Sources */,
+>>>>>>> 1b8c5fd3af7587edd2c5076815cb4427c1535ef5
 				5411B0EF237570C400833764 /* Entry.swift in Sources */,
 				1CB39EB22374D676005E01F9 /* MapDetailViewControllerWrapper.swift in Sources */,
 				1CB7DDC323668E8E000ED455 /* AppDelegate.swift in Sources */,
