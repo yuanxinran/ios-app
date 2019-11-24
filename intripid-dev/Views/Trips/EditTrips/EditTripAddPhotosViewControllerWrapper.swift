@@ -36,6 +36,7 @@ struct EditTripAddPhotosViewControllerWrapper: UIViewControllerRepresentable {
   }
   
   class Coordinator: NSObject, AssetsPickerViewControllerDelegate {
+    
     let parent: EditTripAddPhotosViewControllerWrapper
     init(parent: EditTripAddPhotosViewControllerWrapper){
       self.parent = parent
@@ -71,6 +72,10 @@ struct EditTripAddPhotosViewControllerWrapper: UIViewControllerRepresentable {
     
     func assetsPickerCannotAccessPhotoLibrary(controller: AssetsPickerViewController) {}
     func assetsPickerDidCancel(controller: AssetsPickerViewController) {}
+    func assetsPicker(controller: AssetsPickerViewController, selected assets: [PHAsset]) {
+      //      self.parent.selectedImageList += assets
+      //      self.parent.selectedImage += getUIImageList(assets: assets)
+    }
     func assetsPicker(controller: AssetsPickerViewController, shouldSelect asset: PHAsset, at indexPath: IndexPath) -> Bool {
       return true
     }
