@@ -53,6 +53,9 @@ class MapDetailViewController: UIViewController, GMSMapViewDelegate {
       NSLog("One or more of the map styles failed to load. \(error)")
     }
     
+    // Refining Interactions
+    mapView.settings.scrollGestures = false
+    
     mapView.delegate = self
     self.view = mapView
     
