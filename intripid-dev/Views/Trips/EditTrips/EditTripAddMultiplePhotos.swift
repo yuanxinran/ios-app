@@ -39,38 +39,39 @@ struct EditTripAddMultiplePhotos :  View {
   
   
   var body: some View {
-    VStack(alignment: .leading) {
-      VStack(alignment: .leading, spacing: 20.0){
-        VStack(alignment: .leading, spacing: 10.0){
-          Text("Upload Photos").font(.title).fontWeight(.bold)
-          Button(action: {
-            self.isShowingImagePicker.toggle()
-          },label: {
-            Text("Select Image").foregroundColor(GreenColor).sheet(isPresented: $isShowingImagePicker,content: {
-//              ImagePickerView(isPresented: self.$isShowingImagePicker, selectedImage: self.$imageList, selectedImageList: self.$imageAssetList)
-              EditTripAddPhotosViewControllerWrapper(selectedImage: self.$imageList, selectedImageList: self.$imageAssetList)
-            })
+    ZStack {
+      VStack(alignment: .leading) {
+        VStack(alignment: .leading, spacing: 20.0){
+          VStack(alignment: .leading, spacing: 10.0){
+            Text("Upload Photos").font(.title).fontWeight(.bold)
+            Button(action: {
+              self.isShowingImagePicker.toggle()
+            },label: {
+              Text("Select Image").foregroundColor(GreenColor).sheet(isPresented: $isShowingImagePicker,content: {
+  //              ImagePickerView(isPresented: self.$isShowingImagePicker, selectedImage: self.$imageList, selectedImageList: self.$imageAssetList)
+                EditTripAddPhotosViewControllerWrapper(selectedImage: self.$imageList, selectedImageList: self.$imageAssetList)
+              })
+            }
+            )
           }
-          )
-        }
 
-        imageSelectorResult(self.imageList)
+          imageSelectorResult(self.imageList)
 
+        }.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .topLeading)
+  //      Spacer()
       }
-      Spacer()
-      VStack(alignment: .leading){
-        HStack(alignment: .top){
+      VStack {
+        Spacer()
+        HStack {
           Spacer()
           GreenButton("Add Photos").onTapGesture {
             self.addPhotosToTrip()
           }
         }
       }
-      Spacer()
-    }.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .topLeading).padding(.leading, UIScreen.main.bounds.width * 0.05).padding(.trailing,UIScreen.main.bounds.width * 0.05).padding(.top,20)
-
-    //    EditTripAddPhotosViewControllerWrapper()
-  
+    }.padding(.leading, UIScreen.main.bounds.width * 0.05)
+    .padding(.trailing,UIScreen.main.bounds.width * 0.05)
+    .padding(.top,20)
   }
 }
 
