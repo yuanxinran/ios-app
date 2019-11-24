@@ -30,29 +30,24 @@ struct TripEntriesView: View {
   var body: some View {
     HStack(alignment: .top) {
       VStack {
-//
-//        ForEach(testPhotos, id: \.self) { photo in
-//          Image(photo)
-//          .resizable()
-//          .scaledToFit()
-//          .frame(width: UIScreen.main.bounds.width/3)
-//        }
-        
         ForEach(array1, id: \.self) { index in
-          EntryCell(entry: self.entries[index])
-//          URLImage(url: self.photos[index].imagePath)
+          NavigationLink(destination: TripEntryView(entries: self.entries, idx: index)) {
+              EntryCell(entry: self.entries[index])
+          }.buttonStyle(PlainButtonStyle())
         }
       }
       VStack {
         ForEach(array2, id: \.self) { index in
-          EntryCell(entry: self.entries[index])
-//          URLImage(url: self.photos[index].imagePath)
+          NavigationLink(destination: TripEntryView(entries: self.entries, idx: index)) {
+              EntryCell(entry: self.entries[index])
+          }.buttonStyle(PlainButtonStyle())
         }
       }
       VStack {
         ForEach(array3, id: \.self) { index in
-          EntryCell(entry: self.entries[index])
-//          URLImage(url: self.photos[index].imagePath)
+          NavigationLink(destination: TripEntryView(entries: self.entries, idx: index)) {
+              EntryCell(entry: self.entries[index])
+          }.buttonStyle(PlainButtonStyle())
         }
       }
     }
