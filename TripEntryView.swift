@@ -22,89 +22,27 @@ struct TripEntryView: View {
     self.idx = idx
     self.url = entries[idx].photo!.imagePath
     self.urls = entries.map({ $0.photo!.imagePath })
-//    self.imageLoader.load(url: url)
-//    self.uiImage = urls.map({ url in
-//      imageLoader.load(url: url)
-//      return imageLoader.downloadedImage
-//    })
-//    print(self.uiImage)
   }
-  
   
   var body: some View {
     // MARK: Loading a scroll view of placeholder images
-    UIScrollViewWrapper {
-      HStack{
-          ForEach(0 ..< self.urls.count) { urlIndex in
-//            self.imageLoader.load(url: urls[urlIndex])
-            URLImage(url: self.urls[urlIndex])
-          }
+    GeometryReader { proxy in
+      UIScrollViewWrapper {
+        HStack{
+            ForEach(0 ..< self.urls.count) { urlIndex in
+//              self.imageLoader.load(url: urls[urlIndex])
+              URLImage(url: self.urls[urlIndex])
+                .padding(.leading, 8)
+                .frame(width: proxy.size.width-8)
+            }
         }
+        .frame(width: proxy.size.width * CGFloat(self.urls.count - self.idx))
+        .offset(x: (-proxy.size.width * 0.5) * CGFloat(self.idx) - 4, y: 20)
+//        .position(x: proxy.size.width/2 + proxy.size.width * CGFloat(self.urls.count/2), y: proxy.size.height/2)
+      }
     }
-//        let uiImage = self.imageLoader.downloadedImage {
-//                return Image(uiImage: uiImage)
-//                .resizable()
-//                        .aspectRatio(uiImage.size.width/uiImage.size.height, contentMode: .fit)
-//                //        .scaledToFit()
-//                        .frame(width: UIScreen.main.bounds.width)
-//                //        .frame(minWidth:0, idealWidth: UIScreen.main.bounds.width/3, maxWidth: .infinity, minHeight:0, maxHeight:.infinity)
-//                        .clipped()
-//                        .cornerRadius(5)
-//              }
-//      }
-//    }
-    
-    //      MARK: Loading a scroll view of placeholder images
-//    UIScrollViewWrapper {
-//      HStack{
-//        Image("person_1")
-//          .resizable()
-//          .aspectRatio(contentMode: .fit)
-//          .frame(width: UIScreen.main.bounds.width)
-//          .clipped()
-//          .cornerRadius(5)
-//        Image("person_2")
-//          .resizable()
-//          .aspectRatio(contentMode: .fit)
-//          .frame(width: UIScreen.main.bounds.width)
-//          .clipped()
-//          .cornerRadius(5)
-//        Image("person_3")
-//          .resizable()
-//          .aspectRatio(contentMode: .fit)
-//          .frame(width: UIScreen.main.bounds.width)
-//          .clipped()
-//          .cornerRadius(5)
-//      }
-//    }
-    
-    //      MARK: Loading a single Photo
-    //      if let uiImage = self.imageLoader.downloadedImage {
-    //        return Image(uiImage: uiImage)
-    //        .resizable()
-    //                .aspectRatio(uiImage.size.width/uiImage.size.height, contentMode: .fit)
-    //        //        .scaledToFit()
-    //                .frame(width: UIScreen.main.bounds.width)
-    //        //        .frame(minWidth:0, idealWidth: UIScreen.main.bounds.width/3, maxWidth: .infinity, minHeight:0, maxHeight:.infinity)
-    //                .clipped()
-    //                .cornerRadius(5)
-    //      }
-    //      return Image("person_1")
-    //      .resizable()
-    //              .aspectRatio(contentMode: .fit)
-    //      //        .scaledToFit()
-    //              .frame(width: UIScreen.main.bounds.width)
-    //      //        .frame(minWidth:0, idealWidth: UIScreen.main.bounds.width/3, maxWidth: .infinity, minHeight:0, maxHeight:.infinity)
-    //              .clipped()
-    //              .cornerRadius(5)
   }
 }
-
-//struct TripEntryView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        TripEntryView()
-//    }
-//}
 
 struct UIScrollViewWrapper<Content: View>: UIViewControllerRepresentable {
   
