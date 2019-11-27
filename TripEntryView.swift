@@ -13,15 +13,15 @@ struct TripEntryView: View {
   @ObservedObject private var imageLoader = ImageLoader()
   var entries: [Entry]
   var idx: Int
-  var url: String
-  var urls: [String]
-  var uiImage: [UIImage?] = [UIImage?]()
+//  var url: String
+//  var urls: [String]
+//  var uiImage: [UIImage?] = [UIImage?]()
   
   init(entries:[Entry], idx: Int) {
     self.entries = entries
     self.idx = idx
-    self.url = entries[idx].photo!.imagePath
-    self.urls = entries.map({ $0.photo!.imagePath })
+//    self.url = entries[idx].photo!.imagePath
+//    self.urls = entries.map({ $0.photo!.imagePath })
   }
   
   var body: some View {
@@ -29,14 +29,14 @@ struct TripEntryView: View {
     GeometryReader { proxy in
       UIScrollViewWrapper {
         HStack{
-            ForEach(0 ..< self.urls.count) { urlIndex in
+            ForEach(0 ..< self.entries.count) { entryIndex in
 //              self.imageLoader.load(url: urls[urlIndex])
-              URLImage(url: self.urls[urlIndex])
+              EntryCell(entry: self.entries[entryIndex])
                 .padding(.leading, 8)
                 .frame(width: proxy.size.width-8)
             }
         }
-        .frame(width: proxy.size.width * CGFloat(self.urls.count - self.idx))
+        .frame(width: proxy.size.width * CGFloat(self.entries.count - self.idx))
         .offset(x: (-proxy.size.width * 0.5) * CGFloat(self.idx) - 4, y: 20)
 //        .position(x: proxy.size.width/2 + proxy.size.width * CGFloat(self.urls.count/2), y: proxy.size.height/2)
       }

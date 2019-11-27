@@ -32,12 +32,12 @@ struct EntryCell: View{
               gradient: .init(colors: [gradientStart, gradientEnd]),
               startPoint: .init(x: 0.5, y: 0),
               endPoint: .init(x: 0.5, y: 0.6)
-            )).frame(width: UIScreen.main.bounds.width/3,height: 160)
+            )) //.frame(width: UIScreen.main.bounds.width/3,height: 160)
             .cornerRadius(10)
           VStack (alignment: .leading){
             Text("\(entry.journal!.title)").fontWeight(.bold)
           }.padding(8)
-        }.frame(width: UIScreen.main.bounds.width/3,height: 160)
+        } //.frame(width: UIScreen.main.bounds.width/3,height: 160)
         
       }
     }
