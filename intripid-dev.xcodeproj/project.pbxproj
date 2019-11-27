@@ -38,6 +38,7 @@
 		1CB85B73238A23190085BF58 /* AddJournalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CB85B6A238A23190085BF58 /* AddJournalView.swift */; };
 		1CB85B74238A23190085BF58 /* MapDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CB85B6B238A23190085BF58 /* MapDetailViewController.swift */; };
 		1CB85B75238A23190085BF58 /* TripCoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CB85B6C238A23190085BF58 /* TripCoverView.swift */; };
+		1CB85B7B238B26170085BF58 /* TripEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CB85B7A238B26170085BF58 /* TripEntryView.swift */; };
 		1CBFDF40236826B80055EC34 /* TripMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CBFDF3F236826B80055EC34 /* TripMapView.swift */; };
 		1CD133E62367642B008230B7 /* TripViewModePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CD133E52367642B008230B7 /* TripViewModePicker.swift */; };
 		1CE5102F2375CA0E007DEE50 /* ModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CE5102E2375CA0E007DEE50 /* ModelTest.swift */; };
@@ -132,6 +133,7 @@
 		1CB85B6A238A23190085BF58 /* AddJournalView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddJournalView.swift; path = "intripid-dev/Views/Trips/TripDetail/AddJournalView.swift"; sourceTree = SOURCE_ROOT; };
 		1CB85B6B238A23190085BF58 /* MapDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MapDetailViewController.swift; path = "intripid-dev/Views/Trips/TripDetail/MapDetailViewController.swift"; sourceTree = SOURCE_ROOT; };
 		1CB85B6C238A23190085BF58 /* TripCoverView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TripCoverView.swift; path = "intripid-dev/Views/Trips/TripDetail/TripCoverView.swift"; sourceTree = SOURCE_ROOT; };
+		1CB85B7A238B26170085BF58 /* TripEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripEntryView.swift; sourceTree = SOURCE_ROOT; };
 		1CBFDF3F236826B80055EC34 /* TripMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripMapView.swift; sourceTree = "<group>"; };
 		1CD133E52367642B008230B7 /* TripViewModePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripViewModePicker.swift; sourceTree = "<group>"; };
 		1CE5102E2375CA0E007DEE50 /* ModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ModelTest.swift; path = "/Users/zoeteohy/Desktop/67442/ios-app/intripid-devTests/ModelTest.swift"; sourceTree = "<absolute>"; };
@@ -219,6 +221,7 @@
 		1CB39EAE2374C9F4005E01F9 /* Trip Detail */ = {
 			isa = PBXGroup;
 			children = (
+				1CB85B7A238B26170085BF58 /* TripEntryView.swift */,
 				1CB85B6A238A23190085BF58 /* AddJournalView.swift */,
 				1CB85B64238A23180085BF58 /* AddPhotosView.swift */,
 				1CB85B6B238A23190085BF58 /* MapDetailViewController.swift */,
@@ -680,6 +683,7 @@
 				5431E912236FD89A00139BE4 /* Journal.swift in Sources */,
 				1CB85B71238A23190085BF58 /* TripDetailTestView.swift in Sources */,
 				1CB7DDF92366939C000ED455 /* TripListView.swift in Sources */,
+				1CB85B7B238B26170085BF58 /* TripEntryView.swift in Sources */,
 				5431E91C237054E400139BE4 /* DateHelper.swift in Sources */,
 				1CB85B61238A215F0085BF58 /* EditTripAddJournal.swift in Sources */,
 				1CB7DE032366C654000ED455 /* ProfileView.swift in Sources */,
