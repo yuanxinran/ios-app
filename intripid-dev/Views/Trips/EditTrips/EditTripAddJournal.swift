@@ -32,6 +32,8 @@ struct EditTripAddJournal :  View {
     self.parent = parent
     self.dates = Date.dates(from: startDate as Date, to: endDate as Date) as [NSDate]
     UITableView.appearance().backgroundColor = .clear
+    UITableViewCell.appearance().backgroundColor = .clear
+    UITableView.appearance().separatorStyle = .none
   }
   
   func addJournalToTrip(){
@@ -45,50 +47,50 @@ struct EditTripAddJournal :  View {
   var body: some View {
     NavigationView {
       VStack{
-        Form {
         
-          Section(header: Text("Heading")){
-            TextField("Enter your Heading!", text: $title)
+        ZStack {
+          Rectangle()
+            .fill(LinearGradient(
+              gradient: .init(colors: [Color(colors[colorSet][0]), Color(colors[colorSet][1])]),
+              startPoint: .init(x: 0.5, y: 0),
+              endPoint: .init(x: 0.5, y: 0.6)
+            ))
+            .cornerRadius(20)
+
+          Form {
+            TextField("Heading", text: $title)
+              .font(.headline)
+            MultilineTextField("Journal", text: $content, onCommit: {print("Final text:")})
               .font(.body)
-          }
-          Section(header: Text("Content")){
-            MultilineTextField("Write your journal here", text: $content, onCommit: {print("Final text:")})
-          }
-          
-          Section(header: Text("Date")) {
+//              .backgroundColor(.clear)
+
             Picker(selection: $selectedDate, label: Text("Date")) {
               ForEach(0 ..< self.dates.count) {
                 Text(self.dates[$0].formatDate())
               }
             }
           }
-          
-          Section(header: Text("Cover Color")) {
-            Rectangle()
-              .fill(LinearGradient(
-                gradient: .init(colors: [Color(colors[colorSet][0]), Color(colors[colorSet][1])]),
-                startPoint: .init(x: 0.5, y: 0),
-                endPoint: .init(x: 0.5, y: 0.6)
-              ))
-              .frame(width: UIScreen.main.bounds.width * 0.50, height: 30)
-              .cornerRadius(30)
-            Button(action: {
-              self.colorSet = (self.colorSet + 1) % self.colors.count
-            }, label: {Text("Change Color")})
-          }
-          
+          .labelsHidden()
         }
-        
-        VStack(alignment: .leading){
-          HStack(alignment: .top){
-            Spacer()
-            GreenButton("Add Journal").onTapGesture {
-              self.addJournalToTrip()
+          
+          Button(action: {
+            self.colorSet = (self.colorSet + 1) % self.colors.count
+          }, label: {Text("Change Color")})
+          
+          VStack(alignment: .leading){
+            HStack(alignment: .top){
+              Spacer()
+              GreenButton("Add Journal").onTapGesture {
+                self.addJournalToTrip()
+              }
             }
           }
-        }
-        
-      }.navigationBarTitle(Text("Adding Journal")).frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .topLeading).padding(.leading, UIScreen.main.bounds.width * 0.05).padding(.trailing,UIScreen.main.bounds.width * 0.05).padding(.top,20)
+          
+        }.navigationBarTitle(Text("Adding Journal"))
+          .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .topLeading)
+          .padding(.leading, UIScreen.main.bounds.width * 0.05)
+          .padding(.trailing,UIScreen.main.bounds.width * 0.05)
+          .padding(.top,20)
     }
   }
   

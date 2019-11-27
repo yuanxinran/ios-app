@@ -25,6 +25,7 @@ fileprivate struct UITextViewWrapper: UIViewRepresentable {
         textField.isSelectable = true
         textField.isUserInteractionEnabled = true
         textField.isScrollEnabled = false
+      textField.backgroundColor = .clear
         if nil != onDone {
             textField.returnKeyType = .done
         }
@@ -116,8 +117,8 @@ struct MultilineTextField: View {
     var placeholderView: some View {
         Group {
             if showingPlaceholder {
-                Text(placeholder).foregroundColor(.gray)
-                    .padding(.leading, 4)
+                Text(placeholder)
+                  .foregroundColor(.gray)
                     .padding(.top, 8)
             }
         }
