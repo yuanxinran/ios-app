@@ -85,7 +85,7 @@ struct SplashScreen: View {
 }
 
 extension SplashScreen {
-  var uAnimationDuration: Double { return 1.0 }
+  var uAnimationDuration: Double { return 0.4 }
   var uAnimationDelay: Double { return  0.2 }
   var uExitAnimationDuration: Double { return 0.3 }
   var finalAnimationDuration: Double { return 0.4 }

@@ -69,7 +69,10 @@ struct TripDetailTestView: View {
         }
         
       } else {
-        Text("Loading your trip....")
+        ZStack {
+          SplashScreen()
+          Text("Loading your trip....")
+        }
       }
       
     }.onAppear(perform: self.refresh).navigationBarBackButtonHidden(true)
