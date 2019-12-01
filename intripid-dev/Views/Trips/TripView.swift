@@ -39,8 +39,8 @@ struct TripView: View {
             MapViewControllerWrapper(trips: self.viewModel.trips, parent: self)
           }
           
-          }.navigationBarTitle(Text("All Trips"), displayMode: .automatic).navigationBarItems(trailing:
-          NavigationLink("Create",destination: CreateView()))
+          }.navigationBarTitle(Text("All Trips"), displayMode: .automatic)
+          .navigationBarItems(trailing: NavigationLink("Create",destination: CreateView()))
       }.onAppear(perform: self.refresh).edgesIgnoringSafeArea(.all)
   }
 }

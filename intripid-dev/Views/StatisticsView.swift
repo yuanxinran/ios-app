@@ -10,10 +10,22 @@ import SwiftUI
 
 struct StatisticsView: View {
   @ObservedObject private var viewModel : TripViewModel
-    
-    init(){
-      self.viewModel = TripViewModel(userID: currentUserDoc)
-    }
+  
+  init(){
+    print("in init")
+    self.viewModel = TripViewModel(userID: currentUserDoc)
+  }
+  
+  func refresh(){
+    self.viewModel.fetchData()
+    print("[Statistics]")
+    print(self.viewModel.trips)
+    print(self.viewModel.trips.count)
+  }
+  
+  func refreshTripData(tripID: String){
+    self.viewModel.refreshDataForTrip(tripID: tripID)
+  }
   
   var body: some View {
     ScrollView {
@@ -21,35 +33,35 @@ struct StatisticsView: View {
         Text("My Footsteps")
           .font(.title)
           .fontWeight(.bold)
-//        MapViewControllerWrapper(trips: self.viewModel.trips)
-//          .frame(height: 300)
+        //        MapViewControllerWrapper(trips: self.viewModel.trips)
+        //          .frame(height: 300)
         
         HStack {
-          VStack {
-            Text("Continents")
-              .font(.headline)
-            ZStack {
-              Circle()
-                .fill(Color.yellow)
-              Text("42")
-            }
-          }
-          VStack {
-            Text("Countries")
-              .font(.headline)
-            ZStack {
-              Circle()
-                .fill(Color.yellow)
-              Text("42")
-            }
-          }
           VStack {
             Text("Trips")
               .font(.headline)
             ZStack {
               Circle()
                 .fill(Color.yellow)
-              Text("42")
+              Text(String(self.viewModel.trips.count))
+            }
+          }
+          VStack {
+            Text("Photos")
+              .font(.headline)
+            ZStack {
+              Circle()
+                .fill(Color.yellow)
+              Text(String(self.viewModel.trips.reduce(0) { $0 + $1.photoNum }))
+            }
+          }
+          VStack {
+            Text("Journals")
+              .font(.headline)
+            ZStack {
+              Circle()
+                .fill(Color.yellow)
+              Text(String(self.viewModel.trips.reduce(0) { $0 + $1.journalNum }))
             }
           }
         }
@@ -89,7 +101,7 @@ struct StatisticsView: View {
         }
         .frame(height: 100)
       }
-    }
+    }.onAppear(perform: self.refresh)
   }
 }
 

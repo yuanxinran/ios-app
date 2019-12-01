@@ -22,7 +22,6 @@ extension TravelPartner: Equatable {
   static func == (lhs: TravelPartner, rhs: TravelPartner) -> Bool {
     return
       lhs.firstName == rhs.firstName &&
-        lhs.lastName == rhs.lastName &&
-        lhs.profilePicture == rhs.profilePicture
+        lhs.lastName == rhs.lastName
   }
 }
