@@ -12,6 +12,26 @@ import RemoteImage
 
 struct ProfileView: View {
   @ObservedObject var travelPartners = TravelPartnerViewModel()
+  @ObservedObject private var viewModel : TripViewModel
+    
+  init(){
+    self.viewModel = TripViewModel(userID: currentUserDoc)
+    print("[Profile] init")
+    print(self.viewModel.trips)
+    print(self.viewModel.trips.count)
+  }
+  
+  func refresh(){
+    self.viewModel.fetchData()
+    print("[Profile] init")
+    print(self.viewModel.trips)
+    print(self.viewModel.trips.count)
+  }
+  
+  
+  func refreshTripData(tripID: String){
+    self.viewModel.refreshDataForTrip(tripID: tripID)
+  }
   
   var body: some View {
     VStack {
@@ -43,7 +63,7 @@ struct ProfileView: View {
         NavigationView {
           List{
             ForEach(travelPartners.travelPartners){partner in
-              NavigationLink(destination: ProfileView()) {
+              NavigationLink(destination: TripListView(trips: self.viewModel.trips.filter { !$0.travelPartners.isEmpty }, numbers: self.viewModel.numbers, parent: TripView())) {
                 HStack{
                   ProfileImageCached(urlString: partner.profilePicture)
                   Text(partner.firstName+" "+partner.lastName)
@@ -52,7 +72,7 @@ struct ProfileView: View {
             }
           }.navigationBarTitle("")
           .navigationBarHidden(true)
-        }
+        }.onAppear(perform: self.refresh).edgesIgnoringSafeArea(.all)
       }
     }
   }
