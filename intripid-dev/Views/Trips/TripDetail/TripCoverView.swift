@@ -42,7 +42,7 @@ struct TripCoverView: View {
           Spacer()
           
           Button(action: { self.editModalDisplayed = true }) {
-            Text("Edit")
+            Text("Add Photo")
           }.font(.caption)
             .padding(5)
             .padding(.leading, 15)
@@ -55,19 +55,19 @@ struct TripCoverView: View {
             })
           }
           
-          Button(action: { self.photoModalDisplayed = true }) {
-            Text("Add Photo")
-          }.font(.caption)
-            .padding(5)
-            .padding(.leading, 15)
-            .padding(.trailing, 15)
-            .background(Color(.sRGB, red: 200/255, green: 200/255, blue: 200/255, opacity: 0.3))
-            .clipShape(Capsule())
-            .sheet(isPresented: $photoModalDisplayed) {
-              EditTripAddPhotos(tripID: self.trip.id, parent: self.parent, onDismiss: {
-                self.photoModalDisplayed = false
-              })
-          }
+//          Button(action: { self.photoModalDisplayed = true }) {
+//            Text("Add Photo")
+//          }.font(.caption)
+//            .padding(5)
+//            .padding(.leading, 15)
+//            .padding(.trailing, 15)
+//            .background(Color(.sRGB, red: 200/255, green: 200/255, blue: 200/255, opacity: 0.3))
+//            .clipShape(Capsule())
+//            .sheet(isPresented: $photoModalDisplayed) {
+//              EditTripAddPhotos(tripID: self.trip.id, parent: self.parent, onDismiss: {
+//                self.photoModalDisplayed = false
+//              })
+//          }
           
           Button(action: { self.journalModalDisplayed = true }) {
             Text("Add Journal")
