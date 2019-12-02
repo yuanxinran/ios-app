@@ -41,25 +41,33 @@ struct ProfileView: View {
             Image("trip_1")
               .resizable()
               .frame(height: 150)
-            Spacer()
           }
          
-          VStack {
+          HStack {
             Image("person_1")
               .resizable()
               .clipShape(Circle())
               .scaledToFit()
-              .frame(height: 120)
-            Text("Hello!")
-              .font(.title)
-              .fontWeight(.bold)
-            Text("42 trips total")
-          }
-        }.frame(height: 280)
+              .frame(height: 100)
+            VStack(alignment: .leading) {
+              Text("Hello!")
+                .font(.title)
+                .fontWeight(.bold)
+                .foregroundColor(.white)
+              Text("42 trips total")
+                .foregroundColor(.white)
+            }
+            Spacer()
+          }.frame(alignment: .leading)
+        }.frame(height: 150)
       }
       
                
-      VStack {
+      VStack(alignment: .leading) {
+        Text("Travel Partners")
+          .font(.headline)
+          .fontWeight(.bold)
+          .padding(10)
         NavigationView {
           List{
             ForEach(travelPartners.travelPartners){partner in
@@ -72,6 +80,7 @@ struct ProfileView: View {
             }
           }.navigationBarTitle("")
           .navigationBarHidden(true)
+          .navigationBarItems(trailing: NavigationLink("Add Partner",destination: CreateView()))
         }.onAppear(perform: self.refresh).edgesIgnoringSafeArea(.all)
       }
     }
