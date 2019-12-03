@@ -13,15 +13,10 @@ struct TripEntryView: View {
   @ObservedObject private var imageLoader = ImageLoader()
   var entries: [Entry]
   var idx: Int
-//  var url: String
-//  var urls: [String]
-//  var uiImage: [UIImage?] = [UIImage?]()
   
   init(entries:[Entry], idx: Int) {
     self.entries = entries
     self.idx = idx
-//    self.url = entries[idx].photo!.imagePath
-//    self.urls = entries.map({ $0.photo!.imagePath })
   }
   
   var body: some View {
@@ -30,15 +25,26 @@ struct TripEntryView: View {
       UIScrollViewWrapper {
         HStack{
             ForEach(0 ..< self.entries.count) { entryIndex in
-//              self.imageLoader.load(url: urls[urlIndex])
-              EntryCell(entry: self.entries[entryIndex])
-                .padding(.leading, 8)
-                .frame(width: proxy.size.width-8)
+              VStack {
+                EntryCell(entry: self.entries[entryIndex])
+                  .padding(.leading, 8)
+                  .frame(width: proxy.size.width-8)
+                
+                VStack {
+                  Button(action: {}) {
+                    Text("Delete")
+                  }.font(.caption)
+                    .padding(5)
+                    .padding(.leading, 15)
+                    .padding(.trailing, 15)
+                    .background(Color(.sRGB, red: 200/255, green: 200/255, blue: 200/255, opacity: 0.3))
+                    .clipShape(Capsule())
+                }.padding(20)
+              }
             }
         }
         .frame(width: proxy.size.width * CGFloat(self.entries.count - self.idx))
         .offset(x: (-proxy.size.width * 0.5) * CGFloat(self.idx) - 4, y: 20)
-//        .position(x: proxy.size.width/2 + proxy.size.width * CGFloat(self.urls.count/2), y: proxy.size.height/2)
       }
     }
   }
