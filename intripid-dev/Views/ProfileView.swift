@@ -10,10 +10,40 @@ import SwiftUI
 import FirebaseStorage
 import RemoteImage
 
+// Simple wrapper to add in title "All trips with [PARTNER]"
+struct FilteredTripListView: View {
+  var trips: [Trip]
+  var numbers: String = ""
+  var parent: TripView
+  var partnerName: String = ""
+  
+  var body: some View {
+    VStack {
+//      ZStack {
+//        Image("trip_1")
+//          .resizable()
+//          .frame(height: 150)
+//        Spacer()
+//
+//        Text("My Footsteps")
+//          .font(.title)
+//          .fontWeight(.bold)
+//          .foregroundColor(.white)
+//      }
+      Text("Trips with " + partnerName)
+        .font(.title)
+        .fontWeight(.bold)
+        .frame(minWidth: 0, maxWidth: .infinity, alignment: .topLeading)
+        .padding(.leading, 20)
+      TripListView(trips: trips, numbers: numbers, parent: parent)
+    }.offset(x: 0, y: -50)
+  }
+}
+
 struct ProfileView: View {
   @ObservedObject var travelPartners = TravelPartnerViewModel()
   @ObservedObject private var viewModel : TripViewModel
-    
+  
   init(){
     self.viewModel = TripViewModel(userID: currentUserDoc)
     print("[Profile] init")
@@ -33,48 +63,77 @@ struct ProfileView: View {
     self.viewModel.refreshDataForTrip(tripID: tripID)
   }
   
+  func getFilteredTrips(partner: TravelPartner) -> [Trip]{
+    print("in getFilteredTrips")
+    print(self.viewModel.trips.filter { $0.travelPartners.contains(partner.id) })
+    return self.viewModel.trips.filter { $0.travelPartners.contains(partner.id) }
+  }
+  
   var body: some View {
-    VStack {
+    NavigationView {
       VStack {
-        ZStack {
-          VStack {
-            Image("trip_1")
-              .resizable()
-              .frame(height: 150)
-            Spacer()
-          }
-         
-          VStack {
-            Image("person_1")
-              .resizable()
-              .clipShape(Circle())
-              .scaledToFit()
-              .frame(height: 120)
-            Text("Hello!")
+        VStack {
+          ZStack {
+            VStack {
+              Image("trip_1")
+                .resizable()
+                .frame(height: 150)
+            }
+            
+            HStack {
+              Image("person_1")
+                .resizable()
+                .clipShape(Circle())
+                .scaledToFit()
+                .frame(height: 100)
+              VStack(alignment: .leading) {
+                Text("Hello!")
+                  .font(.title)
+                  .fontWeight(.bold)
+                  .foregroundColor(.white)
+                Text("42 trips total")
+                  .foregroundColor(.white)
+              }
+              Spacer()
+            }.frame(alignment: .leading)
+          }.frame(height: 150)
+        }
+        
+        
+        VStack(alignment: .leading) {
+          HStack {
+            Text("Travel Partners")
               .font(.title)
               .fontWeight(.bold)
-            Text("42 trips total")
-          }
-        }.frame(height: 280)
-      }
-      
-               
-      VStack {
-        NavigationView {
+            Spacer()
+            Button(action: {}){
+              Text("Add Partner")
+            }.font(.caption)
+              .padding(5)
+              .padding(.leading, 15)
+              .padding(.trailing, 15)
+              .background(Color(.sRGB, red: 200/255, green: 200/255, blue: 200/255, opacity: 0.3))
+              .clipShape(Capsule())
+          }.padding(.leading, 20)
+          .padding(.trailing, 20)
+          
           List{
             ForEach(travelPartners.travelPartners){partner in
-              NavigationLink(destination: TripListView(trips: self.viewModel.trips.filter { !$0.travelPartners.isEmpty }, numbers: self.viewModel.numbers, parent: TripView())) {
+              NavigationLink(destination: FilteredTripListView(trips: self.getFilteredTrips(partner: partner), numbers: self.viewModel.numbers, parent: TripView(), partnerName: partner.firstName)) {
                 HStack{
                   ProfileImageCached(urlString: partner.profilePicture)
                   Text(partner.firstName+" "+partner.lastName)
                 }
               }
             }
-          }.navigationBarTitle("")
+          }
+          .navigationBarTitle("")
           .navigationBarHidden(true)
-        }.onAppear(perform: self.refresh).edgesIgnoringSafeArea(.all)
-      }
-    }
+        }
+      } // VStack
+      .frame(minHeight: 0, maxHeight: .infinity, alignment: .top)
+    } // Navigation View
+    .onAppear(perform: self.refresh)
   }
 }
 
