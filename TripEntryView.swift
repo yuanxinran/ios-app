@@ -26,7 +26,7 @@ struct TripEntryView: View {
         HStack{
             ForEach(0 ..< self.entries.count) { entryIndex in
               VStack {
-                EntryCell(entry: self.entries[entryIndex])
+                EntryCellDetailed(entry: self.entries[entryIndex])
                   .padding(.leading, 8)
                   .frame(width: proxy.size.width-8)
                 
@@ -43,8 +43,8 @@ struct TripEntryView: View {
               }
             }
         }
-        .frame(width: proxy.size.width * CGFloat(self.entries.count - self.idx))
-        .offset(x: (-proxy.size.width * 0.5) * CGFloat(self.idx) - 4, y: 20)
+        .frame(width: proxy.size.width * CGFloat(self.entries.count - self.idx), height: proxy.size.height)
+        .offset(x: (-proxy.size.width * 0.5) * CGFloat(self.idx) - 4, y: -20)
       }
     }
   }
