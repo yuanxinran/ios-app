@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1C853AC92395AFD1006BE0B6 /* SwiftUICharts in Frameworks */ = {isa = PBXBuildFile; productRef = 1C853AC82395AFD1006BE0B6 /* SwiftUICharts */; };
+		1C853ACB2395F7BA006BE0B6 /* EntryCellDetailed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C853ACA2395F7BA006BE0B6 /* EntryCellDetailed.swift */; };
 		1CB39E07236B8341005E01F9 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CB39E06236B8341005E01F9 /* User.swift */; };
 		1CB39EAB2374138A005E01F9 /* ToRootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CB39EA82374138A005E01F9 /* ToRootViewController.swift */; };
 		1CB39EAC2374138A005E01F9 /* NewTripCreationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CB39EA92374138A005E01F9 /* NewTripCreationView.swift */; };
@@ -97,6 +98,7 @@
 /* Begin PBXFileReference section */
 		007FE4342221466759D186A9 /* Pods_intripid_devUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_intripid_devUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		016774B7A290AAC743A0CA56 /* Pods-intripid-devTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-intripid-devTests.debug.xcconfig"; path = "Target Support Files/Pods-intripid-devTests/Pods-intripid-devTests.debug.xcconfig"; sourceTree = "<group>"; };
+		1C853ACA2395F7BA006BE0B6 /* EntryCellDetailed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryCellDetailed.swift; sourceTree = "<group>"; };
 		1CB39E06236B8341005E01F9 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		1CB39EA82374138A005E01F9 /* ToRootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToRootViewController.swift; sourceTree = "<group>"; };
 		1CB39EA92374138A005E01F9 /* NewTripCreationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewTripCreationView.swift; sourceTree = "<group>"; };
@@ -405,6 +407,7 @@
 				54817035236E1DA200FEF1C3 /* ImageLoader.swift */,
 				54817042236F01BD00FEF1C3 /* Button.swift */,
 				5411B0E82374F09400833764 /* EntryCell.swift */,
+				1C853ACA2395F7BA006BE0B6 /* EntryCellDetailed.swift */,
 				5411B0D62374155200833764 /* TextBox.swiftui.swift */,
 			);
 			path = Common;
@@ -700,6 +703,7 @@
 				1CBFDF40236826B80055EC34 /* TripMapView.swift in Sources */,
 				5411B0CA2373C81B00833764 /* EditTripViewModel.swift in Sources */,
 				5431E908236F726F00139BE4 /* PhotoHelper.swift in Sources */,
+				1C853ACB2395F7BA006BE0B6 /* EntryCellDetailed.swift in Sources */,
 				1CB85B60238A215F0085BF58 /* EditTripAddMultiplePhotos.swift in Sources */,
 				5411B0EF237570C400833764 /* Entry.swift in Sources */,
 				1CB7DDC323668E8E000ED455 /* AppDelegate.swift in Sources */,
