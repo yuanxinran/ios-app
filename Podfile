@@ -3,12 +3,14 @@
 
 target 'intripid-dev' do
   # Comment the next line if you don't want to use dynamic frameworks
-  use_frameworks!
+   use_frameworks!
+#  use_modular_headers!
 
   # Pods for intripid-dev
 
   # Pods for GoogleMaps
   pod 'GoogleMaps'
+#  pod 'Google-Maps-iOS-Utils'
   pod 'GooglePlaces'
   
   # Pods for Firebase

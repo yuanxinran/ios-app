@@ -87,11 +87,11 @@ struct ProfileView: View {
                 .scaledToFit()
                 .frame(height: 100)
               VStack(alignment: .leading) {
-                Text("Hello!")
+                Text("Jane Doe")
                   .font(.title)
                   .fontWeight(.bold)
                   .foregroundColor(.white)
-                Text("42 trips total")
+                Text(String(self.viewModel.trips.count) + " trips total")
                   .foregroundColor(.white)
               }
               Spacer()
