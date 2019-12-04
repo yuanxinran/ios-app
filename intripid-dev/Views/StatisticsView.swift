@@ -79,16 +79,21 @@ struct StatisticsView: View {
         }
         
         VStack {
-          HStack {
-            BarChartView(data: [8,23,54,32,12,37,7,23,43], title: "Line chart", legend: "Full screen", dropShadow: false) // legend is optional, use optional .padding()
-            PieChartView(data: [8,23,54,32], title: "Title", legend: "Legendary", dropShadow: false) // legend is optional
-          }
-          
-          HStack {
-             PieChartView(data: [8,23,54,32], title: "Title", legend: "Legendary", dropShadow: false) // legend is optional
-            BarChartView(data: [8,23,54,32,12,37,7,23,43], title: "Line chart", legend: "Full screen", dropShadow: false) // legend is optional, use optional .padding()
-          }
-        }.frame(minWidth: 0, maxWidth: .infinity, alignment: .center)
+          HeatmapViewControllerWrapper(trips: self.viewModel.trips, parent: TripView())
+            .onAppear(perform: self.refresh)
+        }.frame(height: 500)
+        
+//        VStack {
+//          HStack {
+//            BarChartView(data: [8,23,54,32,12,37,7,23,43], title: "Line chart", legend: "Full screen", dropShadow: false) // legend is optional, use optional .padding()
+//            PieChartView(data: [8,23,54,32], title: "Title", legend: "Legendary", dropShadow: false) // legend is optional
+//          }
+//
+//          HStack {
+//             PieChartView(data: [8,23,54,32], title: "Title", legend: "Legendary", dropShadow: false) // legend is optional
+//            BarChartView(data: [8,23,54,32,12,37,7,23,43], title: "Line chart", legend: "Full screen", dropShadow: false) // legend is optional, use optional .padding()
+//          }
+//        }.frame(minWidth: 0, maxWidth: .infinity, alignment: .center)
         
         
 //        Text("Percentages")
