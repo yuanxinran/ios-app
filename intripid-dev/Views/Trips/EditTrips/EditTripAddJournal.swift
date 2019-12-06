@@ -16,7 +16,7 @@ struct EditTripAddJournal :  View {
   
   private var tripID : String
   private var viewModel : EditTripViewModel
-  private var parent : TripDetailTestView
+  private var parent : TripDetailView
   private var dates : [NSDate]
   @State private var title : String = ""
   @State private var content : String = ""
@@ -25,7 +25,7 @@ struct EditTripAddJournal :  View {
   
   let colors = [["1s","1e"], ["2s","2e"],["3s","3e"]]
   
-  init(tripID: String, parent: TripDetailTestView, startDate: NSDate, endDate: NSDate, onDismiss: @escaping () -> ()){
+  init(tripID: String, parent: TripDetailView, startDate: NSDate, endDate: NSDate, onDismiss: @escaping () -> ()){
     self.tripID = tripID
     self.viewModel = EditTripViewModel()
     self.onDismiss = onDismiss

@@ -116,7 +116,7 @@ class TripViewModel: ObservableObject {
   
   func fetchData() {
     self.trips = [Trip]()
-    db.collection("trips").getDocuments() { (querySnapshot, err) in
+    db.collection("trips").whereField("archived", isEqualTo: false).getDocuments() { (querySnapshot, err) in
       if let err = err {
         print("Error getting documents: \(err)")
       } else {

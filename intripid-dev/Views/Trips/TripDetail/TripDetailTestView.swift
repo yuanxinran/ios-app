@@ -10,7 +10,7 @@ import Foundation
 import SwiftUI
 
 
-struct TripDetailTestView: View {
+struct TripDetailView: View {
   @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
   var tripID: String
   var parent: TripView
@@ -59,7 +59,7 @@ struct TripDetailTestView: View {
             Text("Entries")
               .padding(.leading)
               .font(.headline)
-            TripEntriesView(entries: viewModel.trip[0].entries)
+            TripEntriesView(entries: viewModel.trip[0].entries, tripID: self.tripID, parent: self)
             Spacer()
           }
         }.edgesIgnoringSafeArea(.all)

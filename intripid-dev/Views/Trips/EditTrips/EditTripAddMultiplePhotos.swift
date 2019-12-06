@@ -20,9 +20,9 @@ struct EditTripAddMultiplePhotos :  View {
   @State var imageAssetList = [PHAsset]()
   private var tripID : String
   private var viewModel : EditTripViewModel
-  private var parent : TripDetailTestView
+  private var parent : TripDetailView
   
-  init(tripID: String, parent: TripDetailTestView, onDismiss: @escaping () -> ()){
+  init(tripID: String, parent: TripDetailView, onDismiss: @escaping () -> ()){
     PHPhotoLibrary.requestAuthorization({_ in return})
     self.tripID = tripID
     self.viewModel = EditTripViewModel()
