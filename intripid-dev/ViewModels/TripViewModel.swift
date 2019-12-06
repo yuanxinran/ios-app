@@ -40,7 +40,7 @@ class TripViewModel: ObservableObject {
     var photoNum = 0
     var journalNum = 0
     let tripRef = db.collection("trips").document(tripID)
-    tripRef.collection("photos").getDocuments(){ (querySnapshot, err) in
+    tripRef.collection("photos").whereField("archived", isEqualTo: false).getDocuments(){ (querySnapshot, err) in
       if let err = err {
         print("Error getting photo number in trip: \(err)")
       } else {

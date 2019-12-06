@@ -89,13 +89,17 @@ class EditTripViewModel {
   func deletePhoto(tripID: String, photoID: String, completion: @escaping (_ result:String) -> Void) {
     let tripRef = db.collection("trips").document(tripID)
     let photoCollection = tripRef.collection("photos")
-    photoCollection.document(photoID).delete() { err in
-        if let err = err {
-            print("Error removing document: \(err)")
-        } else {
-            completion("deleted!")
-        }
+    photoCollection.document(photoID).updateData([
+      "archived": true,
+    ]){
+      (err) in
+      if err != nil {
+        print("errr...")
+      }
+      completion("archived")
     }
+    
+
   }
   
   func deleteJournal(tripID: String, journalID: String, completion: @escaping (_ result:String) -> Void) {
@@ -245,6 +249,7 @@ class EditTripViewModel {
           if let result = result {
             //the photo has location information
             data =  ["dateTime": photo.creationDate ?? NSNull(), "imagePath": "",
+                     "archived": false,
                      "photoLocation":[
                          "city": result.city,
                          "state": result.state,
@@ -252,7 +257,7 @@ class EditTripViewModel {
                          "geocoding": GeoPoint(latitude: result.latitude, longitude: result.longitude)]]
             
           } else {
-            data =  ["dateTime": photo.creationDate ?? NSNull(), "imagePath": "",
+            data =  ["dateTime": photo.creationDate ?? NSNull(),"archived": false, "imagePath": "",
                               "photoLocation": NSNull()]
           }
 

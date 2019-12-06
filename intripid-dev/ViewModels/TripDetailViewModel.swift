@@ -42,7 +42,7 @@ class TripDetailViewModel: ObservableObject {
   
   func fetchPhotos(completion: @escaping ([Photo]) -> ()){
     var result  = [Photo]()
-    db.collection("trips").document(self.tripID).collection("photos").getDocuments(){ (querySnapshot, err) in
+    db.collection("trips").document(self.tripID).collection("photos").whereField("archived", isEqualTo: false).getDocuments(){ (querySnapshot, err) in
       for document in querySnapshot!.documents {
         let data = document.data() as JSONDictionary
         if let photo = parsePhotoData(id: document.documentID, data: data){
