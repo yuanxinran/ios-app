@@ -14,6 +14,7 @@ struct TripCoverView: View {
   @State var journalModalDisplayed = false
   @State var photoModalDisplayed = false
   @State var editModalDisplayed = false
+  @State var editTripModalDisplayed = false
   
   private let gradientStart = Color(red: 0.0 / 255, green: 0.0 / 255, blue: 0.0 / 255, opacity: 0.75)
   private let gradientMid = Color(red: 0.0 / 255, green: 0.0 / 255, blue: 0.0 / 255, opacity: 0)
@@ -41,6 +42,20 @@ struct TripCoverView: View {
           TripListTravelPartnersView(profileImages: trip.travelPartners.map{$0.profilePicture})
           Spacer()
           
+          Button(action: { self.editTripModalDisplayed = true }) {
+            Text("Edit Trip")
+          }.font(.caption)
+            .padding(5)
+            .padding(.leading, 15)
+            .padding(.trailing, 15)
+            .background(Color(.sRGB, red: 200/255, green: 200/255, blue: 200/255, opacity: 0.3))
+            .clipShape(Capsule())
+            .sheet(isPresented: $editTripModalDisplayed) {
+              EditTrip(trip: self.trip, parent: self.parent, onDismiss: {
+                self.editTripModalDisplayed = false
+              })
+          }
+          
           Button(action: { self.editModalDisplayed = true }) {
             Text("Add Photo")
           }.font(.caption)
@@ -54,21 +69,7 @@ struct TripCoverView: View {
               self.editModalDisplayed = false
             })
           }
-          
-//          Button(action: { self.photoModalDisplayed = true }) {
-//            Text("Add Photo")
-//          }.font(.caption)
-//            .padding(5)
-//            .padding(.leading, 15)
-//            .padding(.trailing, 15)
-//            .background(Color(.sRGB, red: 200/255, green: 200/255, blue: 200/255, opacity: 0.3))
-//            .clipShape(Capsule())
-//            .sheet(isPresented: $photoModalDisplayed) {
-//              EditTripAddPhotos(tripID: self.trip.id, parent: self.parent, onDismiss: {
-//                self.photoModalDisplayed = false
-//              })
-//          }
-          
+                    
           Button(action: { self.journalModalDisplayed = true }) {
             Text("Add Journal")
           }.font(.caption)

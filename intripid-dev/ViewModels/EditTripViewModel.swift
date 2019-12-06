@@ -42,6 +42,7 @@ class EditTripViewModel {
       "travelPartners": travelPartners,
       "startDate": NSNull(),
       "endDate": NSNull(),
+      "archived": false,
     ]) { err in
       if let err = err {
         print("Error adding document: \(err)")
@@ -57,9 +58,22 @@ class EditTripViewModel {
     }
   }
   
+  func updateTrip(tripID: String, title: String, travelPartners:[String],completion: @escaping (_ result:String) -> Void){
+    self.db.collection("trips").document(tripID).updateData([
+             "title": title,
+             "travelPartners": travelPartners,
+           ]){
+             (err) in
+             if err != nil {
+               print("errr...")
+             }
+             completion("updated")
+           }
+    
+  }
+  
   func deleteTrip(tripID: String, completion: @escaping (_ result:String) -> Void) {
     let tripRef = db.collection("trips").document(tripID)
-    let photoCollection = tripRef.collection("photos")
     self.db.collection("trips").document(tripID).updateData([
              "archived": true,
            ]){

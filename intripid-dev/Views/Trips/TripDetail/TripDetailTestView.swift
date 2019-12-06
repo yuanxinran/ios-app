@@ -15,9 +15,13 @@ struct TripDetailView: View {
   var tripID: String
   var parent: TripView
   @ObservedObject private var viewModel : TripDetailViewModel
+//  @State var journalModalDisplayed = false
   
+  
+  
+
   var btnBack : some View { Button(action: {
-    self.presentationMode.wrappedValue.dismiss()
+    self.goBack()
     self.parent.refreshTripData(tripID: self.tripID)
   }) {
     HStack {
@@ -33,10 +37,18 @@ struct TripDetailView: View {
     self.parent = parent
   }
   
+  func goBack(){
+    self.presentationMode.wrappedValue.dismiss()
+    
+  }
   
   func refresh() {
     self.viewModel.fetchData()
     print("refresh called")
+  }
+  
+  func refreshTripListOnDelete(){
+    self.parent.refresh()
   }
   
   var body : some View{
@@ -64,6 +76,19 @@ struct TripDetailView: View {
           }
         }.edgesIgnoringSafeArea(.all)
         
+//        VStack (alignment: .center) {
+//          Spacer()
+//        }
+//        VStack(alignment: .leading){
+//
+//          GreenButton("Add Journal").onTapGesture {
+//                          self.journalModalDisplayed = true
+//          }.sheet(isPresented: $journalModalDisplayed) {
+//            EditTripAddJournal(tripID: self.tripID, parent: self, startDate: self.viewModel.trip[0].startDate, endDate: self.viewModel.trip[0].endDate, onDismiss: {
+//                self.journalModalDisplayed = false
+//              })
+//          }
+//        }
         VStack (alignment: .center) {
           Spacer()
         }

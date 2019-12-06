@@ -88,6 +88,7 @@
 		5431E912236FD89A00139BE4 /* Journal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5431E910236FD89A00139BE4 /* Journal.swift */; };
 		5431E914236FDC2100139BE4 /* NewTripSelectCover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5431E913236FDC2100139BE4 /* NewTripSelectCover.swift */; };
 		5431E91C237054E400139BE4 /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5431E91B237054E400139BE4 /* DateHelper.swift */; };
+		5447C5912399EB4900E2473D /* EditTrip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5447C5902399EB4900E2473D /* EditTrip.swift */; };
 		544873082372266C00791CBD /* TravelPartnerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 544873072372266C00791CBD /* TravelPartnerViewModel.swift */; };
 		5448730A23722C8A00791CBD /* TripViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5448730923722C8A00791CBD /* TripViewModel.swift */; };
 		544873132373186700791CBD /* CachedImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 544873122373186700791CBD /* CachedImageView.swift */; };
@@ -253,6 +254,7 @@
 		5431E910236FD89A00139BE4 /* Journal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Journal.swift; sourceTree = "<group>"; };
 		5431E913236FDC2100139BE4 /* NewTripSelectCover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTripSelectCover.swift; sourceTree = "<group>"; };
 		5431E91B237054E400139BE4 /* DateHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateHelper.swift; sourceTree = "<group>"; };
+		5447C5902399EB4900E2473D /* EditTrip.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EditTrip.swift; path = "intripid-dev/Views/Trips/EditTrips/EditTrip.swift"; sourceTree = SOURCE_ROOT; };
 		544873072372266C00791CBD /* TravelPartnerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelPartnerViewModel.swift; sourceTree = "<group>"; };
 		5448730923722C8A00791CBD /* TripViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripViewModel.swift; sourceTree = "<group>"; };
 		544873122373186700791CBD /* CachedImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CachedImageView.swift; sourceTree = "<group>"; };
@@ -565,6 +567,7 @@
 			children = (
 				1CB85B5D238A215F0085BF58 /* EditTripAddJournal.swift */,
 				1CB85B5C238A215E0085BF58 /* EditTripAddMultiplePhotos.swift */,
+				5447C5902399EB4900E2473D /* EditTrip.swift */,
 				1CB85B5E238A215F0085BF58 /* EditTripAddPhotos.swift */,
 				1CB85B5F238A215F0085BF58 /* EditTripAddPhotosViewControllerWrapper.swift */,
 			);
@@ -992,6 +995,7 @@
 				1C853D8E23986A6D006BE0B6 /* GMUGradient.m in Sources */,
 				1CB85B72238A23190085BF58 /* TripPhotosView.swift in Sources */,
 				5448731723733A3D00791CBD /* MapViewControllerWrapper.swift in Sources */,
+				5447C5912399EB4900E2473D /* EditTrip.swift in Sources */,
 				1CB7DDC823668E8E000ED455 /* intripid_dev.xcdatamodeld in Sources */,
 				1C853ACD2398287D006BE0B6 /* HeatmapViewController.swift in Sources */,
 				54817043236F01BD00FEF1C3 /* Button.swift in Sources */,

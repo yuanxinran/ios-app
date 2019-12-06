@@ -19,14 +19,8 @@ struct StatisticsView: View {
   
   func refresh(){
     self.viewModel.fetchData()
-    print("[Statistics]")
-    print(self.viewModel.trips)
-    print(self.viewModel.trips.count)
   }
   
-  func refreshTripData(tripID: String){
-    self.viewModel.refreshDataForTrip(tripID: tripID)
-  }
   
   var body: some View {
     ScrollView {
@@ -130,7 +124,7 @@ struct StatisticsView: View {
 //        .frame(height: 100)
         
       }
-    }.onAppear(perform: self.refresh)
+    }
   }
 }
 
