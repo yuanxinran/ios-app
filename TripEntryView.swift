@@ -11,12 +11,41 @@ import SwiftUI
 struct TripEntryView: View {
   
   @ObservedObject private var imageLoader = ImageLoader()
+  @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
   var entries: [Entry]
   var idx: Int
+  var tripID: String
+  private var viewModel : EditTripViewModel
+  private var parent : TripDetailView
   
-  init(entries:[Entry], idx: Int) {
+  init(entries:[Entry], idx: Int, tripID: String, parent: TripDetailView) {
     self.entries = entries
     self.idx = idx
+    self.viewModel = EditTripViewModel()
+    self.tripID = tripID
+    self.parent = parent
+  }
+  
+  func onDismiss(){
+    self.presentationMode.wrappedValue.dismiss()
+    self.parent.refresh()
+  }
+  
+  func deleteEntry(){
+    if self.entries[idx].type == "photo"{
+      viewModel.deletePhoto(tripID: self.tripID, photoID: entries[idx].getDocID()){
+          (result: String) in
+        self.onDismiss()
+        
+      }
+    } else {
+      viewModel.deleteJournal(tripID: self.tripID, journalID: entries[idx].getDocID()){
+          (result: String) in
+        self.onDismiss()
+        
+      }
+    }
+    
   }
   
   var body: some View {
@@ -31,7 +60,7 @@ struct TripEntryView: View {
                   .frame(width: proxy.size.width-8)
                 
                 VStack {
-                  Button(action: {}) {
+                  Button(action: {self.deleteEntry()}) {
                     Text("Delete")
                   }.font(.caption)
                     .padding(5)

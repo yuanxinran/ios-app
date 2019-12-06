@@ -57,6 +57,45 @@ class EditTripViewModel {
     }
   }
   
+  func deleteTrip(tripID: String, completion: @escaping (_ result:String) -> Void) {
+    let tripRef = db.collection("trips").document(tripID)
+    let photoCollection = tripRef.collection("photos")
+    self.db.collection("trips").document(tripID).updateData([
+             "archived": true,
+           ]){
+             (err) in
+             if err != nil {
+               print("errr...")
+             }
+             completion("archived")
+           }
+  }
+  
+  
+  func deletePhoto(tripID: String, photoID: String, completion: @escaping (_ result:String) -> Void) {
+    let tripRef = db.collection("trips").document(tripID)
+    let photoCollection = tripRef.collection("photos")
+    photoCollection.document(photoID).delete() { err in
+        if let err = err {
+            print("Error removing document: \(err)")
+        } else {
+            completion("deleted!")
+        }
+    }
+  }
+  
+  func deleteJournal(tripID: String, journalID: String, completion: @escaping (_ result:String) -> Void) {
+    let tripRef = db.collection("trips").document(tripID)
+    let photoCollection = tripRef.collection("journals")
+    photoCollection.document(journalID).delete() { err in
+        if let err = err {
+            print("Error removing document: \(err)")
+        } else {
+            completion("deleted!")
+        }
+    }
+  }
+  
   
     
   func addJournalToTrip(title: String, content: String, startColor: String, endColor: String, dateTime: NSDate, tripID: String, completion: @escaping (_ result:String) -> Void){
@@ -141,34 +180,34 @@ class EditTripViewModel {
   
   func addPhotoHQ(imageIDs: [String], imageHQs: [UIImage],  tripID: String){
     
-    let imageCollection = db.collection("trips").document(tripID).collection("photos")
-    let storage = Storage.storage()
-    for index in (0 ..< imageHQs.count){
-      let imageID = imageIDs[index]
-      let photoImage = imageHQs[index]
-      
-      let storageRef = storage.reference()
-      let imageRef = storageRef.child("tripPhotosHQ/\(imageID).jpg")
-      let uploadDataHQ = photoImage.jpegData(compressionQuality: 1)
-      
-      if let uploadDataHQ = uploadDataHQ {
-        _ = imageRef.putData(uploadDataHQ, metadata: nil) { (metadata, error) in
-          imageRef.downloadURL { (url, error) in
-            guard let downloadURL = url else {
-              return
-            }
-            imageCollection.document(imageID).updateData([
-              "imagePathHQ": "\(downloadURL)"
-            ])
-            print("successfully uploaded the high-quality image for \(imageID)")
-          }
-        }
-      } else {
-        print("lol cannot convert image to data")
-      }
-      
-        
-    }
+//    let imageCollection = db.collection("trips").document(tripID).collection("photos")
+//    let storage = Storage.storage()
+//    for index in (0 ..< imageHQs.count){
+//      let imageID = imageIDs[index]
+//      let photoImage = imageHQs[index]
+//
+//      let storageRef = storage.reference()
+//      let imageRef = storageRef.child("tripPhotosHQ/\(imageID).jpg")
+//      let uploadDataHQ = photoImage.jpegData(compressionQuality: 1)
+//
+//      if let uploadDataHQ = uploadDataHQ {
+//        _ = imageRef.putData(uploadDataHQ, metadata: nil) { (metadata, error) in
+//          imageRef.downloadURL { (url, error) in
+//            guard let downloadURL = url else {
+//              return
+//            }
+//            imageCollection.document(imageID).updateData([
+//              "imagePathHQ": "\(downloadURL)"
+//            ])
+//            print("successfully uploaded the high-quality image for \(imageID)")
+//          }
+//        }
+//      } else {
+//        print("lol cannot convert image to data")
+//      }
+//
+//
+//    }
   }
     
   

@@ -13,15 +13,19 @@ struct TripEntriesView: View {
   private var array1: [Int]
   private var array2: [Int]
   private var array3: [Int]
+  private var tripID: String
   
   private let testPhotos: [String] = ["landscape", "portrait"]
+  private var parent : TripDetailView
   
-  init(entries:[Entry]) {
+  init(entries:[Entry], tripID: String, parent: TripDetailView) {
     self.entries = entries
     
     self.array1 = Array(stride(from: 0, through: self.entries.count-1, by: 3))
     self.array2 = Array(stride(from: 1, through: self.entries.count-1, by: 3))
     self.array3 = Array(stride(from: 2, through: self.entries.count-1, by: 3))
+    self.tripID = tripID
+    self.parent = parent
   }
   
   
@@ -31,21 +35,21 @@ struct TripEntriesView: View {
     HStack(alignment: .top) {
       VStack {
         ForEach(array1, id: \.self) { index in
-          NavigationLink(destination: TripEntryView(entries: self.entries, idx: index)) {
+          NavigationLink(destination: TripEntryView(entries: self.entries, idx: index,tripID:self.tripID, parent: self.parent)) {
               EntryCell(entry: self.entries[index])
           }.buttonStyle(PlainButtonStyle())
         }
       }
       VStack {
         ForEach(array2, id: \.self) { index in
-          NavigationLink(destination: TripEntryView(entries: self.entries, idx: index)) {
+          NavigationLink(destination: TripEntryView(entries: self.entries, idx: index,tripID:self.tripID, parent: self.parent)) {
               EntryCell(entry: self.entries[index])
           }.buttonStyle(PlainButtonStyle())
         }
       }
       VStack {
         ForEach(array3, id: \.self) { index in
-          NavigationLink(destination: TripEntryView(entries: self.entries, idx: index)) {
+          NavigationLink(destination: TripEntryView(entries: self.entries, idx: index,tripID:self.tripID, parent: self.parent)) {
               EntryCell(entry: self.entries[index])
           }.buttonStyle(PlainButtonStyle())
         }

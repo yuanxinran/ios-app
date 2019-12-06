@@ -77,7 +77,7 @@ struct TripListView: View {
     //Trips
     List {
       ForEach((0 ..< trips.count), id:\.self) { index in
-        NavigationLink(destination: TripDetailTestView(tripID: self.trips[index].id, parent: self.parent)) {
+        NavigationLink(destination: TripDetailView(tripID: self.trips[index].id, parent: self.parent)) {
           
           // Cover Photo
           CoverImageCached(urlString: self.trips[index].coverImage?.imagePath ?? "")

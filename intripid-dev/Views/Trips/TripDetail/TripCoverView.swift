@@ -10,7 +10,7 @@ import SwiftUI
 
 struct TripCoverView: View {
   let trip: TripDetail
-  let parent: TripDetailTestView
+  let parent: TripDetailView
   @State var journalModalDisplayed = false
   @State var photoModalDisplayed = false
   @State var editModalDisplayed = false

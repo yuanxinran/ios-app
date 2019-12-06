@@ -63,7 +63,7 @@ class HeatmapViewController: UIViewController, GMSMapViewDelegate, GMUClusterMan
   
   func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
     let locationIndex = locations.indices.filter {locations[$0].latitude == marker.position.latitude && locations[$0].longitude == marker.position.longitude}.first!
-    let nextVC = UIHostingController(rootView: TripDetailTestView(tripID: locations[locationIndex].tripID, parent: self.vparent))
+    let nextVC = UIHostingController(rootView: TripDetailView(tripID: locations[locationIndex].tripID, parent: self.vparent))
     navigationController?.pushViewController(nextVC, animated: true)
     print(nextVC)
     
