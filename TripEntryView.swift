@@ -11,6 +11,7 @@ import SwiftUI
 struct TripEntryView: View {
   
   @ObservedObject private var imageLoader = ImageLoader()
+  @State private var shown = true
   @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
   var entries: [Entry]
   var idx: Int
@@ -34,7 +35,7 @@ struct TripEntryView: View {
   func deleteEntry(_ index: Int){
     self.presentationMode.wrappedValue.dismiss()
     let entry = self.entries[index]
-    
+    self.shown = false
     if entry.type == "photo"{
       viewModel.deletePhoto(tripID: self.tripID, photoID: entries[index].getDocID()){
           (result: String) in
@@ -42,11 +43,9 @@ struct TripEntryView: View {
         
       }
     } else {
-      self.presentationMode.wrappedValue.dismiss()
       viewModel.deleteJournal(tripID: self.tripID, journalID: entries[index].getDocID()){
           (result: String) in
         self.parent.refresh()
-        
       }
     }
     
@@ -60,6 +59,7 @@ struct TripEntryView: View {
     GeometryReader { proxy in
       UIScrollViewWrapper {
         HStack{
+          if self.shown {
             ForEach(0 ..< self.entries.count) { entryIndex in
               VStack {
                 EntryCellDetailed(entry: self.entries[entryIndex])
@@ -81,6 +81,7 @@ struct TripEntryView: View {
                 }.padding(20)
               }
             }
+          }
         }
         .frame(width: proxy.size.width * CGFloat(self.entries.count - self.idx), height: proxy.size.height)
         .offset(x: (-proxy.size.width * 0.5) * CGFloat(self.idx) - 4, y: -20)
