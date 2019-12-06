@@ -41,6 +41,15 @@ struct EditTripAddMultiplePhotos :  View {
   
   var body: some View {
     VStack(alignment: .leading) {
+      
+      VStack {
+         HStack{
+           Button(action: {self.onDismiss()}) {
+             Text("Close")
+           }
+           Spacer()
+         }.padding(.bottom, 20)
+      }
       VStack(alignment: .leading, spacing: 20.0){
         VStack(alignment: .leading, spacing: 10.0){
           Text("Upload Photos").font(.title).fontWeight(.bold)
@@ -48,7 +57,6 @@ struct EditTripAddMultiplePhotos :  View {
             self.isShowingImagePicker.toggle()
           },label: {
             Text("Select Image").foregroundColor(GreenColor).sheet(isPresented: $isShowingImagePicker,content: {
-//              ImagePickerView(isPresented: self.$isShowingImagePicker, selectedImage: self.$imageList, selectedImageList: self.$imageAssetList)
               EditTripAddPhotosViewControllerWrapper(selectedImage: self.$imageList, selectedImageList: self.$imageAssetList)
             })
           }

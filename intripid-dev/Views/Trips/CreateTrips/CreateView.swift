@@ -41,6 +41,9 @@ struct CreateView: View {
   @State private var selectedPartners = [String]()
   @ObservedObject var allPartners = TravelPartnerViewModel()
   @State private var title = ""
+  
+  
+  
   var body: some View {
     
     VStack{

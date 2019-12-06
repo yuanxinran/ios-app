@@ -60,13 +60,21 @@ struct EditTrip :  View {
   var body: some View {
 
         VStack{
+          VStack {
+             HStack{
+               Button(action: {self.onDismiss()}) {
+                 Text("Close")
+               }
+               Spacer()
+             }.padding(.bottom, 20)
+          }
           VStack(alignment: .leading, spacing: 20.0){
-            Text("Edit Trip Information").font(.title).fontWeight(.bold)
+            Text("Edit Trip Information").font(.title).fontWeight(.bold).padding(.bottom, 20)
             VStack(alignment: .leading, spacing: 8.0){
               Text("Trip Title")
                 .font(.headline)
               TextField("Trip Title", text: $title).textFieldStyle(PlainTextFieldStyle())
-            }.padding(.bottom, 20)
+            }.padding(.bottom, 10)
 
             VStack(alignment: .leading, spacing: 12.0){
               Text("Travel Partners")
@@ -100,7 +108,7 @@ struct EditTrip :  View {
           }
           Spacer()
 
-        }.onAppear(perform: self.refresh).padding(.leading, UIScreen.main.bounds.width * 0.05).padding(.trailing,UIScreen.main.bounds.width * 0.05).padding(.top,35)
+        }.onAppear(perform: self.refresh).padding(.leading, UIScreen.main.bounds.width * 0.05).padding(.trailing,UIScreen.main.bounds.width * 0.05).padding(.top,20)
   }
 
 

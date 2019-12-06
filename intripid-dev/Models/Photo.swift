@@ -37,7 +37,6 @@ struct Photo : Identifiable {
   var id: String
   var dateTime: NSDate
   var imagePath: String
-  var imagePathHQ: String?
   var photoLocation: PhotoLocation?
 }
 
