@@ -78,6 +78,7 @@ struct EditTripAddJournal :  View {
           }, label: {Text("Change Color")})
           
           VStack(alignment: .leading){
+            Spacer()
             HStack(alignment: .top){
               Spacer()
               GreenButton("Add Journal").onTapGesture {

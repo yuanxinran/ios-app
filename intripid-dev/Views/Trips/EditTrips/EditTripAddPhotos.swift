@@ -61,6 +61,7 @@ struct EditTripAddPhotos :  View {
       }
       Spacer()
       VStack(alignment: .leading){
+        Spacer()
         HStack(alignment: .top){
           Spacer()
           GreenButton("Add Photos").onTapGesture {

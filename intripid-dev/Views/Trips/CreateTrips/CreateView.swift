@@ -67,7 +67,6 @@ struct CreateView: View {
             }
           }
         }
-        
       }
       Spacer()
       VStack(alignment: .leading){
