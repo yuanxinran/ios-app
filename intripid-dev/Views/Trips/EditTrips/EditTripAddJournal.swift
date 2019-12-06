@@ -45,8 +45,22 @@ struct EditTripAddJournal :  View {
   }
   
   var body: some View {
+
     NavigationView {
       VStack{
+        
+        HStack{
+          Button(action: {self.onDismiss()}) {
+            Text("Close")
+          }
+          Spacer()
+        }.padding(.bottom, 15)
+        
+        HStack{
+          Text("Add a journal").font(.title).fontWeight(.bold).padding(.bottom, 20)
+          Spacer()
+        }
+        
         
         ZStack {
           Rectangle()
@@ -58,9 +72,9 @@ struct EditTripAddJournal :  View {
             .cornerRadius(20)
 
           Form {
-            TextField("Heading", text: $title)
+            TextField("Journal Title", text: $title)
               .font(.headline)
-            MultilineTextField("Journal", text: $content, onCommit: {print("Final text:")})
+            MultilineTextField("Write your story here", text: $content, onCommit: {print("Final text:")})
               .font(.body)
 //              .backgroundColor(.clear)
 
@@ -72,10 +86,15 @@ struct EditTripAddJournal :  View {
           }
           .labelsHidden()
         }
-          
+        
+        HStack{
+          Spacer()
           Button(action: {
             self.colorSet = (self.colorSet + 1) % self.colors.count
           }, label: {Text("Change Color")})
+          
+        }
+          
           
           VStack(alignment: .leading){
             Spacer()
@@ -87,14 +106,16 @@ struct EditTripAddJournal :  View {
             }
           }
           
-        }.navigationBarTitle(Text("Adding Journal"))
-          .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .topLeading)
+        }.navigationBarTitle("")
+        .navigationBarHidden(true).frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .topLeading)
           .padding(.leading, UIScreen.main.bounds.width * 0.05)
           .padding(.trailing,UIScreen.main.bounds.width * 0.05)
           .padding(.top,20)
     }
+    
   }
   
   
   
 }
+

@@ -122,8 +122,7 @@ struct NewTripSelectCover: View {
               GreenButton("Create Trip")
             }
           }
-        }
-        Spacer()
+        }.padding(.bottom, 30)
       }
       
     }

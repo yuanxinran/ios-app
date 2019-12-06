@@ -40,7 +40,7 @@ struct TripView: View {
           }
           
           }.navigationBarTitle(Text("All Trips"), displayMode: .automatic)
-          .navigationBarItems(trailing: NavigationLink("Create",destination: CreateView()))
+          .navigationBarItems(trailing: NavigationLink("Create", destination: CreateView()))
       }.onAppear(perform: self.refresh).edgesIgnoringSafeArea(.all)
   }
 }

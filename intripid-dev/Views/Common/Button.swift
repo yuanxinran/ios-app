@@ -55,4 +55,25 @@ struct RedButton : View {
   
 }
 
+struct GreyedButton : View {
+  private let text: String
+
+  init(_ txt: String){
+    self.text = txt
+  }
+  
+  var body: some View{
+    Text(self.text)
+      .font(.body)
+    .fontWeight(.bold)
+    .font(.title)
+    .padding()
+    .background(Color(.sRGB, red: 255/255.0, green: 255/255.0, blue: 255/255.0, opacity: 1.0))
+    .cornerRadius(20)
+    .foregroundColor(.gray)
+    .padding(8)
+  }
+  
+}
+
 //(.sRGB, red: 52.0/255.0, green: 121/255.0, blue: 137.0/255.0, opacity: 1.0)

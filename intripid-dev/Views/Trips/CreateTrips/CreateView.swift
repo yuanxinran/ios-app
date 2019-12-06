@@ -41,19 +41,25 @@ struct CreateView: View {
   @State private var selectedPartners = [String]()
   @ObservedObject var allPartners = TravelPartnerViewModel()
   @State private var title = ""
+  
+  
+  
   var body: some View {
     
     VStack{
       VStack(alignment: .leading, spacing: 20.0){
-        Text("Create A Trip").font(.title).fontWeight(.bold)
+        Text("Create A Trip").font(.title).fontWeight(.bold).padding(.bottom, 10)
         VStack(alignment: .leading, spacing: 8.0){
-          Text("Trip Title")
-            .font(.headline)
+          HStack{
+            Text("Trip Title").font(.headline)
+            Text("*").font(.headline).foregroundColor(Color(.sRGB, red: 52.0/255.0, green: 121/255.0, blue: 137.0/255.0, opacity: 1.0))
+          }
+          
           TextField("Trip Title", text: $title).textFieldStyle(PlainTextFieldStyle())
         }
         
         VStack(alignment: .leading, spacing: 12.0){
-          Text("Who are you traveling with?")
+          Text("Who are you traveling with?").font(.headline)
           
           VStack(alignment: .leading, spacing: 8.0){
             ForEach(allPartners.travelPartners) {i in
@@ -75,12 +81,17 @@ struct CreateView: View {
 //          NavigationLink(destination: TripDetail()){
 //            GreenButton("Next")
 //          }
-          NavigationLink(destination: NewTripAddPhotos(title: self.title, travelPartners: self.selectedPartners)){
-            GreenButton("Next")
+          if title == ""{
+            GreyedButton("Next")
+          } else {
+            NavigationLink(destination: NewTripAddPhotos(title: self.title, travelPartners: self.selectedPartners)){
+              GreenButton("Next")
+            }
           }
+          
         }
-      }
-      Spacer()
+      }.padding(.bottom, 30)
+
       
     }.padding(.leading, UIScreen.main.bounds.width * 0.05).padding(.trailing,UIScreen.main.bounds.width * 0.05)
     

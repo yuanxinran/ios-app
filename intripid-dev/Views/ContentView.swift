@@ -14,6 +14,7 @@ import FirebaseFirestore
 
 struct ContentView: View {
   @EnvironmentObject var settings: UserSettings
+   @State private var selected = 0
   
 //  var body: some View {
 //    NavigationView{
@@ -22,12 +23,12 @@ struct ContentView: View {
 //  }
   var body: some View {
     // TODO: somehow remove the tab view when clicked on specific trip
-    TabView {
+    TabView(selection: $selected) {
       TripView()
         .padding(.bottom, 1)
           .tabItem {
             VStack {
-              Image(systemName: "1.circle")
+              Image(systemName: "airplane")
               Text("Trips")
             }
         }.tag(1)
@@ -35,7 +36,7 @@ struct ContentView: View {
         StatisticsView()
           .tabItem {
             VStack {
-              Image(systemName: "2.circle")
+              Image(systemName: "chart.bar.fill")
               Text("Statistics")
             }
         }.tag(2)
@@ -43,7 +44,7 @@ struct ContentView: View {
       ProfileView()
           .tabItem {
             VStack {
-              Image(systemName: "3.circle")
+              Image(systemName: "person.fill")
               Text("Profile")
             }
         }.tag(3)
