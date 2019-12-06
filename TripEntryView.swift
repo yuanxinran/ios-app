@@ -31,25 +31,32 @@ struct TripEntryView: View {
     self.parent.refresh()
   }
   
-  func deleteEntry(){
-    if self.entries[idx].type == "photo"{
-      viewModel.deletePhoto(tripID: self.tripID, photoID: entries[idx].getDocID()){
+  func deleteEntry(_ index: Int){
+    self.presentationMode.wrappedValue.dismiss()
+    let entry = self.entries[index]
+    
+    if entry.type == "photo"{
+      viewModel.deletePhoto(tripID: self.tripID, photoID: entries[index].getDocID()){
           (result: String) in
-        self.onDismiss()
+        self.parent.refresh()
         
       }
     } else {
-      viewModel.deleteJournal(tripID: self.tripID, journalID: entries[idx].getDocID()){
+      self.presentationMode.wrappedValue.dismiss()
+      viewModel.deleteJournal(tripID: self.tripID, journalID: entries[index].getDocID()){
           (result: String) in
-        self.onDismiss()
+        self.parent.refresh()
         
       }
     }
     
   }
   
+  
+  
   var body: some View {
     // MARK: Loading a scroll view of placeholder images
+    VStack{
     GeometryReader { proxy in
       UIScrollViewWrapper {
         HStack{
@@ -60,14 +67,17 @@ struct TripEntryView: View {
                   .frame(width: proxy.size.width-8)
                 
                 VStack {
-                  Button(action: {self.deleteEntry()}) {
-                    Text("Delete")
-                  }.font(.caption)
-                    .padding(5)
-                    .padding(.leading, 15)
-                    .padding(.trailing, 15)
-                    .background(Color(.sRGB, red: 200/255, green: 200/255, blue: 200/255, opacity: 0.3))
-                    .clipShape(Capsule())
+
+                    Button(action: {self.deleteEntry(entryIndex)}) {
+                      Text("Delete")
+                    }.font(.caption)
+                      .padding(5)
+                      .padding(.leading, 15)
+                      .padding(.trailing, 15)
+                      .background(Color(.sRGB, red: 200/255, green: 200/255, blue: 200/255, opacity: 0.3))
+                      .clipShape(Capsule())
+                    
+                  
                 }.padding(20)
               }
             }
@@ -76,6 +86,7 @@ struct TripEntryView: View {
         .offset(x: (-proxy.size.width * 0.5) * CGFloat(self.idx) - 4, y: -20)
       }
     }
+   }
   }
 }
 

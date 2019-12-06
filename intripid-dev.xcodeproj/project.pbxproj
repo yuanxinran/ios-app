@@ -71,7 +71,6 @@
 		1CB85B7B238B26170085BF58 /* TripEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CB85B7A238B26170085BF58 /* TripEntryView.swift */; };
 		1CBFDF40236826B80055EC34 /* TripMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CBFDF3F236826B80055EC34 /* TripMapView.swift */; };
 		1CD133E62367642B008230B7 /* TripViewModePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CD133E52367642B008230B7 /* TripViewModePicker.swift */; };
-		1CE5102F2375CA0E007DEE50 /* ModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CE5102E2375CA0E007DEE50 /* ModelTest.swift */; };
 		5411B0C62373C7F900833764 /* Parsers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5411B0C52373C7F900833764 /* Parsers.swift */; };
 		5411B0C82373C81200833764 /* TripDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5411B0C72373C81200833764 /* TripDetailViewModel.swift */; };
 		5411B0CA2373C81B00833764 /* EditTripViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5411B0C92373C81B00833764 /* EditTripViewModel.swift */; };
@@ -89,6 +88,7 @@
 		5431E914236FDC2100139BE4 /* NewTripSelectCover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5431E913236FDC2100139BE4 /* NewTripSelectCover.swift */; };
 		5431E91C237054E400139BE4 /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5431E91B237054E400139BE4 /* DateHelper.swift */; };
 		5447C5912399EB4900E2473D /* EditTrip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5447C5902399EB4900E2473D /* EditTrip.swift */; };
+		5447C593239A2E6200E2473D /* ModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5447C592239A2E6200E2473D /* ModelTest.swift */; };
 		544873082372266C00791CBD /* TravelPartnerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 544873072372266C00791CBD /* TravelPartnerViewModel.swift */; };
 		5448730A23722C8A00791CBD /* TripViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5448730923722C8A00791CBD /* TripViewModel.swift */; };
 		544873132373186700791CBD /* CachedImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 544873122373186700791CBD /* CachedImageView.swift */; };
@@ -235,7 +235,6 @@
 		1CB85B7A238B26170085BF58 /* TripEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripEntryView.swift; sourceTree = SOURCE_ROOT; };
 		1CBFDF3F236826B80055EC34 /* TripMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripMapView.swift; sourceTree = "<group>"; };
 		1CD133E52367642B008230B7 /* TripViewModePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripViewModePicker.swift; sourceTree = "<group>"; };
-		1CE5102E2375CA0E007DEE50 /* ModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ModelTest.swift; path = "/Users/zoeteohy/Desktop/67442/ios-app/intripid-devTests/ModelTest.swift"; sourceTree = "<absolute>"; };
 		314D6B43FA12CABFA63C0918 /* Pods_intripid_devTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_intripid_devTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DB7B58CCBE26233B5EDE2A9 /* Pods_intripid_dev.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_intripid_dev.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5411B0C52373C7F900833764 /* Parsers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Parsers.swift; sourceTree = "<group>"; };
@@ -255,6 +254,7 @@
 		5431E913236FDC2100139BE4 /* NewTripSelectCover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTripSelectCover.swift; sourceTree = "<group>"; };
 		5431E91B237054E400139BE4 /* DateHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateHelper.swift; sourceTree = "<group>"; };
 		5447C5902399EB4900E2473D /* EditTrip.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EditTrip.swift; path = "intripid-dev/Views/Trips/EditTrips/EditTrip.swift"; sourceTree = SOURCE_ROOT; };
+		5447C592239A2E6200E2473D /* ModelTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelTest.swift; sourceTree = "<group>"; };
 		544873072372266C00791CBD /* TravelPartnerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelPartnerViewModel.swift; sourceTree = "<group>"; };
 		5448730923722C8A00791CBD /* TripViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripViewModel.swift; sourceTree = "<group>"; };
 		544873122373186700791CBD /* CachedImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CachedImageView.swift; sourceTree = "<group>"; };
@@ -518,7 +518,7 @@
 		1CB7DDDB23668E93000ED455 /* intripid-devTests */ = {
 			isa = PBXGroup;
 			children = (
-				1CE5102E2375CA0E007DEE50 /* ModelTest.swift */,
+				5447C592239A2E6200E2473D /* ModelTest.swift */,
 				1CB7DDDC23668E93000ED455 /* intripid_devTests.swift */,
 				5411B0EC23756D8700833764 /* ParserTest.swift */,
 				54AAEF9D2375B17700F3E2E0 /* HelperTest.swift */,
@@ -1010,7 +1010,7 @@
 				54AAEF9E2375B17700F3E2E0 /* HelperTest.swift in Sources */,
 				1CB7DDDD23668E93000ED455 /* intripid_devTests.swift in Sources */,
 				5411B0ED23756D8800833764 /* ParserTest.swift in Sources */,
-				1CE5102F2375CA0E007DEE50 /* ModelTest.swift in Sources */,
+				5447C593239A2E6200E2473D /* ModelTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

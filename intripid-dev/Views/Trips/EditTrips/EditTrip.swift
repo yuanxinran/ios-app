@@ -105,8 +105,8 @@ struct EditTrip :  View {
                 self.updateTrip()
               }
             }
-          }
-          Spacer()
+          }.padding(.bottom, 50)
+
 
         }.onAppear(perform: self.refresh).padding(.leading, UIScreen.main.bounds.width * 0.05).padding(.trailing,UIScreen.main.bounds.width * 0.05).padding(.top,20)
   }

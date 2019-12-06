@@ -69,7 +69,10 @@ struct NewTripAddPhotos :  View{
     VStack(alignment: .leading) {
       VStack(alignment: .leading, spacing: 20.0){
         VStack(alignment: .leading, spacing: 10.0){
-          Text("Upload Photos").font(.title).fontWeight(.bold)
+          HStack{
+            Text("Upload Photos").font(.title).fontWeight(.bold)
+            Text("*").font(.title).foregroundColor(Color(.sRGB, red: 52.0/255.0, green: 121/255.0, blue: 137.0/255.0, opacity: 1.0))
+          }
           Button(action: {
             self.isShowingImagePicker.toggle()
           },label: {
@@ -88,12 +91,17 @@ struct NewTripAddPhotos :  View{
       VStack(alignment: .leading){
         HStack(alignment: .top){
           Spacer()
-          NavigationLink(destination: NewTripSelectCover(title: self.title, travelPartners: self.travelPartners, imageList: self.imageList, imageAssetList: self.imageAssetList)){
-            GreenButton("Next")
+          
+          if self.imageList.count == 0 {
+            GreyedButton("Next")
+          } else{
+            NavigationLink(destination: NewTripSelectCover(title: self.title, travelPartners: self.travelPartners, imageList: self.imageList, imageAssetList: self.imageAssetList)){
+              GreenButton("Next")
+            }
           }
+          
         }
-      }
-      Spacer()
+      }.padding(.bottom, 30)
       
       
     }.navigationBarBackButtonHidden(true)
