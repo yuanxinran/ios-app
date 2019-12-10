@@ -23,113 +23,59 @@ struct StatisticsView: View {
   
   
   var body: some View {
-    ScrollView {
-      VStack(alignment: .leading) {
-        
-        VStack {
-          ZStack {
-            Image("trip_1")
-              .resizable()
-              .frame(height: 150)
-            Spacer()
-            
-            Text("My Footsteps")
-              .font(.title)
-              .fontWeight(.bold)
-              .foregroundColor(.white)
-          }
-          
-          HStack {
-            VStack {
-              Text("Trips")
-                .font(.headline)
-              ZStack {
-                Circle()
-                  .fill(Color.yellow)
-                Text(String(self.viewModel.trips.count))
-              }
+    NavigationView{
+        HeatmapViewControllerWrapper(trips: self.viewModel.trips, parent: TripView())
+        .onAppear(perform: self.refresh)
+        .overlay(
+            HStack {
+              StatisticNumberView(header: "Trips", number: self.viewModel.trips.count)
+              StatisticNumberView(header: "Photos", number: self.viewModel.trips.reduce(0) { $0 + $1.photoNum })
+              StatisticNumberView(header: "Journals", number: self.viewModel.trips.reduce(0) { $0 + $1.journalNum })
             }
-            VStack {
-              Text("Photos")
-                .font(.headline)
-              ZStack {
-                Circle()
-                  .fill(Color.yellow)
-                Text(String(self.viewModel.trips.reduce(0) { $0 + $1.photoNum }))
-              }
-            }
-            VStack {
-              Text("Journals")
-                .font(.headline)
-              ZStack {
-                Circle()
-                  .fill(Color.yellow)
-                Text(String(self.viewModel.trips.reduce(0) { $0 + $1.journalNum }))
-              }
-            }
-          }
-          .frame(height: 120)
-          .padding(30)
-        }
-        
-        VStack {
-          HeatmapViewControllerWrapper(trips: self.viewModel.trips, parent: TripView())
-            .onAppear(perform: self.refresh)
-        }.frame(height: 500)
-        
-//        VStack {
-//          HStack {
-//            BarChartView(data: [8,23,54,32,12,37,7,23,43], title: "Line chart", legend: "Full screen", dropShadow: false) // legend is optional, use optional .padding()
-//            PieChartView(data: [8,23,54,32], title: "Title", legend: "Legendary", dropShadow: false) // legend is optional
-//          }
-//
-//          HStack {
-//             PieChartView(data: [8,23,54,32], title: "Title", legend: "Legendary", dropShadow: false) // legend is optional
-//            BarChartView(data: [8,23,54,32,12,37,7,23,43], title: "Line chart", legend: "Full screen", dropShadow: false) // legend is optional, use optional .padding()
-//          }
-//        }.frame(minWidth: 0, maxWidth: .infinity, alignment: .center)
-        
-        
-//        Text("Percentages")
-//          .font(.title)
-//          .fontWeight(.bold)
-//
-//        HStack {
-//          ZStack {
-//            Rectangle()
-//              .fill(Color.yellow)
-//              .cornerRadius(20)
-//            VStack(alignment: .leading) {
-//              Text("42%")
-//                .font(.subheadline)
-//              Text("Continents")
-//                .font(.callout)
-//                .fontWeight(.bold)
-//            }
-//          }
-//
-//          ZStack {
-//            Rectangle()
-//              .fill(Color.yellow)
-//              .cornerRadius(20)
-//            VStack(alignment: .leading) {
-//              Text("42%")
-//                .font(.subheadline)
-//              Text("Countries")
-//                .font(.callout)
-//                .fontWeight(.bold)
-//            }
-//          }
-//        }
-//        .frame(height: 100)
-        
-      }
+            .frame(height: 150)
+            .padding(20),
+
+            alignment: .top
+        )
+      .navigationBarTitle(Text("My Footsteps"), displayMode: .automatic)
+      .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .topLeading)
     }
   }
 }
 
-struct StatisticsView_Previews: PreviewProvider {
-  static var previews: some View {
-    StatisticsView()
+struct StatisticNumberView: View {
+  var header: String
+  var number: Int
+  
+  var body: some View {
+    ZStack {
+      RoundedRectangle(cornerRadius: 10, style: .continuous)
+        .fill(
+          LinearGradient(
+            gradient: Gradient(
+              colors: [Color(.sRGB, red: 180/255.0, green: 180/255.0, blue: 180/255.0, opacity: 0.5),
+                       Color(.sRGB, red: 180/255.0, green: 180/255.0, blue: 180/255.0, opacity: 0.1)]),
+            startPoint: .top,
+            endPoint: .bottom
+          )
+      )
+      
+      VStack {
+        Text(self.header)
+          .font(.headline)
+        Text(String(self.number))
+          .padding(.top, 20)
+          .font(.headline)
+      }
+    }
+//    VStack {
+//      Text(self.header)
+//        .font(.headline)
+//      ZStack {
+//        Circle()
+//          .fill(Color.yellow)
+//        Text(String(self.number))
+//      }
+//    }
   }
 }

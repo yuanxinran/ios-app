@@ -25,7 +25,7 @@ struct TripDetailView: View {
     self.parent.refreshTripData(tripID: self.tripID)
   }) {
     HStack {
-      Text("All Trips")
+      Text("< All Trips")
     }
     }
   }

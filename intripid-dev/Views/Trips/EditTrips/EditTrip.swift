@@ -78,7 +78,6 @@ struct EditTrip :  View {
 
             VStack(alignment: .leading, spacing: 12.0){
               Text("Travel Partners")
-              .font(.headline)
 
               VStack(alignment: .leading, spacing: 8.0){
                 ForEach(allPartners.travelPartners) {i in
