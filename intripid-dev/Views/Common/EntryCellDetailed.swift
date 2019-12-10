@@ -35,9 +35,12 @@ struct EntryCellDetailed: View{
             ))
             .cornerRadius(10)
           VStack (alignment: .leading){
-            Text("\(entry.journal!.title)").fontWeight(.bold)
-            Text("\(entry.journal!.content)")
-          }
+            Text("\(entry.journal!.title)")
+              .font(.title)
+              .fontWeight(.bold)
+              .padding(.bottom, 10)
+            Text("\(entry.journal!.content)").font(.body)
+          }.padding(20)
         }
       }
     }

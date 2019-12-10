@@ -87,7 +87,11 @@ struct TripEntryView: View {
         .offset(x: (-proxy.size.width * 0.5) * CGFloat(self.idx) - 4, y: -20)
       }
     }
-   }
+    }.navigationBarItems(trailing:
+        Button("Delete") {
+            print("Delete tapped!")
+        }
+    )
   }
 }
 
