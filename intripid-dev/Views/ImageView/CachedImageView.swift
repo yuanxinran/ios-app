@@ -10,6 +10,8 @@ import Foundation
 import SwiftUI
 import RemoteImage
 
+let ImagePlaceholder = URL(string: "https://firebasestorage.googleapis.com/v0/b/intripid-256611.appspot.com/o/placeholder.jpg?alt=media&token=b0cb781b-c2b6-45b9-bbe4-d03429f6b6d2")!
+
 struct ProfileImageCached : View {
   var url : URL
   init(urlString: String){
@@ -49,7 +51,7 @@ struct ProfileImageCached : View {
 struct CreateTripsProfileImageCached : View {
   var url : URL
   init(urlString: String){
-    self.url = URL(string: urlString)!
+    self.url = URL(string: urlString) ?? ImagePlaceholder
   }
   
   var body: some View {
@@ -80,7 +82,7 @@ struct CreateTripsProfileImageCached : View {
 struct CoverImageCached : View {
   var url : URL
   init(urlString: String){
-    self.url = URL(string: urlString)!
+    self.url = URL(string: urlString) ?? ImagePlaceholder
   }
   var body: some View {
     RemoteImage(url: url, errorView: { error in
@@ -113,7 +115,7 @@ struct CoverImageCached : View {
 struct CoverImageDetailCached : View {
   var url : URL
   init(urlString: String){
-    self.url = URL(string: urlString)!
+    self.url = URL(string: urlString) ?? ImagePlaceholder
   }
   var body: some View {
     RemoteImage(url: url, errorView: { error in

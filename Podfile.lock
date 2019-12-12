@@ -299,7 +299,7 @@ DEPENDENCIES:
   - SwiftyJSON (~> 4.0)
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  https://github.com/CocoaPods/Specs.git:
     - abseil
     - Alamofire
     - AssetsPickerViewController
@@ -361,4 +361,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: f201e5968b0f010060906c2ef2af11ff3904a047
 
-COCOAPODS: 1.7.5
+COCOAPODS: 1.8.4
