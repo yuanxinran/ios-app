@@ -68,14 +68,5 @@ struct StatisticNumberView: View {
           .font(.headline)
       }
     }
-//    VStack {
-//      Text(self.header)
-//        .font(.headline)
-//      ZStack {
-//        Circle()
-//          .fill(Color.yellow)
-//        Text(String(self.number))
-//      }
-//    }
   }
 }

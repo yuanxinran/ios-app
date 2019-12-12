@@ -19,6 +19,7 @@ struct TripView: View {
   }
   
   func refresh(){
+    selectedViewMode = 0
     self.viewModel.fetchData()
   }
   

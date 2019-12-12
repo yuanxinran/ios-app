@@ -70,19 +70,6 @@ struct TripEntryView: View {
                   .padding(.leading, 8)
                   .frame(width: proxy.size.width-8)
                 
-//                VStack {
-//
-//                    Button(action: {self.deleteEntry(entryIndex)}) {
-//                      Text("Delete")
-//                    }.font(.caption)
-//                      .padding(5)
-//                      .padding(.leading, 15)
-//                      .padding(.trailing, 15)
-//                      .background(Color(.sRGB, red: 200/255, green: 200/255, blue: 200/255, opacity: 0.3))
-//                      .clipShape(Capsule())
-//
-//
-//                }.padding(20)
                   VStack {
                       Button("Delete Entry") {
                           self.showActionSheet = true
