@@ -91,37 +91,7 @@ class MapViewController: UIViewController, GMSMapViewDelegate, GMUClusterManager
      clusterManager = GMUClusterManager(map: mapView, algorithm: algorithm,
                                                        renderer: renderer)
 
-     // Generate and add random items to the cluster manager.
-     generateClusterItems()
-
-     // Call cluster() after items have been added to perform the clustering
-     // and rendering on map.
-     clusterManager.cluster()
-    
-    // Register self to listen to both GMUClusterManagerDelegate and
-    // GMSMapViewDelegate events.
-     clusterManager.setDelegate(self, mapDelegate: self)
   }
-  
-  /// Randomly generates cluster items within some extent of the camera and
-  /// adds them to the cluster manager.
-  private func generateClusterItems() {
-    for location in locations {
-      print("HULLO")
-      let lat = location.latitude
-      let lng = location.longitude
-      let name = "Item \(location.tripID)"
-      let item =
-          POIItem(position: CLLocationCoordinate2DMake(lat, lng), name: name)
-      clusterManager.add(item)
-    }
-  }
-  
-//  private func clusterManager(clusterManager: GMUClusterManager, didTapCluster cluster: GMUCluster) {
-//    let newCamera = GMSCameraPosition.camera(withLatitude: cluster.position.latitude, longitude: cluster.position.longitude, zoom: mapView.camera.zoom + 1)
-//    let update = GMSCameraUpdate.setCamera(newCamera)
-//    mapView.moveCamera(update)
-//  }
   
   func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
     
