@@ -12,6 +12,8 @@ struct TripEntryView: View {
   
   @ObservedObject private var imageLoader = ImageLoader()
   @State private var shown = true
+  @State private var showActionSheet = false
+  @State private var deleteIndex = 0
   @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
   var entries: [Entry]
   var idx: Int
@@ -32,18 +34,19 @@ struct TripEntryView: View {
     self.parent.refresh()
   }
   
-  func deleteEntry(_ index: Int){
+  func deleteEntry(){
+    print("index: \(self.deleteIndex)")
     self.presentationMode.wrappedValue.dismiss()
-    let entry = self.entries[index]
+    let entry = self.entries[self.deleteIndex]
     self.shown = false
     if entry.type == "photo"{
-      viewModel.deletePhoto(tripID: self.tripID, photoID: entries[index].getDocID()){
+      viewModel.deletePhoto(tripID: self.tripID, photoID: entries[deleteIndex].getDocID()){
           (result: String) in
         self.parent.refresh()
-        
+
       }
     } else {
-      viewModel.deleteJournal(tripID: self.tripID, journalID: entries[index].getDocID()){
+      viewModel.deleteJournal(tripID: self.tripID, journalID: entries[deleteIndex].getDocID()){
           (result: String) in
         self.parent.refresh()
       }
@@ -54,6 +57,7 @@ struct TripEntryView: View {
   
   
   var body: some View {
+    
     // MARK: Loading a scroll view of placeholder images
     VStack{
     GeometryReader { proxy in
@@ -66,19 +70,35 @@ struct TripEntryView: View {
                   .padding(.leading, 8)
                   .frame(width: proxy.size.width-8)
                 
-                VStack {
-
-                    Button(action: {self.deleteEntry(entryIndex)}) {
-                      Text("Delete")
-                    }.font(.caption)
-                      .padding(5)
-                      .padding(.leading, 15)
-                      .padding(.trailing, 15)
-                      .background(Color(.sRGB, red: 200/255, green: 200/255, blue: 200/255, opacity: 0.3))
-                      .clipShape(Capsule())
-                    
-                  
-                }.padding(20)
+//                VStack {
+//
+//                    Button(action: {self.deleteEntry(entryIndex)}) {
+//                      Text("Delete")
+//                    }.font(.caption)
+//                      .padding(5)
+//                      .padding(.leading, 15)
+//                      .padding(.trailing, 15)
+//                      .background(Color(.sRGB, red: 200/255, green: 200/255, blue: 200/255, opacity: 0.3))
+//                      .clipShape(Capsule())
+//
+//
+//                }.padding(20)
+                  VStack {
+                      Button("Delete Entry") {
+                          self.showActionSheet = true
+                          self.deleteIndex = entryIndex
+                      }
+                  }.actionSheet(isPresented: self.$showActionSheet) {
+                      ActionSheet(
+                          title: Text("Delete Entry"),
+                          message: Text("Are you sure that you want to delete this entry?"),
+                          buttons: [
+                              .cancel { print(self.showActionSheet) },
+                              .destructive(Text("Delete")){self.deleteEntry()}
+                          ]
+                      )
+                  }
+                
               }
             }
           }

@@ -15,6 +15,7 @@ struct EditTrip :  View {
   var onDismiss: () -> ()
 
   @State private var selectedPartners = [String]()
+    @State private var showActionSheet = false
   @ObservedObject var allPartners = TravelPartnerViewModel()
   @State private var title = ""
   var viewModel : EditTripViewModel
@@ -96,9 +97,22 @@ struct EditTrip :  View {
           VStack(alignment: .leading){
             HStack(alignment: .top){
               Spacer()
-              RedButton("Delete Trip").onTapGesture {
-                             self.deleteTrip()
-                           }
+              
+              VStack {
+                RedButton("Delete Trip").onTapGesture {
+                  self.showActionSheet = true
+                }
+               }.actionSheet(isPresented: self.$showActionSheet) {
+                   ActionSheet(
+                       title: Text("Delete Trip"),
+                       message: Text("Are you sure that you want to delete this trip"),
+                       buttons: [
+                           .cancel { print(self.showActionSheet) },
+                           .destructive(Text("Delete Trip")){self.deleteTrip()}
+                       ]
+                   )
+               }
+
               
               GreenButton("Update Trip").onTapGesture {
                 self.updateTrip()

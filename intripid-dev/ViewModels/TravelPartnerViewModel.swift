@@ -27,7 +27,6 @@ class TravelPartnerViewModel : ObservableObject {
         let data = doc.data() as JSONDictionary
         if i.type == .added {
           if let partner = parseTravelPartnerData(id: doc.documentID, data: data){
-            print("the image url")
             self.travelPartners.append(partner)
           }
         }
@@ -38,7 +37,7 @@ class TravelPartnerViewModel : ObservableObject {
               if let firstName = i.document.get("firstName") as? String, let lastName = i.document.get("lastName") as? String{
                 self.travelPartners[j].firstName = firstName
                 self.travelPartners[j].lastName = lastName
-                self.travelPartners[j].profilePicture = i.document.get("lastName") as? String ?? ""
+                self.travelPartners[j].profilePicture = i.document.get("profilePicture") as? String ?? ""
               }
               }
             }

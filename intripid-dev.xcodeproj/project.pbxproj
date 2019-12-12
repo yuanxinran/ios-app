@@ -58,7 +58,6 @@
 		1CB7DE052366C7CE000ED455 /* TripView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CB7DE042366C7CE000ED455 /* TripView.swift */; };
 		1CB85B60238A215F0085BF58 /* EditTripAddMultiplePhotos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CB85B5C238A215E0085BF58 /* EditTripAddMultiplePhotos.swift */; };
 		1CB85B61238A215F0085BF58 /* EditTripAddJournal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CB85B5D238A215F0085BF58 /* EditTripAddJournal.swift */; };
-		1CB85B62238A215F0085BF58 /* EditTripAddPhotos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CB85B5E238A215F0085BF58 /* EditTripAddPhotos.swift */; };
 		1CB85B63238A215F0085BF58 /* EditTripAddPhotosViewControllerWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CB85B5F238A215F0085BF58 /* EditTripAddPhotosViewControllerWrapper.swift */; };
 		1CB85B6D238A23190085BF58 /* AddPhotosView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CB85B64238A23180085BF58 /* AddPhotosView.swift */; };
 		1CB85B6F238A23190085BF58 /* TripEntriesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CB85B66238A23180085BF58 /* TripEntriesView.swift */; };
@@ -82,6 +81,8 @@
 		5411B0E92374F09400833764 /* EntryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5411B0E82374F09400833764 /* EntryCell.swift */; };
 		5411B0ED23756D8800833764 /* ParserTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5411B0EC23756D8700833764 /* ParserTest.swift */; };
 		5411B0EF237570C400833764 /* Entry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5411B0EE237570C400833764 /* Entry.swift */; };
+		5414ECF823A1B47D00638CE3 /* AddTravelParnter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5414ECF723A1B47C00638CE3 /* AddTravelParnter.swift */; };
+		5414ECFA23A1BE3400638CE3 /* EditTravelPartnerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5414ECF923A1BE3400638CE3 /* EditTravelPartnerViewModel.swift */; };
 		5431E908236F726F00139BE4 /* PhotoHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5431E907236F726F00139BE4 /* PhotoHelper.swift */; };
 		5431E911236FD89A00139BE4 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5431E90F236FD89A00139BE4 /* Photo.swift */; };
 		5431E912236FD89A00139BE4 /* Journal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5431E910236FD89A00139BE4 /* Journal.swift */; };
@@ -222,7 +223,6 @@
 		1CB7DE042366C7CE000ED455 /* TripView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripView.swift; sourceTree = "<group>"; };
 		1CB85B5C238A215E0085BF58 /* EditTripAddMultiplePhotos.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EditTripAddMultiplePhotos.swift; path = "intripid-dev/Views/Trips/EditTrips/EditTripAddMultiplePhotos.swift"; sourceTree = SOURCE_ROOT; };
 		1CB85B5D238A215F0085BF58 /* EditTripAddJournal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EditTripAddJournal.swift; path = "intripid-dev/Views/Trips/EditTrips/EditTripAddJournal.swift"; sourceTree = SOURCE_ROOT; };
-		1CB85B5E238A215F0085BF58 /* EditTripAddPhotos.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EditTripAddPhotos.swift; path = "intripid-dev/Views/Trips/EditTrips/EditTripAddPhotos.swift"; sourceTree = SOURCE_ROOT; };
 		1CB85B5F238A215F0085BF58 /* EditTripAddPhotosViewControllerWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EditTripAddPhotosViewControllerWrapper.swift; path = "intripid-dev/Views/Trips/EditTrips/EditTripAddPhotosViewControllerWrapper.swift"; sourceTree = SOURCE_ROOT; };
 		1CB85B64238A23180085BF58 /* AddPhotosView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddPhotosView.swift; path = "intripid-dev/Views/Trips/TripDetail/AddPhotosView.swift"; sourceTree = SOURCE_ROOT; };
 		1CB85B66238A23180085BF58 /* TripEntriesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TripEntriesView.swift; path = "intripid-dev/Views/Trips/TripDetail/TripEntriesView.swift"; sourceTree = SOURCE_ROOT; };
@@ -248,6 +248,8 @@
 		5411B0E82374F09400833764 /* EntryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntryCell.swift; sourceTree = "<group>"; };
 		5411B0EC23756D8700833764 /* ParserTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParserTest.swift; sourceTree = "<group>"; };
 		5411B0EE237570C400833764 /* Entry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entry.swift; sourceTree = "<group>"; };
+		5414ECF723A1B47C00638CE3 /* AddTravelParnter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTravelParnter.swift; sourceTree = "<group>"; };
+		5414ECF923A1BE3400638CE3 /* EditTravelPartnerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTravelPartnerViewModel.swift; sourceTree = "<group>"; };
 		5431E907236F726F00139BE4 /* PhotoHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoHelper.swift; sourceTree = "<group>"; };
 		5431E90F236FD89A00139BE4 /* Photo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
 		5431E910236FD89A00139BE4 /* Journal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Journal.swift; sourceTree = "<group>"; };
@@ -548,6 +550,7 @@
 				1C853ACC2398287D006BE0B6 /* HeatmapViewController.swift */,
 				1C853ACE23982891006BE0B6 /* HeatmapViewControllerWrapper.swift */,
 				1CB7DE022366C654000ED455 /* ProfileView.swift */,
+				5414ECF723A1B47C00638CE3 /* AddTravelParnter.swift */,
 				1CBFDF3F236826B80055EC34 /* TripMapView.swift */,
 			);
 			path = Views;
@@ -568,7 +571,6 @@
 				1CB85B5D238A215F0085BF58 /* EditTripAddJournal.swift */,
 				1CB85B5C238A215E0085BF58 /* EditTripAddMultiplePhotos.swift */,
 				5447C5902399EB4900E2473D /* EditTrip.swift */,
-				1CB85B5E238A215F0085BF58 /* EditTripAddPhotos.swift */,
 				1CB85B5F238A215F0085BF58 /* EditTripAddPhotosViewControllerWrapper.swift */,
 			);
 			path = "Edit Trips";
@@ -588,6 +590,7 @@
 			isa = PBXGroup;
 			children = (
 				544873072372266C00791CBD /* TravelPartnerViewModel.swift */,
+				5414ECF923A1BE3400638CE3 /* EditTravelPartnerViewModel.swift */,
 				5448730923722C8A00791CBD /* TripViewModel.swift */,
 				5411B0C92373C81B00833764 /* EditTripViewModel.swift */,
 				5411B0C72373C81200833764 /* TripDetailViewModel.swift */,
@@ -927,6 +930,7 @@
 				5431E912236FD89A00139BE4 /* Journal.swift in Sources */,
 				1CB85B71238A23190085BF58 /* TripDetailTestView.swift in Sources */,
 				1CB7DDF92366939C000ED455 /* TripListView.swift in Sources */,
+				5414ECFA23A1BE3400638CE3 /* EditTravelPartnerViewModel.swift in Sources */,
 				1CB85B7B238B26170085BF58 /* TripEntryView.swift in Sources */,
 				5431E91C237054E400139BE4 /* DateHelper.swift in Sources */,
 				1C853D8F23986A6D006BE0B6 /* GMUHeatmapTileLayer.m in Sources */,
@@ -962,11 +966,11 @@
 				1CB85B70238A23190085BF58 /* MapDetailViewControllerWrapper.swift in Sources */,
 				1C853DA323986A6D006BE0B6 /* GMUNonHierarchicalDistanceBasedAlgorithm.m in Sources */,
 				5411B0DD2374223400833764 /* ToRootViewController.swift in Sources */,
-				1CB85B62238A215F0085BF58 /* EditTripAddPhotos.swift in Sources */,
 				544873082372266C00791CBD /* TravelPartnerViewModel.swift in Sources */,
 				1CB85B73238A23190085BF58 /* AddJournalView.swift in Sources */,
 				1C853D9323986A6D006BE0B6 /* GMUPlacemark.m in Sources */,
 				1C853D9123986A6D006BE0B6 /* GMUGeometryRenderer.m in Sources */,
+				5414ECF823A1B47D00638CE3 /* AddTravelParnter.swift in Sources */,
 				1CB7DE052366C7CE000ED455 /* TripView.swift in Sources */,
 				1C853D9923986A6D006BE0B6 /* GMUPoint.m in Sources */,
 				1CD133E62367642B008230B7 /* TripViewModePicker.swift in Sources */,

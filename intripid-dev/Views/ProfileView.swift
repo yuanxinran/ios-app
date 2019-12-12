@@ -32,6 +32,7 @@ struct FilteredTripListView: View {
 struct ProfileView: View {
   @ObservedObject var travelPartners = TravelPartnerViewModel()
   @ObservedObject private var viewModel : TripViewModel
+  @State private var addTravelPartner = false
   
   init(){
     self.viewModel = TripViewModel(userID: currentUserDoc)
@@ -84,7 +85,7 @@ struct ProfileView: View {
             .font(.title)
             .fontWeight(.bold)
           Spacer()
-          Button(action: {}){
+          Button(action: {self.addTravelPartner = true}){
             Text("Add Partner")
           }.font(.caption)
             .padding(5)
@@ -92,6 +93,14 @@ struct ProfileView: View {
             .padding(.trailing, 15)
             .background(Color(.sRGB, red: 200/255, green: 200/255, blue: 200/255, opacity: 0.3))
             .clipShape(Capsule())
+          .sheet(isPresented: $addTravelPartner) {
+            AddTravelPartner(onDismiss: {
+              self.addTravelPartner = false
+            })
+//              EditTrip(trip: self.trip, parent: self.parent, onDismiss: {
+//                self.editTripModalDisplayed = false
+//              })
+          }
         }.padding(.leading, 20)
           .padding(.trailing, 20)
         
