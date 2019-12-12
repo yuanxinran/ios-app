@@ -60,7 +60,7 @@ class MapDetailViewController: UIViewController, GMSMapViewDelegate {
     }
     
     // Refining Interactions
-    mapView.settings.scrollGestures = false
+    mapView.settings.scrollGestures = true
     
     mapView.delegate = self
     self.view = mapView

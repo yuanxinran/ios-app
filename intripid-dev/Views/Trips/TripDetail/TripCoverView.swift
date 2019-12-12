@@ -123,7 +123,7 @@ struct TripCoverView: View {
         
       }.foregroundColor(.white)
         .padding() //padding for cover text
-    }.frame(height:CGFloat(250)) //set height to 250, which is height of cover image
+    }.frame(height:CGFloat(200)) //set height to 200, which is height of cover image
   }
 }
 
