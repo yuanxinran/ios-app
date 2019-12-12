@@ -122,19 +122,19 @@ struct CoverImageDetailCached : View {
       Image("placeholder")
         .resizable()
         .scaledToFill()
-        .frame(height: CGFloat(250))
+        .frame(height: CGFloat(200))
         .clipped()
     }, imageView: { image in
       image
         .resizable()
         .scaledToFill()
-        .frame(height: CGFloat(250))
+        .frame(height: CGFloat(200))
         .clipped()
     }, loadingView: {
       Image("placeholder")
         .resizable()
         .scaledToFill()
-        .frame(height: CGFloat(250))
+        .frame(height: CGFloat(200))
         .clipped()
     })
     
